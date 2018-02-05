@@ -9,13 +9,11 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private int speed;
 
-    private BoxCollider2D collider;
     private Vector2 input;
 
 	// Use this for initialization
 	void Start ()
     {
-        collider = GetComponent<BoxCollider2D>();
         input = Vector2.zero;
 	}
 	
@@ -29,9 +27,6 @@ public class Player : MonoBehaviour {
     void Movement()
     {
         Vector3 movement = input * speed * Time.deltaTime;
-        // Debug.Log(movement);
-        // Debug.Log(myRigidbody.velocity);
-        // myRigidbody.AddForce(input * speed);
         transform.position = Vector2.MoveTowards(transform.position, transform.position + movement, speed * Time.deltaTime);
     }
 
