@@ -28,17 +28,10 @@ public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, I
         }
     }
 
-    // Use this for initialization
     void Start ()
     {
         backgroundImg = GetComponent<Image>();
         joyStickImg = transform.GetChild(0).GetComponentInChildren<Image>(); //Should always result in JoyStick Image  
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
 	}
 
     public void OnDrag(PointerEventData eData)
