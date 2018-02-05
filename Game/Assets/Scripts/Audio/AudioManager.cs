@@ -10,7 +10,6 @@ public class AudioManager : MonoBehaviour
     Sound[] sounds;
     [SerializeField]
     AudioClip[] backgroundMusic;
-    [SerializeField]
     AudioSource music;
 
     void Awake()
@@ -33,6 +32,8 @@ public class AudioManager : MonoBehaviour
             s.Source.pitch = s.pitch;
             s.Source.loop = s.loop;
         }
+
+        music = GetComponent<AudioSource>();
     }
 
     public void Update()
