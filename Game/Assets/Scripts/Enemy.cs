@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        path = pf.FindPath(transform.position, target.position);
         const float speed = 3;
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, pathTarget, step);
