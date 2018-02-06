@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory // : Monobehaviour
+public class Equipment // : Monobehaviour
 {
     struct Slot
     {
@@ -28,7 +28,7 @@ public class Inventory // : Monobehaviour
         new Slot { type = Item.Type.OffHand  },
     };
 
-    public Inventory()
+    public Equipment()
     {
 
     }

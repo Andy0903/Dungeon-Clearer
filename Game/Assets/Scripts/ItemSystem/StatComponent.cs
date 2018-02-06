@@ -23,12 +23,12 @@ public class StatComponent : ItemComponent
         item.OnEquip += Item_OnEquip;
     }
 
-    void Item_OnEquip(Inventory inventory)
+    void Item_OnEquip(Equipment inventory)
     {
         //Do some stuff when equipped
     }
 
-    void Item_OnUnequip(Inventory invetory)
+    void Item_OnUnequip(Equipment invetory)
     {
         //Do some stuff when unequipped
     }

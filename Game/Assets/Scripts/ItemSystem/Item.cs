@@ -33,7 +33,7 @@ public class Item // :monobehaviour
         OffHand,
     }
 
-    public delegate void EquipEvent(Inventory inventory);
+    public delegate void EquipEvent(Equipment inventory);
     public event EquipEvent OnEquip;
     public event EquipEvent OnUnequip;
 
@@ -51,12 +51,12 @@ public class Item // :monobehaviour
         components.Add(component);
     }
 
-    public void Equip(Inventory inventory)
+    public void Equip(Equipment inventory)
     {
         OnEquip(inventory);
     }
 
-    public void Unequip(Inventory inventory)
+    public void Unequip(Equipment inventory)
     {
         OnUnequip(inventory);
     }
