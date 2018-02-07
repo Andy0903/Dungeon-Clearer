@@ -8,27 +8,27 @@ using UnityEngine.UI;
 
 public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public static GameObject itemBeingDragged;
+    public static GameObject itemBeingDragged; //TODO property
     Vector3 startPosition;
     Transform startParent;
 
     public void OnBeginDrag(PointerEventData data)
     {
         itemBeingDragged = gameObject;
-        startPosition = gameObject.transform.position;
-        startParent = gameObject.transform.parent;
+        startPosition = transform.position;
+        startParent = transform.parent;
     }
 
     public void OnDrag(PointerEventData data)    //TODO fixa till mobil.
     {
-        gameObject.transform.position = Input.mousePosition;
+        transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData data)
     {
-        if (gameObject.transform.parent == startParent)
+        if (transform.parent == startParent)
         {
-            gameObject.transform.position = startPosition;
+            transform.position = startPosition;
         }
 
         itemBeingDragged = null;
