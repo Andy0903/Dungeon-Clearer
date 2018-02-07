@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 
 /*
@@ -12,9 +13,9 @@ using UnityEngine;
     takedmg 
  */
 
-public class Item // :monobehaviour
+public class Item : MonoBehaviour
 {
-    public enum Type
+    public enum EType
     {
         Head,
         Shoulder,
@@ -37,16 +38,15 @@ public class Item // :monobehaviour
     public event EquipEvent OnEquip;
     public event EquipEvent OnUnequip;
 
-    List<ItemComponent> components;
-    Type type;
+    List<IItemComponent> components;
+    public EType Type { get; set; }
 
-    public Item(Type type)
+    public void Awake()
     {
-        this.type = type;
-        components = new List<ItemComponent>();
+        components = new List<IItemComponent>();
     }
 
-    public void AddComponent(ItemComponent component)
+    public void AddComponent(IItemComponent component)
     {
         components.Add(component);
     }

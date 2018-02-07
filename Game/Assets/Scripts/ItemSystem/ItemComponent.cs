@@ -1,10 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class ItemComponent
+public interface IItemComponent
 {
-    public ItemComponent()
-    {
-    }
-
-    public abstract void BindToItem(Item item);
+    void BindToItem(Item item);
 }

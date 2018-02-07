@@ -6,26 +6,26 @@ public class Equipment // : Monobehaviour
 {
     struct Slot
     {
-        public Item.Type type;
+        public Item.EType type;
         public Item item;
     }
 
     Slot[] slots = new Slot[] {
-        new Slot { type = Item.Type.Head     },
-        new Slot { type = Item.Type.Shoulder },
-        new Slot { type = Item.Type.Chest    },
-        new Slot { type = Item.Type.Back     },
-        new Slot { type = Item.Type.Wrist    },
-        new Slot { type = Item.Type.Hands    },
-        new Slot { type = Item.Type.Waist    },
-        new Slot { type = Item.Type.Legs     },
-        new Slot { type = Item.Type.Feet     },
-        new Slot { type = Item.Type.Neck     },
-        new Slot { type = Item.Type.Trinket  },
-        new Slot { type = Item.Type.Finger   },
-        new Slot { type = Item.Type.OneHand  },
-        new Slot { type = Item.Type.TwoHand  },
-        new Slot { type = Item.Type.OffHand  },
+        new Slot { type = Item.EType.Head     },
+        new Slot { type = Item.EType.Shoulder },
+        new Slot { type = Item.EType.Chest    },
+        new Slot { type = Item.EType.Back     },
+        new Slot { type = Item.EType.Wrist    },
+        new Slot { type = Item.EType.Hands    },
+        new Slot { type = Item.EType.Waist    },
+        new Slot { type = Item.EType.Legs     },
+        new Slot { type = Item.EType.Feet     },
+        new Slot { type = Item.EType.Neck     },
+        new Slot { type = Item.EType.Trinket  },
+        new Slot { type = Item.EType.Finger   },
+        new Slot { type = Item.EType.OneHand  },
+        new Slot { type = Item.EType.TwoHand  },
+        new Slot { type = Item.EType.OffHand  },
     };
 
     public Equipment()

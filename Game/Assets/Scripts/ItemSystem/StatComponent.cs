@@ -3,22 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Stats
+public enum EStats
 {
     Strength,
     Vitality,
 }
 
-public class StatComponent : ItemComponent
+public class StatComponent : IItemComponent
 {
     int value;
 
-    public StatComponent(Stats type, int value) : base()
+    public StatComponent(EStats type, int value) : base()
     {
         this.value = value;
     }
 
-    public override void BindToItem(Item item)
+    public void BindToItem(Item item)
     {
         item.OnEquip += Item_OnEquip;
     }
