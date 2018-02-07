@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu (menuName = "PluggableAI/Pathfinder")]
+[CreateAssetMenu(menuName = "PluggableAI/Pathfinder")]
 public abstract class PathFinder : ScriptableObject
 {
     protected Tilemap BackgroundLayer { get; private set; }
     protected Tilemap ForegroundLayer { get; private set; }
     protected Dictionary<Vector3Int, Node> WorldNode { get; private set; }
-    
-    private void OnEnable()
+
+    private void Initialize()
     {
-        BackgroundLayer = GameObject.FindGameObjectWithTag("BackgroundLayer").GetComponent<Tilemap>();
-        ForegroundLayer = GameObject.FindGameObjectWithTag("ForegroundLayer").GetComponent<Tilemap>();
-        MapNodesToDictionary();
+        if (BackgroundLayer == null && ForegroundLayer == null)
+        {
+            BackgroundLayer = GameObject.FindGameObjectWithTag("BackgroundLayer").GetComponent<Tilemap>();
+            ForegroundLayer = GameObject.FindGameObjectWithTag("ForegroundLayer").GetComponent<Tilemap>();
+            MapNodesToDictionary();
+        }
     }
 
     private void MapNodesToDictionary()
@@ -44,5 +47,11 @@ public abstract class PathFinder : ScriptableObject
         }
     }
 
-    abstract public List<Vector3> FindPath(Vector3 from, Vector3 to);
+    protected abstract List<Vector3> FindPathBehaviour(Vector3 from, Vector3 to);
+
+    public List<Vector3> FindPath(Vector3 from, Vector3 to)
+    {
+        Initialize();
+        return FindPathBehaviour(from, to);
+    }
 }

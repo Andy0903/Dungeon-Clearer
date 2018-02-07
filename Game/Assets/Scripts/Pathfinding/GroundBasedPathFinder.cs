@@ -5,8 +5,8 @@ using UnityEngine;
 public class GroundBasedPathFinder : PathFinder
 {
     HashSet<Node> closed;
-
-    public override List<Vector3> FindPath(Vector3 from, Vector3 to)
+    
+    protected override List<Vector3> FindPathBehaviour(Vector3 from, Vector3 to)
     {
         Node start;
         Node goal;
