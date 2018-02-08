@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 // Based on https://www.youtube.com/watch?v=c47QYgsJrWc (Access date: 2018-02-07)
 
@@ -17,6 +14,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         itemBeingDragged = gameObject;
         startPosition = transform.position;
         startParent = transform.parent;
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData data)    //TODO fixa till mobil.
@@ -26,11 +24,11 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData data)
     {
+        itemBeingDragged = null;
+        GetComponent<CanvasGroup>().blocksRaycasts = true;
         if (transform.parent == startParent)
         {
             transform.position = startPosition;
         }
-
-        itemBeingDragged = null;
     }
 }

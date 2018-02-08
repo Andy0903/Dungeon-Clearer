@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
@@ -16,7 +14,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             return null;
         }
     }
-    
+
     public void AddItem(GameObject item)
     {
         if (ContainedItem != null)
@@ -29,11 +27,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         if (ContainedItem != null)
         {
-            Debug.Log(ContainedItem.name);
-            Debug.Log(ContainedItem.transform.parent.name);
             return;
         }
-        
+
         Item.EType type = DragHandler.itemBeingDragged.GetComponent<Item>().Type;
 
         if (CompareTag("Slot") || CompareTag(type.ToString() + "Slot"))    //TODO fix so it works with our types
@@ -43,3 +39,4 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
     }
 }
+

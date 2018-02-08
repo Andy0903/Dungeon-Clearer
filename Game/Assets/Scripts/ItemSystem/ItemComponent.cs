@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public interface IItemComponent
+﻿public interface IItemComponent
 {
     void BindToItem(Item item);
 }
