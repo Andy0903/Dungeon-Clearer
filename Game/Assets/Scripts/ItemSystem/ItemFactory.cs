@@ -33,8 +33,6 @@ public class ItemFactory : MonoBehaviour
         item.Type = Item.EType.Head;
         image.sprite = Resources.Load<Sprite>("oryx_16bit_fantasy_items_284");
         
-
-        // return GameObject.Instantiate(itemPrefab, inventorySlotTransform, false);
         return go;
     }
 }
