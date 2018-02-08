@@ -1,14 +1,8 @@
-﻿public enum EStats
-{
-    Strength,
-    Vitality,
-}
-
-public class StatComponent : IItemComponent
+﻿public class StatComponent : IItemComponent
 {
     int value;
 
-    public StatComponent(EStats type, int value) : base()
+    public StatComponent(EStat type, int value) : base()
     {
         this.value = value;
     }
