@@ -51,7 +51,7 @@ public class Item : MonoBehaviour
 
     public string GetComponentDescriptions()
     {
-        string description = string.Empty;
+        string description = "<color=orange>" + Type.ToString() + "</color>" + "\n";
 
         foreach (IItemComponent component in components)
         {
