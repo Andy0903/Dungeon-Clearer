@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 575125674}
-  joystickAction: {fileID: 0}
+  joystickAction: {fileID: 1967212057}
   speed: 3
 --- !u!1 &1340647976
 GameObject:
@@ -408,8 +408,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1340647980}
   - component: {fileID: 1340647979}
-  - component: {fileID: 1340647978}
   - component: {fileID: 1340647977}
+  - component: {fileID: 1340647978}
   m_Layer: 0
   m_Name: Enemy_Attack_Test
   m_TagString: Enemy
@@ -452,7 +452,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 0.75, y: 0.75}
   m_EdgeRadius: 0
 --- !u!212 &1340647979
 SpriteRenderer:

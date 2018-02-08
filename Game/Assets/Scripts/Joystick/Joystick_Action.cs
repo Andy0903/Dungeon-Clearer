@@ -9,30 +9,35 @@ public class Joystick_Action : MonoBehaviour, IPointerUpHandler, IPointerDownHan
 {
 
     Image actionImage;
+    private bool attackPressed;
 
+    //Only allows you to press once per button mash
     public bool isAttackPressed
     {
-        get;
-        private set;
+        get
+        {
+            bool temp = attackPressed;
+            attackPressed = false;
+            return temp;
+        }
     }
 
     void Start()
     {
         actionImage = GetComponent<Image>();
-        isAttackPressed = false;
+        attackPressed = false;
     }
 
     public void OnPointerUp(PointerEventData eData)
     {
-        if (RectTransformUtility.RectangleContainsScreenPoint(actionImage.rectTransform, eData.position, eData.pressEventCamera))
-        {
-            Debug.Log("Attack pressed");
-            isAttackPressed = true;
-        }
+        attackPressed = false;
     }
 
     public void OnPointerDown(PointerEventData eData)
     {
-        isAttackPressed = false;
+        if (RectTransformUtility.RectangleContainsScreenPoint(actionImage.rectTransform, eData.position, eData.pressEventCamera))
+        {
+            attackPressed = true;
+        }
     }
 }

@@ -25,6 +25,7 @@ public class Health : MonoBehaviour {
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        Debug.Log("Damage dealt to " + tag + " hp is now: " + currentHealth);
     }
 
     public void Heal(int amount)
