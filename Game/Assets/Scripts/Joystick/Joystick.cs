@@ -7,9 +7,9 @@ using System;
 
 public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, IDragHandler 
 {
-
     private Image backgroundImg;
     private Image joyStickImg;
+    //private Image actionImg;
     private Vector2 input; 
 
     public float Horizontal
@@ -32,6 +32,8 @@ public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, I
     {
         backgroundImg = GetComponent<Image>();
         joyStickImg = transform.GetChild(0).GetComponentInChildren<Image>(); //Should always result in JoyStick Image  
+        //actionImg = GameObject.Find("Joystick_Attack").GetComponent<Image>();
+        //actionImg.color = Color.red;
 	}
 
     public void OnDrag(PointerEventData eData)
@@ -49,13 +51,17 @@ public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, I
 
             joyStickImg.rectTransform.anchoredPosition = new Vector2(input.x * backgroundImg.rectTransform.sizeDelta.x / 2, 
                                                                     input.y * backgroundImg.rectTransform.sizeDelta.y / 2);
-
-
         }
     }
 
     public virtual void OnPointerDown(PointerEventData eData)
     {
+        //Not getting any response from this, TODO: Look into why
+        //if (RectTransformUtility.RectangleContainsScreenPoint(actionImage.rectTransform, eData.position, eData.pressEventCamera))
+        //{
+        //    Debug.Log("Attack pressed");
+        //}
+
         OnDrag(eData); //If touching the screen redirect to OnDrag
     }
 
