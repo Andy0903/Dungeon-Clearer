@@ -8,6 +8,12 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public static GameObject itemBeingDragged; //TODO property
     Vector3 startPosition;
     Transform startParent;
+    Transform parentToKeepAboveAllWhenDragged;
+
+    public void Awake()
+    {
+        parentToKeepAboveAllWhenDragged = GameObject.FindGameObjectWithTag("InventoryPanel").transform;
+    }
 
     public void OnBeginDrag(PointerEventData data)
     {
@@ -15,6 +21,8 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         startPosition = transform.position;
         startParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        itemBeingDragged.transform.SetParent(parentToKeepAboveAllWhenDragged);
     }
 
     public void OnDrag(PointerEventData data)    //TODO fixa till mobil.
@@ -26,9 +34,10 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
-        if (transform.parent == startParent)
+        if (transform.parent == parentToKeepAboveAllWhenDragged)
         {
             transform.position = startPosition;
+            transform.parent = startParent;
         }
     }
 }
