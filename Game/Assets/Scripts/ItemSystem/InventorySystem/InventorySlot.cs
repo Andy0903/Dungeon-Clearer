@@ -7,6 +7,27 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
 {
     Text descriptionText;
 
+    private bool TwoHandEquipped
+    {
+        get
+        {
+            if (GameObject.FindGameObjectWithTag("MainHandSlot").transform.childCount > 0)
+            {
+                return (GameObject.FindGameObjectWithTag("MainHandSlot").transform.GetChild(0).GetComponent<Item>().Type == Item.EType.TwoHand);
+            }
+
+            return false;
+        }
+    }
+
+    private bool OffHandEquipped
+    {
+        get
+        {
+            return (GameObject.FindGameObjectWithTag("OffHandSlot").transform.childCount > 0);
+        }
+    }
+
     private void Awake()
     {
         descriptionText = GameObject.FindGameObjectWithTag("ItemDescriptionText").GetComponent<Text>();
@@ -40,38 +61,21 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
         }
 
         Item.EType type = DragHandler.itemBeingDragged.GetComponent<Item>().Type;
-        
-        if (type.ToString() == "TwoHand" && CompareTag("MainHandSlot"))
+
+        if (CompareTag("Slot") || tag == (type.ToSlotType() + "Slot"))
         {
-            //Set item in MainHandSlot if no offhand equipped
-            if (GameObject.FindGameObjectWithTag("OffHandSlot").transform.childCount <= 0)
+            if (type.ToFriendlyString() == "Off Hand" && !TwoHandEquipped)
             {
                 DragHandler.itemBeingDragged.transform.SetParent(transform);
             }
-        }
-        else if (type.ToString() == "OneHand" && CompareTag("MainHandSlot"))
-        {
-            //Set item in MainHandSlot
-            DragHandler.itemBeingDragged.transform.SetParent(transform);
-        }
-        else if (type.ToString() == "OffHand" && CompareTag("OffHandSlot"))
-        {
-            //Set item in offhandslot, if no two hand equipped
-            if (GameObject.FindGameObjectWithTag("MainHandSlot").transform.childCount <= 0)
+            else if (type.ToFriendlyString() == "Two Hands" && !OffHandEquipped)
             {
                 DragHandler.itemBeingDragged.transform.SetParent(transform);
             }
-            else
+            else if (type.ToFriendlyString() != "Off Hand" && type.ToFriendlyString() != "Two Hands")
             {
-                if (GameObject.FindGameObjectWithTag("MainHandSlot").transform.GetChild(0).GetComponent<Item>().Type != Item.EType.TwoHand)
-                {
-                    DragHandler.itemBeingDragged.transform.SetParent(transform);
-                }
+                DragHandler.itemBeingDragged.transform.SetParent(transform);
             }
-        }
-        else  if (CompareTag("Slot") || tag == (type.ToString() + "Slot"))
-        {
-            DragHandler.itemBeingDragged.transform.SetParent(transform);
         }
     }
 
