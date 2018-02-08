@@ -25,7 +25,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         itemBeingDragged.transform.SetParent(parentToKeepAboveAllWhenDragged);
     }
 
-    public void OnDrag(PointerEventData data)    //TODO fixa till mobil.
+    public void OnDrag(PointerEventData data)
     {
         transform.position = Input.mousePosition;
     }

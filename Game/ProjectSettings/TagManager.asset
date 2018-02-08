@@ -8,6 +8,7 @@ TagManager:
   - ForegroundLayer
   - BackgroundLayer
   - InventoryPanel
+  - ItemDescriptionText
   layers:
   - Default
   - TransparentFX

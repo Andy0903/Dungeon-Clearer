@@ -32,6 +32,7 @@ public class ItemFactory : MonoBehaviour
 
         item.Type = Item.EType.Head;
         image.sprite = Resources.Load<Sprite>("oryx_16bit_fantasy_items_284");
+        item.AddComponent(new StatComponent(EStat.Strength, 5));
         
         return go;
     }

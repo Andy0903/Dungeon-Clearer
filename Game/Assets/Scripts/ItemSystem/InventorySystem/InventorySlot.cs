@@ -1,8 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//, IPointerExitHandler
 {
+    Text descriptionText;
+
+    private void Awake()
+    {
+        descriptionText = GameObject.FindGameObjectWithTag("ItemDescriptionText").GetComponent<Text>();
+    }
+
     public GameObject ContainedItem
     {
         get
@@ -35,7 +44,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (CompareTag("Slot") || CompareTag(type.ToString() + "Slot"))    //TODO fix so it works with our types
         {
             DragHandler.itemBeingDragged.transform.SetParent(transform);
-            //ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
+        }
+    }
+
+    public void OnPointerDown(PointerEventData data)
+    {
+        if (ContainedItem != null)
+        {
+            descriptionText.text = ContainedItem.GetComponent<Item>().GetComponentDescriptions();
         }
     }
 }

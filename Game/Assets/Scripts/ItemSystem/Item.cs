@@ -49,6 +49,18 @@ public class Item : MonoBehaviour
         components.Add(component);
     }
 
+    public string GetComponentDescriptions()
+    {
+        string description = string.Empty;
+
+        foreach (IItemComponent component in components)
+        {
+            description += component.Description + "\n";
+        }
+
+        return description;
+    }
+
     public void Equip(Equipment inventory)
     {
         OnEquip(inventory);
