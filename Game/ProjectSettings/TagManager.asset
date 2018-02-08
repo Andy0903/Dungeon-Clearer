@@ -9,6 +9,15 @@ TagManager:
   - BackgroundLayer
   - InventoryPanel
   - ItemDescriptionText
+  - MainHandSlot
+  - HeadSlot
+  - HandsSlot
+  - BackSlot
+  - ChestSlot
+  - FeetSlot
+  - LegsSlot
+  - OffHandSlot
+  - WaistSlot
   layers:
   - Default
   - TransparentFX

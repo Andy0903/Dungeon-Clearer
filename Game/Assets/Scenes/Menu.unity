@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 36086086}
   m_Layer: 5
   m_Name: Slot (1)
-  m_TagString: Slot
+  m_TagString: HeadSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 58719033}
   m_Layer: 5
   m_Name: Slot (2)
-  m_TagString: Slot
+  m_TagString: HandsSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1138,7 +1138,7 @@ GameObject:
   - component: {fileID: 215152381}
   m_Layer: 5
   m_Name: Slot (6)
-  m_TagString: Slot
+  m_TagString: LegsSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1801,7 +1801,7 @@ GameObject:
   - component: {fileID: 411149300}
   m_Layer: 5
   m_Name: Slot (3)
-  m_TagString: Slot
+  m_TagString: BackSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2238,7 +2238,7 @@ GameObject:
   - component: {fileID: 705558258}
   m_Layer: 5
   m_Name: Slot (4)
-  m_TagString: Slot
+  m_TagString: ChestSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3860,7 +3860,7 @@ GameObject:
   - component: {fileID: 1197047176}
   m_Layer: 5
   m_Name: Slot
-  m_TagString: Slot
+  m_TagString: MainHandSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5429,7 +5429,7 @@ GameObject:
   - component: {fileID: 1649177248}
   m_Layer: 5
   m_Name: Slot (5)
-  m_TagString: Slot
+  m_TagString: FeetSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6025,7 +6025,7 @@ GameObject:
   - component: {fileID: 1761878456}
   m_Layer: 5
   m_Name: Slot (8)
-  m_TagString: Slot
+  m_TagString: WaistSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6129,7 +6129,7 @@ GameObject:
   - component: {fileID: 1779111615}
   m_Layer: 5
   m_Name: Slot (7)
-  m_TagString: Slot
+  m_TagString: OffHandSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

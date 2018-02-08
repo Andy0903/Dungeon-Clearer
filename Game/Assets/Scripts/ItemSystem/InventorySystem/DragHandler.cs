@@ -37,7 +37,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (transform.parent == parentToKeepAboveAllWhenDragged)
         {
             transform.position = startPosition;
-            transform.parent = startParent;
+            transform.SetParent(startParent, false);
         }
     }
 }

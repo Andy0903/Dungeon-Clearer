@@ -40,8 +40,36 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
         }
 
         Item.EType type = DragHandler.itemBeingDragged.GetComponent<Item>().Type;
-
-        if (CompareTag("Slot") || CompareTag(type.ToString() + "Slot"))    //TODO fix so it works with our types
+        
+        if (type.ToString() == "TwoHand" && CompareTag("MainHandSlot"))
+        {
+            //Set item in MainHandSlot if no offhand equipped
+            if (GameObject.FindGameObjectWithTag("OffHandSlot").transform.childCount <= 0)
+            {
+                DragHandler.itemBeingDragged.transform.SetParent(transform);
+            }
+        }
+        else if (type.ToString() == "OneHand" && CompareTag("MainHandSlot"))
+        {
+            //Set item in MainHandSlot
+            DragHandler.itemBeingDragged.transform.SetParent(transform);
+        }
+        else if (type.ToString() == "OffHand" && CompareTag("OffHandSlot"))
+        {
+            //Set item in offhandslot, if no two hand equipped
+            if (GameObject.FindGameObjectWithTag("MainHandSlot").transform.childCount <= 0)
+            {
+                DragHandler.itemBeingDragged.transform.SetParent(transform);
+            }
+            else
+            {
+                if (GameObject.FindGameObjectWithTag("MainHandSlot").transform.GetChild(0).GetComponent<Item>().Type != Item.EType.TwoHand)
+                {
+                    DragHandler.itemBeingDragged.transform.SetParent(transform);
+                }
+            }
+        }
+        else  if (CompareTag("Slot") || tag == (type.ToString() + "Slot"))
         {
             DragHandler.itemBeingDragged.transform.SetParent(transform);
         }
