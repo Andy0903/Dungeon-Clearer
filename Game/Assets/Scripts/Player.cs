@@ -42,15 +42,15 @@ public class Player : MonoBehaviour {
 
     void TryDealDamage()
     {
-        //RaycastHit2D[] hits = new RaycastHit2D[10];
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, viewDirection, attackRange);
-        Debug.DrawRay(transform.position, viewDirection * attackRange, Color.red);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, viewDirection, attackRange);
 
-        if(hit.collider != null && hit.collider.tag == "Enemy")
+        foreach (RaycastHit2D hit in hits)
         {
-            hit.collider.GetComponent<Health>().TakeDamage(attackDamage);
+            if (hit.collider != null && hit.collider.tag == "Enemy")
+            {
+                hit.collider.GetComponent<Health>().TakeDamage(attackDamage);
+            }
         }
-
     }
 
     void HandleInput()
