@@ -53,6 +53,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
         {
             descriptionText.text = ContainedItem.GetComponent<Item>().GetComponentDescriptions();
         }
+        else
+        {
+            descriptionText.text = string.Empty;
+        }
+
     }
 }
 
