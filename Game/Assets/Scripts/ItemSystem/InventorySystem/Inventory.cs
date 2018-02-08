@@ -18,7 +18,23 @@ public class Inventory : MonoBehaviour
             if (slot.ContainedItem == null)
             {
                 slotFound = true;
-                slot.AddItem(ItemFactory.Instance.Create(Item.EType.Head));
+                
+                Item.EType type = Item.EType.Back;
+                switch (Random.Range(0, 10))
+                {
+                    case 0: type = Item.EType.Head; break;
+                    case 1: type = Item.EType.Chest; break;
+                    case 2: type = Item.EType.Back; break;
+                    case 3: type = Item.EType.Hands; break;
+                    case 4: type = Item.EType.Waist; break;
+                    case 5: type = Item.EType.Legs; break;
+                    case 6: type = Item.EType.Feet; break;
+                    case 7: type = Item.EType.OneHand; break;
+                    case 8: type = Item.EType.TwoHand; break;
+                    case 9: type = Item.EType.OffHand; break;
+                }
+
+                slot.AddItem(ItemFactory.Instance.Create(type));
             }
         }
     }
