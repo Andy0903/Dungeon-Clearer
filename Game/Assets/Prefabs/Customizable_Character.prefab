@@ -207,6 +207,9 @@ MonoBehaviour:
   - {fileID: 212529960610575190}
   - {fileID: 212035719227132266}
   - {fileID: 212473083956363710}
+  body:
+  - {fileID: 21300000, guid: c49d66bbc0210c14ea3f99355dd8e384, type: 3}
+  - {fileID: 21300000, guid: f46861490a209aa44a6ac1d29188fa1e, type: 3}
 --- !u!212 &212035719227132266
 SpriteRenderer:
   m_ObjectHideFlags: 1
