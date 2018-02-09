@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
         {
             if (hit.collider != null && hit.collider.tag == "Enemy")
             {
-                hit.collider.GetComponent<Health>().TakeDamage(attackDamage);
+                hit.collider.GetComponent<Health>().DealDamage(attackDamage);
             }
         }
     }
