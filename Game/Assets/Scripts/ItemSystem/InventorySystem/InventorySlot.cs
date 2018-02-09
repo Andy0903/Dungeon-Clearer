@@ -33,7 +33,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
         item.transform.SetParent(transform, false);
     }
 
-    public virtual void OnDrop(PointerEventData data)
+    public virtual void OnDrop(PointerEventData data) //Called when putting something in the inventory slots.
     {
         if (ContainedItem != null)
             return;
@@ -41,6 +41,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
         if (CompareTag("Slot"))
         {
             DragHandler.itemBeingDragged.transform.SetParent(transform);
+
+            if (DragHandler.itemBeingDragged.GetComponent<Item>().IsEquipped)
+            {
+                DragHandler.itemBeingDragged.GetComponent<Item>().Unequip(this);
+            }
         }
     }
 

@@ -16,13 +16,12 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         parentToKeepAboveAllWhenDragged = GameObject.FindGameObjectWithTag("InventoryPanel").transform;
     }
 
-    public void OnBeginDrag(PointerEventData data)
+    public void OnBeginDrag(PointerEventData data) //Called when starting to drag.
     {
         itemBeingDragged = gameObject;
         startPosition = transform.position;
         startParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
-
         itemBeingDragged.transform.SetParent(parentToKeepAboveAllWhenDragged);
     }
 

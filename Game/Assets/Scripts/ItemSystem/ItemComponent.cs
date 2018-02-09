@@ -1,5 +1,5 @@
 ﻿public interface IItemComponent
 {
     string Description { get; }
-    void BindToItem(Item item);
+    IItemComponent BindToItem(Item item);
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 public class StatComponent : IItemComponent
 {
@@ -16,18 +17,22 @@ public class StatComponent : IItemComponent
         get { return "Grants " + value + " " + type; }
     }
 
-    public void BindToItem(Item item)
+    public IItemComponent BindToItem(Item item)
     {
         item.OnEquip += Item_OnEquip;
+        item.OnUnequip += Item_OnUnequip;
+        return this;
     }
 
-    void Item_OnEquip(Equipment inventory)
+    void Item_OnEquip(InventorySlot inventory)
     {
+        Debug.Log("Equipped " + Description);
         //Do some stuff when equipped
     }
 
-    void Item_OnUnequip(Equipment invetory)
+    void Item_OnUnequip(InventorySlot invetory)
     {
+        Debug.Log("Unequipped " + Description);
         //Do some stuff when unequipped
     }
 }

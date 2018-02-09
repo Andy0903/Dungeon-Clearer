@@ -26,29 +26,44 @@ public class EquipmentSlot : InventorySlot
         }
     }
 
-    public override void OnDrop(PointerEventData data)
+    public override void OnDrop(PointerEventData data) //called when putting something in the equipment slots.
     {
         if (ContainedItem != null)
             return;
 
-        Item.EType Draggedtype = DragHandler.itemBeingDragged.GetComponent<Item>().Type;
+        Item draggedItem = DragHandler.itemBeingDragged.GetComponent<Item>();
 
         bool willEquip = true;
-        if (CompareTag(Draggedtype.ToSlotType()))
+        if (CompareTag(draggedItem.Type.ToSlotType()))
         {
-            if (Draggedtype == Item.EType.OffHand && TwoHandEquipped)
+            if (draggedItem.Type == Item.EType.OffHand && TwoHandEquipped)
             {
                 willEquip = false;
             }
-            else if (Draggedtype == Item.EType.TwoHand && OffHandEquipped)
+            else if (draggedItem.Type == Item.EType.TwoHand && OffHandEquipped)
             {
                 willEquip = false;
             }
 
             if (willEquip)
             {
+                if (!draggedItem.IsEquipped)
+                {
+                    draggedItem.Equip(this);
+                }
+
                 DragHandler.itemBeingDragged.transform.SetParent(transform);
             }
         }
+    }
+
+    void EquipItem(Item item)
+    {
+        item.Equip(this);
+    }
+
+    void UnequipItem(Item item)
+    {
+        item.Unequip(this);
     }
 }
