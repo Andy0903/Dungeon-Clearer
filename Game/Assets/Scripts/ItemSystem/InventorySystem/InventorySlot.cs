@@ -40,11 +40,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
         
         if (CompareTag("Slot"))
         {
-            DragHandler.itemBeingDragged.transform.SetParent(transform);
+            DragHandler.ItemBeingDragged.transform.SetParent(transform);
 
-            if (DragHandler.itemBeingDragged.GetComponent<Item>().IsEquipped)
+            if (DragHandler.ItemBeingDragged.GetComponent<Item>().IsEquipped)
             {
-                DragHandler.itemBeingDragged.GetComponent<Item>().Unequip(this);
+                DragHandler.ItemBeingDragged.GetComponent<Item>().Unequip(this);
             }
         }
     }

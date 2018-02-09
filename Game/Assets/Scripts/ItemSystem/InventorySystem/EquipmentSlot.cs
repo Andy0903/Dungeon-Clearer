@@ -31,7 +31,7 @@ public class EquipmentSlot : InventorySlot
         if (ContainedItem != null)
             return;
 
-        Item draggedItem = DragHandler.itemBeingDragged.GetComponent<Item>();
+        Item draggedItem = DragHandler.ItemBeingDragged.GetComponent<Item>();
 
         bool willEquip = true;
         if (CompareTag(draggedItem.Type.ToSlotType()))
@@ -52,7 +52,7 @@ public class EquipmentSlot : InventorySlot
                     draggedItem.Equip(this);
                 }
 
-                DragHandler.itemBeingDragged.transform.SetParent(transform);
+                DragHandler.ItemBeingDragged.transform.SetParent(transform);
             }
         }
     }

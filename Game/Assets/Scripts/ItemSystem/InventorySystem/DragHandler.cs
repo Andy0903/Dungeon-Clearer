@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public static GameObject itemBeingDragged; //TODO property
+    public static GameObject ItemBeingDragged { get; set; }
     Vector3 startPosition;
     Transform startParent;
     Transform parentToKeepAboveAllWhenDragged;
@@ -18,11 +18,11 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnBeginDrag(PointerEventData data) //Called when starting to drag.
     {
-        itemBeingDragged = gameObject;
+        ItemBeingDragged = gameObject;
         startPosition = transform.position;
         startParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
-        itemBeingDragged.transform.SetParent(parentToKeepAboveAllWhenDragged);
+        ItemBeingDragged.transform.SetParent(parentToKeepAboveAllWhenDragged);
     }
 
     public void OnDrag(PointerEventData data)
@@ -33,7 +33,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnEndDrag(PointerEventData data)
     {
         startParent.gameObject.GetComponent<InventorySlot>().Deselect();
-        itemBeingDragged = null;
+        ItemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         if (transform.parent == parentToKeepAboveAllWhenDragged)
         {
