@@ -46,7 +46,7 @@ public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, I
             pos.x = pos.x / backgroundImg.rectTransform.sizeDelta.x;
             pos.y = pos.y / backgroundImg.rectTransform.sizeDelta.y;
 
-            input = new Vector2(pos.x * 2 + 1, pos.y * 2 - 1); //Offsetting the input vector
+            input = new Vector2(pos.x * 2 - 1, pos.y * 2 - 1); //Offsetting the input vector
             input = (input.magnitude > 1.0f) ? input.normalized : input;
 
             joyStickImg.rectTransform.anchoredPosition = new Vector2(input.x * backgroundImg.rectTransform.sizeDelta.x / 2, 
