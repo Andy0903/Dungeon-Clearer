@@ -5,29 +5,8 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//, IPointerExitHandler
 {
-    static GameObject marketSlot;
+    static GameObject markedSlot;
     Text descriptionText;
-
-    private bool TwoHandEquipped
-    {
-        get
-        {
-            if (GameObject.FindGameObjectWithTag("MainHandSlot").transform.childCount > 0)
-            {
-                return (GameObject.FindGameObjectWithTag("MainHandSlot").transform.GetChild(0).GetComponent<Item>().Type == Item.EType.TwoHand);
-            }
-
-            return false;
-        }
-    }
-
-    private bool OffHandEquipped
-    {
-        get
-        {
-            return (GameObject.FindGameObjectWithTag("OffHandSlot").transform.childCount > 0);
-        }
-    }
 
     private void Awake()
     {
@@ -54,40 +33,25 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
         item.transform.SetParent(transform, false);
     }
 
-    public void OnDrop(PointerEventData data)
+    public virtual void OnDrop(PointerEventData data)
     {
         if (ContainedItem != null)
-        {
             return;
-        }
-
-        Item.EType type = DragHandler.itemBeingDragged.GetComponent<Item>().Type;
-
-        if (CompareTag("Slot") || tag == (type.ToSlotType() + "Slot"))
+        
+        if (CompareTag("Slot"))
         {
-            if (type.ToFriendlyString() == "Off Hand" && !TwoHandEquipped)
-            {
-                DragHandler.itemBeingDragged.transform.SetParent(transform);
-            }
-            else if (type.ToFriendlyString() == "Two Hands" && !OffHandEquipped)
-            {
-                DragHandler.itemBeingDragged.transform.SetParent(transform);
-            }
-            else if (type.ToFriendlyString() != "Off Hand" && type.ToFriendlyString() != "Two Hands")
-            {
-                DragHandler.itemBeingDragged.transform.SetParent(transform);
-            }
+            DragHandler.itemBeingDragged.transform.SetParent(transform);
         }
     }
 
     public void OnPointerDown(PointerEventData data)
     {
-        if (marketSlot != null)
+        if (markedSlot != null)
         {
-            marketSlot.GetComponent<Outline>().enabled = false;
+            markedSlot.GetComponent<Outline>().enabled = false;
         }
 
-        marketSlot = gameObject;
+        markedSlot = gameObject;
         GetComponent<Outline>().enabled = true;
         if (ContainedItem != null)
         {
@@ -103,7 +67,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
     {
         GetComponent<Outline>().enabled = false;
         descriptionText.text = string.Empty;
-        marketSlot = null;
+        markedSlot = null;
     }
 }
 

@@ -45,10 +45,10 @@
             case Item.EType.Trinket:
             case Item.EType.Finger:
             case Item.EType.OffHand:
-                return rhs.ToString();
+                return rhs.ToString() + "Slot";
             case Item.EType.OneHand:
             case Item.EType.TwoHand:
-                return "MainHand";
+                return "MainHandSlot";
             default:
                 return "Undefined Item.EType in extension ToSlotType!";
         }

@@ -10,14 +10,14 @@ TagManager:
   - InventoryPanel
   - ItemDescriptionText
   - MainHandSlot
-  - HeadSlot
-  - HandsSlot
-  - BackSlot
-  - ChestSlot
-  - FeetSlot
-  - LegsSlot
   - OffHandSlot
+  - HeadSlot
+  - ChestSlot
+  - BackSlot
+  - HandsSlot
   - WaistSlot
+  - LegsSlot
+  - FeetSlot
   layers:
   - Default
   - TransparentFX
