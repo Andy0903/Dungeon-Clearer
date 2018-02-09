@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 // Based on https://www.youtube.com/watch?v=c47QYgsJrWc (Access date: 2018-02-07)
 
@@ -32,6 +33,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData data)
     {
+        startParent.gameObject.GetComponent<InventorySlot>().Deselect();
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         if (transform.parent == parentToKeepAboveAllWhenDragged)

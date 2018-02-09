@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//, IPointerExitHandler
 {
+    static GameObject marketSlot;
     Text descriptionText;
 
     private bool TwoHandEquipped
@@ -81,6 +82,13 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
 
     public void OnPointerDown(PointerEventData data)
     {
+        if (marketSlot != null)
+        {
+            marketSlot.GetComponent<Outline>().enabled = false;
+        }
+
+        marketSlot = gameObject;
+        GetComponent<Outline>().enabled = true;
         if (ContainedItem != null)
         {
             descriptionText.text = ContainedItem.GetComponent<Item>().GetComponentDescriptions();
@@ -89,7 +97,13 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
         {
             descriptionText.text = string.Empty;
         }
+    }
 
+    public void Deselect()
+    {
+        GetComponent<Outline>().enabled = false;
+        descriptionText.text = string.Empty;
+        marketSlot = null;
     }
 }
 

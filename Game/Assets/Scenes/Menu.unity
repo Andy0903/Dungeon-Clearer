@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 1977633}
   - component: {fileID: 1977635}
   - component: {fileID: 1977636}
+  - component: {fileID: 1977637}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Slot
@@ -217,6 +218,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d18d3205e9cc7b4e9c5b40caa5e8174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1977637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1977631}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &22666200
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,6 +244,7 @@ GameObject:
   - component: {fileID: 22666204}
   - component: {fileID: 22666203}
   - component: {fileID: 22666202}
+  - component: {fileID: 22666206}
   m_Layer: 5
   m_Name: Slot (24)
   m_TagString: Slot
@@ -321,6 +337,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22666200}
+--- !u!114 &22666206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 22666200}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &36086084
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +363,7 @@ GameObject:
   - component: {fileID: 36086088}
   - component: {fileID: 36086087}
   - component: {fileID: 36086086}
+  - component: {fileID: 36086090}
   m_Layer: 5
   m_Name: Slot (1)
   m_TagString: HeadSlot
@@ -425,6 +456,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 36086084}
+--- !u!114 &36086090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 36086084}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &44518537
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,6 +615,7 @@ GameObject:
   - component: {fileID: 58719035}
   - component: {fileID: 58719034}
   - component: {fileID: 58719033}
+  - component: {fileID: 58719037}
   m_Layer: 5
   m_Name: Slot (2)
   m_TagString: HandsSlot
@@ -662,6 +708,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 58719031}
+--- !u!114 &58719037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 58719031}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &72507312
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +734,7 @@ GameObject:
   - component: {fileID: 72507316}
   - component: {fileID: 72507315}
   - component: {fileID: 72507314}
+  - component: {fileID: 72507318}
   m_Layer: 5
   m_Name: Slot (4)
   m_TagString: Slot
@@ -766,6 +827,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 72507312}
+--- !u!114 &72507318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 72507312}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &124140145
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +853,7 @@ GameObject:
   - component: {fileID: 124140149}
   - component: {fileID: 124140148}
   - component: {fileID: 124140147}
+  - component: {fileID: 124140151}
   m_Layer: 5
   m_Name: Slot (28)
   m_TagString: Slot
@@ -870,6 +946,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 124140145}
+--- !u!114 &124140151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124140145}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &154346425
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,6 +1048,7 @@ GameObject:
   - component: {fileID: 158202457}
   - component: {fileID: 158202456}
   - component: {fileID: 158202455}
+  - component: {fileID: 158202459}
   m_Layer: 5
   m_Name: Slot (10)
   m_TagString: Slot
@@ -1050,6 +1141,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 158202453}
+--- !u!114 &158202459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 158202453}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &181206482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,6 +1241,7 @@ GameObject:
   - component: {fileID: 215152383}
   - component: {fileID: 215152382}
   - component: {fileID: 215152381}
+  - component: {fileID: 215152385}
   m_Layer: 5
   m_Name: Slot (6)
   m_TagString: LegsSlot
@@ -1228,6 +1334,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 215152379}
+--- !u!114 &215152385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 215152379}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &241896064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,6 +1589,7 @@ GameObject:
   - component: {fileID: 344618891}
   - component: {fileID: 344618890}
   - component: {fileID: 344618889}
+  - component: {fileID: 344618893}
   m_Layer: 5
   m_Name: Slot (5)
   m_TagString: Slot
@@ -1561,6 +1682,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 344618887}
+--- !u!114 &344618893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344618887}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &359962538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1708,7 @@ GameObject:
   - component: {fileID: 359962542}
   - component: {fileID: 359962541}
   - component: {fileID: 359962540}
+  - component: {fileID: 359962544}
   m_Layer: 5
   m_Name: Slot (11)
   m_TagString: Slot
@@ -1665,6 +1801,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359962538}
+--- !u!114 &359962544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359962538}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &372292523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,6 +1949,7 @@ GameObject:
   - component: {fileID: 411149302}
   - component: {fileID: 411149301}
   - component: {fileID: 411149300}
+  - component: {fileID: 411149304}
   m_Layer: 5
   m_Name: Slot (3)
   m_TagString: BackSlot
@@ -1891,6 +2042,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 411149298}
+--- !u!114 &411149304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 411149298}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &445081233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,6 +2401,7 @@ GameObject:
   - component: {fileID: 705558260}
   - component: {fileID: 705558259}
   - component: {fileID: 705558258}
+  - component: {fileID: 705558262}
   m_Layer: 5
   m_Name: Slot (4)
   m_TagString: ChestSlot
@@ -2328,6 +2494,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 705558256}
+--- !u!114 &705558262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 705558256}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &727229706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,6 +2520,7 @@ GameObject:
   - component: {fileID: 727229710}
   - component: {fileID: 727229709}
   - component: {fileID: 727229708}
+  - component: {fileID: 727229712}
   m_Layer: 5
   m_Name: Slot (9)
   m_TagString: Slot
@@ -2432,6 +2613,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 727229706}
+--- !u!114 &727229712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 727229706}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &835249426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,6 +2714,7 @@ GameObject:
   - component: {fileID: 838995007}
   - component: {fileID: 838995006}
   - component: {fileID: 838995005}
+  - component: {fileID: 838995009}
   m_Layer: 5
   m_Name: Slot (21)
   m_TagString: Slot
@@ -2611,6 +2807,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 838995003}
+--- !u!114 &838995009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 838995003}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &842073700
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,6 +2982,7 @@ GameObject:
   - component: {fileID: 928701172}
   - component: {fileID: 928701171}
   - component: {fileID: 928701170}
+  - component: {fileID: 928701174}
   m_Layer: 5
   m_Name: Slot (25)
   m_TagString: Slot
@@ -2864,6 +3075,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 928701168}
+--- !u!114 &928701174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 928701168}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &943629387
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,6 +3101,7 @@ GameObject:
   - component: {fileID: 943629391}
   - component: {fileID: 943629390}
   - component: {fileID: 943629389}
+  - component: {fileID: 943629393}
   m_Layer: 5
   m_Name: Slot (1)
   m_TagString: Slot
@@ -2968,6 +3194,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 943629387}
+--- !u!114 &943629393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 943629387}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &960087425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3123,6 +3363,7 @@ GameObject:
   - component: {fileID: 990535191}
   - component: {fileID: 990535190}
   - component: {fileID: 990535189}
+  - component: {fileID: 990535193}
   m_Layer: 5
   m_Name: Slot (29)
   m_TagString: Slot
@@ -3215,6 +3456,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 990535187}
+--- !u!114 &990535193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 990535187}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &994947094
 GameObject:
   m_ObjectHideFlags: 0
@@ -3400,6 +3655,7 @@ GameObject:
   - component: {fileID: 1046904491}
   - component: {fileID: 1046904490}
   - component: {fileID: 1046904489}
+  - component: {fileID: 1046904493}
   m_Layer: 5
   m_Name: Slot (10)
   m_TagString: Slot
@@ -3492,6 +3748,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1046904487}
+--- !u!114 &1046904493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1046904487}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1073217274
 GameObject:
   m_ObjectHideFlags: 0
@@ -3546,6 +3816,7 @@ GameObject:
   - component: {fileID: 1092122664}
   - component: {fileID: 1092122663}
   - component: {fileID: 1092122662}
+  - component: {fileID: 1092122666}
   m_Layer: 5
   m_Name: Slot (12)
   m_TagString: Slot
@@ -3638,6 +3909,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1092122660}
+--- !u!114 &1092122666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1092122660}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1113191110
 GameObject:
   m_ObjectHideFlags: 0
@@ -3650,6 +3935,7 @@ GameObject:
   - component: {fileID: 1113191114}
   - component: {fileID: 1113191113}
   - component: {fileID: 1113191112}
+  - component: {fileID: 1113191116}
   m_Layer: 5
   m_Name: Slot (23)
   m_TagString: Slot
@@ -3742,6 +4028,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1113191110}
+--- !u!114 &1113191116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1113191110}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1162080092
 GameObject:
   m_ObjectHideFlags: 0
@@ -3754,6 +4054,7 @@ GameObject:
   - component: {fileID: 1162080096}
   - component: {fileID: 1162080095}
   - component: {fileID: 1162080094}
+  - component: {fileID: 1162080098}
   m_Layer: 5
   m_Name: Slot (13)
   m_TagString: Slot
@@ -3846,6 +4147,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1162080092}
+--- !u!114 &1162080098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1162080092}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1197047174
 GameObject:
   m_ObjectHideFlags: 0
@@ -3858,6 +4173,7 @@ GameObject:
   - component: {fileID: 1197047178}
   - component: {fileID: 1197047177}
   - component: {fileID: 1197047176}
+  - component: {fileID: 1197047180}
   m_Layer: 5
   m_Name: Slot
   m_TagString: MainHandSlot
@@ -3950,6 +4266,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1197047174}
+--- !u!114 &1197047180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1197047174}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1216037823
 Prefab:
   m_ObjectHideFlags: 0
@@ -4226,6 +4556,7 @@ GameObject:
   - component: {fileID: 1399767552}
   - component: {fileID: 1399767551}
   - component: {fileID: 1399767550}
+  - component: {fileID: 1399767554}
   m_Layer: 5
   m_Name: Slot (22)
   m_TagString: Slot
@@ -4318,6 +4649,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1399767548}
+--- !u!114 &1399767554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1399767548}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1414723458
 GameObject:
   m_ObjectHideFlags: 0
@@ -4441,6 +4786,7 @@ GameObject:
   - component: {fileID: 1431096013}
   - component: {fileID: 1431096012}
   - component: {fileID: 1431096011}
+  - component: {fileID: 1431096015}
   m_Layer: 5
   m_Name: Slot (18)
   m_TagString: Slot
@@ -4533,6 +4879,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1431096009}
+--- !u!114 &1431096015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431096009}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1431660810
 GameObject:
   m_ObjectHideFlags: 0
@@ -4619,6 +4979,7 @@ GameObject:
   - component: {fileID: 1462161510}
   - component: {fileID: 1462161509}
   - component: {fileID: 1462161508}
+  - component: {fileID: 1462161512}
   m_Layer: 5
   m_Name: Slot (7)
   m_TagString: Slot
@@ -4711,6 +5072,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1462161506}
+--- !u!114 &1462161512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1462161506}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1468772513
 GameObject:
   m_ObjectHideFlags: 0
@@ -4856,6 +5231,7 @@ GameObject:
   - component: {fileID: 1508788965}
   - component: {fileID: 1508788964}
   - component: {fileID: 1508788963}
+  - component: {fileID: 1508788967}
   m_Layer: 5
   m_Name: Slot (14)
   m_TagString: Slot
@@ -4948,6 +5324,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1508788961}
+--- !u!114 &1508788967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1508788961}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1522012007
 GameObject:
   m_ObjectHideFlags: 0
@@ -4960,6 +5350,7 @@ GameObject:
   - component: {fileID: 1522012011}
   - component: {fileID: 1522012010}
   - component: {fileID: 1522012009}
+  - component: {fileID: 1522012013}
   m_Layer: 5
   m_Name: Slot (6)
   m_TagString: Slot
@@ -5052,6 +5443,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1522012007}
+--- !u!114 &1522012013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1522012007}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1536602863
 GameObject:
   m_ObjectHideFlags: 0
@@ -5133,6 +5538,7 @@ GameObject:
   - component: {fileID: 1581907440}
   - component: {fileID: 1581907439}
   - component: {fileID: 1581907438}
+  - component: {fileID: 1581907442}
   m_Layer: 5
   m_Name: Slot (26)
   m_TagString: Slot
@@ -5225,6 +5631,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1581907436}
+--- !u!114 &1581907442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1581907436}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1583042688
 GameObject:
   m_ObjectHideFlags: 0
@@ -5237,6 +5657,7 @@ GameObject:
   - component: {fileID: 1583042692}
   - component: {fileID: 1583042691}
   - component: {fileID: 1583042690}
+  - component: {fileID: 1583042694}
   m_Layer: 5
   m_Name: Slot (16)
   m_TagString: Slot
@@ -5329,6 +5750,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1583042688}
+--- !u!114 &1583042694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1583042688}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1644511269
 GameObject:
   m_ObjectHideFlags: 0
@@ -5427,6 +5862,7 @@ GameObject:
   - component: {fileID: 1649177250}
   - component: {fileID: 1649177249}
   - component: {fileID: 1649177248}
+  - component: {fileID: 1649177252}
   m_Layer: 5
   m_Name: Slot (5)
   m_TagString: FeetSlot
@@ -5519,6 +5955,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1649177246}
+--- !u!114 &1649177252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1649177246}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1684585695
 GameObject:
   m_ObjectHideFlags: 0
@@ -5607,6 +6057,7 @@ GameObject:
   - component: {fileID: 1686458172}
   - component: {fileID: 1686458171}
   - component: {fileID: 1686458170}
+  - component: {fileID: 1686458174}
   m_Layer: 5
   m_Name: Slot (9)
   m_TagString: Slot
@@ -5699,6 +6150,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1686458168}
+--- !u!114 &1686458174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1686458168}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1704344216
 GameObject:
   m_ObjectHideFlags: 0
@@ -5711,6 +6176,7 @@ GameObject:
   - component: {fileID: 1704344220}
   - component: {fileID: 1704344219}
   - component: {fileID: 1704344218}
+  - component: {fileID: 1704344222}
   m_Layer: 5
   m_Name: Slot (3)
   m_TagString: Slot
@@ -5803,6 +6269,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1704344216}
+--- !u!114 &1704344222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1704344216}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1711070749
 GameObject:
   m_ObjectHideFlags: 0
@@ -5815,6 +6295,7 @@ GameObject:
   - component: {fileID: 1711070753}
   - component: {fileID: 1711070752}
   - component: {fileID: 1711070751}
+  - component: {fileID: 1711070755}
   m_Layer: 5
   m_Name: Slot (11)
   m_TagString: Slot
@@ -5907,6 +6388,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1711070749}
+--- !u!114 &1711070755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1711070749}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1725878996
 GameObject:
   m_ObjectHideFlags: 0
@@ -5919,6 +6414,7 @@ GameObject:
   - component: {fileID: 1725879000}
   - component: {fileID: 1725878999}
   - component: {fileID: 1725878998}
+  - component: {fileID: 1725879002}
   m_Layer: 5
   m_Name: Slot (8)
   m_TagString: Slot
@@ -6011,6 +6507,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1725878996}
+--- !u!114 &1725879002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1725878996}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1761878454
 GameObject:
   m_ObjectHideFlags: 0
@@ -6023,6 +6533,7 @@ GameObject:
   - component: {fileID: 1761878458}
   - component: {fileID: 1761878457}
   - component: {fileID: 1761878456}
+  - component: {fileID: 1761878460}
   m_Layer: 5
   m_Name: Slot (8)
   m_TagString: WaistSlot
@@ -6115,6 +6626,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1761878454}
+--- !u!114 &1761878460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1761878454}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1779111613
 GameObject:
   m_ObjectHideFlags: 0
@@ -6127,6 +6652,7 @@ GameObject:
   - component: {fileID: 1779111617}
   - component: {fileID: 1779111616}
   - component: {fileID: 1779111615}
+  - component: {fileID: 1779111619}
   m_Layer: 5
   m_Name: Slot (7)
   m_TagString: OffHandSlot
@@ -6219,6 +6745,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1779111613}
+--- !u!114 &1779111619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1779111613}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1791479794
 GameObject:
   m_ObjectHideFlags: 0
@@ -6231,6 +6771,7 @@ GameObject:
   - component: {fileID: 1791479798}
   - component: {fileID: 1791479797}
   - component: {fileID: 1791479796}
+  - component: {fileID: 1791479800}
   m_Layer: 5
   m_Name: Slot (15)
   m_TagString: Slot
@@ -6323,6 +6864,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1791479794}
+--- !u!114 &1791479800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1791479794}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1874997734
 GameObject:
   m_ObjectHideFlags: 0
@@ -6446,6 +7001,7 @@ GameObject:
   - component: {fileID: 1876263635}
   - component: {fileID: 1876263634}
   - component: {fileID: 1876263633}
+  - component: {fileID: 1876263637}
   m_Layer: 5
   m_Name: Slot (27)
   m_TagString: Slot
@@ -6538,6 +7094,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1876263631}
+--- !u!114 &1876263637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1876263631}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1887998981
 GameObject:
   m_ObjectHideFlags: 0
@@ -6550,6 +7120,7 @@ GameObject:
   - component: {fileID: 1887998985}
   - component: {fileID: 1887998984}
   - component: {fileID: 1887998983}
+  - component: {fileID: 1887998987}
   m_Layer: 5
   m_Name: Slot (19)
   m_TagString: Slot
@@ -6642,6 +7213,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1887998981}
+--- !u!114 &1887998987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1887998981}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1908148999
 GameObject:
   m_ObjectHideFlags: 0
@@ -6858,6 +7443,7 @@ GameObject:
   - component: {fileID: 1997371283}
   - component: {fileID: 1997371282}
   - component: {fileID: 1997371281}
+  - component: {fileID: 1997371285}
   m_Layer: 5
   m_Name: Slot (17)
   m_TagString: Slot
@@ -6950,6 +7536,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1997371279}
+--- !u!114 &1997371285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997371279}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2054903242
 GameObject:
   m_ObjectHideFlags: 0
@@ -7179,6 +7779,7 @@ GameObject:
   - component: {fileID: 2110428860}
   - component: {fileID: 2110428859}
   - component: {fileID: 2110428858}
+  - component: {fileID: 2110428862}
   m_Layer: 5
   m_Name: Slot (20)
   m_TagString: Slot
@@ -7271,6 +7872,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2110428856}
+--- !u!114 &2110428862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2110428856}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2144322170
 GameObject:
   m_ObjectHideFlags: 0
@@ -7283,6 +7898,7 @@ GameObject:
   - component: {fileID: 2144322174}
   - component: {fileID: 2144322173}
   - component: {fileID: 2144322172}
+  - component: {fileID: 2144322176}
   m_Layer: 5
   m_Name: Slot (2)
   m_TagString: Slot
@@ -7375,3 +7991,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2144322170}
+--- !u!114 &2144322176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2144322170}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
