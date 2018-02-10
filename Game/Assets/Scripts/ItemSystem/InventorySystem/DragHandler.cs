@@ -33,12 +33,16 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnEndDrag(PointerEventData data)
     {
         startParent.gameObject.GetComponent<InventorySlot>().Deselect();
-        ItemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         if (transform.parent == parentToKeepAboveAllWhenDragged)
         {
             transform.position = startPosition;
             transform.SetParent(startParent, false);
         }
+        else
+        {
+            startParent.GetComponent<InventorySlot>().RemoveItem();
+        }
+        ItemBeingDragged = null;
     }
 }

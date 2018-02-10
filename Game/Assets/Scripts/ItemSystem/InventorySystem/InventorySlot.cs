@@ -13,40 +13,29 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
         descriptionText = GameObject.FindGameObjectWithTag("ItemDescriptionText").GetComponent<Text>();
     }
 
-    public GameObject ContainedItem
-    {
-        get
-        {
-            if (transform.childCount > 0)
-            {
-                return transform.GetChild(0).gameObject;
-            }
-            return null;
-        }
-    }
+    public Item ContainedItem { get; private set; }
 
-    public void AddItem(GameObject item)
+    public virtual void AddItem(GameObject item)
     {
         if (ContainedItem != null)
             return;
 
         item.transform.SetParent(transform, false);
+        ContainedItem = item.GetComponent<Item>();
     }
 
     public virtual void OnDrop(PointerEventData data) //Called when putting something in the inventory slots.
     {
-        if (ContainedItem != null)
-            return;
-        
         if (CompareTag("Slot"))
         {
-            DragHandler.ItemBeingDragged.transform.SetParent(transform);
-
-            if (DragHandler.ItemBeingDragged.GetComponent<Item>().IsEquipped)
-            {
-                DragHandler.ItemBeingDragged.GetComponent<Item>().Unequip(this);
-            }
+            AddItem(DragHandler.ItemBeingDragged);
         }
+    }
+
+    public virtual void RemoveItem()
+    {
+        Debug.Log("!!!");
+        ContainedItem = null;
     }
 
     public void OnPointerDown(PointerEventData data)

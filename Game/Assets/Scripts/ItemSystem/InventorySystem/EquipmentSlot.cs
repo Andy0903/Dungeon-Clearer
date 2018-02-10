@@ -47,23 +47,21 @@ public class EquipmentSlot : InventorySlot
 
             if (willEquip)
             {
-                if (!draggedItem.IsEquipped)
-                {
-                    draggedItem.Equip(this);
-                }
-
-                DragHandler.ItemBeingDragged.transform.SetParent(transform);
+                AddItem(DragHandler.ItemBeingDragged);
             }
         }
     }
 
-    void EquipItem(Item item)
+    public override void RemoveItem()
     {
-        item.Equip(this);
+        ContainedItem.Unequip(this);
+        base.RemoveItem();
     }
 
-    void UnequipItem(Item item)
+    public override void AddItem(GameObject item)
     {
-        item.Unequip(this);
+        base.AddItem(item);
+
+        ContainedItem.Equip(this);
     }
 }

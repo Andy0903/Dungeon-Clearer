@@ -37,12 +37,10 @@ public class Item : MonoBehaviour
 
     List<IItemComponent> components;
     public EType Type { get; set; }
-    public bool IsEquipped { get; set; }
 
     public void Awake()
     {
         components = new List<IItemComponent>();
-        IsEquipped = false;
     }
 
     public void AddComponent(IItemComponent component)
@@ -64,13 +62,11 @@ public class Item : MonoBehaviour
 
     public void Equip(InventorySlot inventory)
     {
-        IsEquipped = true;
         OnEquip(inventory);
     }
 
     public void Unequip(InventorySlot inventory)
     {
-        IsEquipped = false;
         OnUnequip(inventory);
     }
 }
