@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class EquipmentSlot : InventorySlot
 {
-    bool TwoHandEquipped
+    bool TwoHandEquipped    //Check with contained items instead somehow?
     {
         get
         {
@@ -61,7 +61,6 @@ public class EquipmentSlot : InventorySlot
     public override void AddItem(GameObject item)
     {
         base.AddItem(item);
-
         ContainedItem.Equip(this);
     }
 }
