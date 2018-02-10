@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
-
+public class Player : MonoBehaviour
+{
+    //TODO : this is ugly, make it encapsulated(?) and a collection of stats in a struct with a corresponding type and value?
+    public int Strength { get; set; }
+    public int Vitality { get; set; }
 
     [SerializeField]
     private Joystick joystick;
@@ -11,9 +14,7 @@ public class Player : MonoBehaviour {
     private Joystick_Action joystickAction;
     [SerializeField]
     private int speed;
-
-
-
+    
     private int attackRange = 3;
     private int attackDamage = 10;
 
@@ -21,18 +22,26 @@ public class Player : MonoBehaviour {
     //Normalized direction based on input
     private Vector2 viewDirection;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
+        Strength = 0;
+        Vitality = 0;
         input = Vector2.zero;
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         HandleInput();
         Movement();
-	}
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Strength " + Strength);
+            Debug.Log("Vitality " + Vitality);
+        }
+    }
 
     void Movement()
     {
@@ -61,7 +70,7 @@ public class Player : MonoBehaviour {
         HandleDirection(); //Sets viewDirection after input
 
         //Only lets you attack once per button press and when button is down
-        if(joystickAction.isAttackPressed)
+        if (joystickAction.isAttackPressed)
         {
             TryDealDamage();
         }
@@ -69,11 +78,11 @@ public class Player : MonoBehaviour {
 
     void HandleDirection()
     {
-        if(input != Vector2.zero)
+        if (input != Vector2.zero)
         {
             viewDirection = Vector2.zero;
             Vector2 unsignedVector = input;
-            if(unsignedVector.x < 0)
+            if (unsignedVector.x < 0)
             {
                 unsignedVector.x *= -1;
             }
@@ -81,11 +90,11 @@ public class Player : MonoBehaviour {
             {
                 unsignedVector.y *= -1;
             }
-            if(unsignedVector.y > unsignedVector.x)
+            if (unsignedVector.y > unsignedVector.x)
             {
                 viewDirection.y = input.normalized.y;
             }
-            else 
+            else
             {
                 viewDirection.x = input.normalized.x;
             }
