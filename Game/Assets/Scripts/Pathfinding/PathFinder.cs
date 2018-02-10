@@ -16,8 +16,8 @@ public abstract class PathFinder : ScriptableObject
         {
             BackgroundLayer = GameObject.FindGameObjectWithTag("BackgroundLayer").GetComponent<Tilemap>();
             ForegroundLayer = GameObject.FindGameObjectWithTag("ForegroundLayer").GetComponent<Tilemap>();
-            MapNodesToDictionary();
         }
+        MapNodesToDictionary();
     }
 
     private void MapNodesToDictionary()

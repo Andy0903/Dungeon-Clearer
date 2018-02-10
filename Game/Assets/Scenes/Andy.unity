@@ -2580,11 +2580,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4033320369732344, guid: ed32225f3da32ee4ebd1b71d5838e0bf, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.57
+      value: 4.1
       objectReference: {fileID: 0}
     - target: {fileID: 4033320369732344, guid: ed32225f3da32ee4ebd1b71d5838e0bf, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.48
+      value: -2.85
       objectReference: {fileID: 0}
     - target: {fileID: 4033320369732344, guid: ed32225f3da32ee4ebd1b71d5838e0bf, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2620,6 +2620,16 @@ Prefab:
       propertyPath: joystickAction
       value: 
       objectReference: {fileID: 1318995519}
+    - target: {fileID: 114391715453510850, guid: ed32225f3da32ee4ebd1b71d5838e0bf,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114866513451559674, guid: ed32225f3da32ee4ebd1b71d5838e0bf,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed32225f3da32ee4ebd1b71d5838e0bf, type: 2}
   m_IsPrefabParent: 0
