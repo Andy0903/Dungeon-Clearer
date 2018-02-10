@@ -91,7 +91,7 @@ public class GroundBasedPathFinder : PathFinder
     /// Uncheck: Edit -> Project Settings -> Physcis 2D -> Querries Start In Collider
     bool LineOfSight(Node from, Node to)
     {
-        RaycastHit2D hit = Physics2D.Linecast(from.WorldPosition, to.WorldPosition);
+        RaycastHit2D hit = Physics2D.Linecast(from.WorldPosition, to.WorldPosition, 1 << LayerMask.NameToLayer("Environment"));
         return hit.collider == null;
     }
 
