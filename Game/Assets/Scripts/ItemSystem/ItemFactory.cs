@@ -81,7 +81,7 @@ public class ItemFactory : MonoBehaviour
 
         image.sprite = Resources.Load<Sprite>(spritePath);
 
-        item.AddComponent(new StatComponent((EStat)Random.Range(0,2), Random.Range(-100, 100)).BindToItem(item));
+        item.AddComponent(new StatComponent((Stats.EType)Random.Range(0,2), Random.Range(-100, 100)).BindToItem(item));
         
         return go;
     }

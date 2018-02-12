@@ -4,9 +4,9 @@ using UnityEngine;
 public class StatComponent : IItemComponent
 {
     int value;
-    EStat type;
+    Stats.EType type;
 
-    public StatComponent(EStat type, int value) : base()
+    public StatComponent(Stats.EType type, int value) : base()
     {
         this.type = type;
         this.value = value;
