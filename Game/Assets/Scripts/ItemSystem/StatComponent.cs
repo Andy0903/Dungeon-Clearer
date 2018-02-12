@@ -24,19 +24,13 @@ public class StatComponent : IItemComponent
         return this;
     }
 
-    void Item_OnEquip(InventorySlot inventory)
+    void Item_OnEquip(EquipmentManager equipmentManager)
     {
-        Debug.Log("Equipped " + Description);
-        Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-        p.Stats[type] += value;
+        equipmentManager.Player.Stats[type] += value;
     }
 
-    void Item_OnUnequip(InventorySlot invetory)
+    void Item_OnUnequip(EquipmentManager equipmentManager)
     {
-        Debug.Log("Unequipped " + Description);
-        Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-        p.Stats[type] -= value;
+        equipmentManager.Player.Stats[type] -= value;
     }
 }

@@ -40,13 +40,13 @@ public class EquipmentSlot : InventorySlot
 
     public override void RemoveItem()
     {
-        ContainedItem.Unequip(this);
+        ContainedItem.Unequip(manager);
         base.RemoveItem();
     }
 
     public override void AddItem(GameObject item)
     {
         base.AddItem(item);
-        ContainedItem.Equip(this);
+        ContainedItem.Equip(manager);
     }
 }

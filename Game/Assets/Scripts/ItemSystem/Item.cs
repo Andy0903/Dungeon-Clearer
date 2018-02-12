@@ -31,7 +31,7 @@ public class Item : MonoBehaviour
         OffHand,
     }
 
-    public delegate void EquipEvent(InventorySlot inventory);
+    public delegate void EquipEvent(EquipmentManager equipmentManager);
     public event EquipEvent OnEquip;
     public event EquipEvent OnUnequip;
 
@@ -60,13 +60,13 @@ public class Item : MonoBehaviour
         return description;
     }
 
-    public void Equip(InventorySlot inventory)
+    public void Equip(EquipmentManager equipmentManager)
     {
-        OnEquip(inventory);
+        OnEquip(equipmentManager);
     }
 
-    public void Unequip(InventorySlot inventory)
+    public void Unequip(EquipmentManager equipmentManager)
     {
-        OnUnequip(inventory);
+        OnUnequip(equipmentManager);
     }
 }
