@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //TODO : this is ugly, make it encapsulated(?) and a collection of stats in a struct with a corresponding type and value?
-    public int Strength { get; set; }
-    public int Vitality { get; set; }
 
     [SerializeField]
     private Joystick joystick;
@@ -17,6 +14,7 @@ public class Player : MonoBehaviour
     
     private int attackRange = 3;
     private int attackDamage = 10;
+    Stats stats;
 
     private Vector2 input;
     //Normalized direction based on input
@@ -25,8 +23,7 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Strength = 0;
-        Vitality = 0;
+        stats = new Stats();
         input = Vector2.zero;
     }
 
@@ -38,8 +35,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Strength " + Strength);
-            Debug.Log("Vitality " + Vitality);
+            //Debug.Log("Strength " + Strength);
+            //Debug.Log("Vitality " + Vitality);
         }
     }
 

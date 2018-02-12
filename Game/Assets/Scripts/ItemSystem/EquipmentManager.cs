@@ -19,19 +19,8 @@ public class EquipmentManager : MonoBehaviour
     {
         get
         {
-
-            EquipmentSlot slot = slots["MainHandSlot"];
-            Item c = slot.ContainedItem;
-
-            if (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem != null)
-            {
-                if (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem.Type != Item.EType.TwoHand)
-                {
-                    return false;
-                }
-                return true;
-            }
-            return false;
+            return (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem != null &&
+                slots[Item.EType.TwoHand.ToSlotType()].ContainedItem.Type == Item.EType.TwoHand);
         }
     }
 
@@ -39,9 +28,6 @@ public class EquipmentManager : MonoBehaviour
     {
         get
         {
-            EquipmentSlot slot = slots["OffHandSlot"];
-            Item c = slot.ContainedItem;
-
             return (slots[Item.EType.OffHand.ToSlotType()].ContainedItem != null);
         }
     }

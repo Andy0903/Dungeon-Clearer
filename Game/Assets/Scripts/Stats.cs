@@ -13,7 +13,7 @@ public class Stats
 
     Dictionary<EType, int> stats;
 
-    Stats()
+    public Stats()
     {
         stats = new Dictionary<EType, int>();
     }
