@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 224261761224516868}
   - component: {fileID: 222521868147666206}
   - component: {fileID: 114184135902243712}
-  - component: {fileID: 114387863321681958}
   - component: {fileID: 114597775900188638}
   m_Layer: 5
   m_Name: Joystick_Attack
@@ -158,17 +157,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114387863321681958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1807321814692058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114597775900188638
 MonoBehaviour:
   m_ObjectHideFlags: 1
