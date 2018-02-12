@@ -34,7 +34,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerDownHandler//,
 
     public virtual void RemoveItem()
     {
-        Debug.Log("!!!");
         ContainedItem = null;
     }
 
