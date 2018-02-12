@@ -5,25 +5,11 @@ using UnityEngine.EventSystems;
 
 public class EquipmentSlot : InventorySlot
 {
-    bool TwoHandEquipped    //Check with contained items instead somehow?
-    {
-        get
-        {
-            if (GameObject.FindGameObjectWithTag("MainHandSlot").transform.childCount > 0)
-            {
-                return (GameObject.FindGameObjectWithTag("MainHandSlot").transform.GetChild(0).GetComponent<Item>().Type == Item.EType.TwoHand);
-            }
+    EquipmentManager manager;
 
-            return false;
-        }
-    }
-
-    bool OffHandEquipped
+    private void Start()
     {
-        get
-        {
-            return (GameObject.FindGameObjectWithTag("OffHandSlot").transform.childCount > 0);
-        }
+        manager = GameObject.FindObjectOfType<EquipmentManager>();
     }
 
     public override void OnDrop(PointerEventData data) //called when putting something in the equipment slots.
@@ -36,11 +22,11 @@ public class EquipmentSlot : InventorySlot
         bool willEquip = true;
         if (CompareTag(draggedItem.Type.ToSlotType()))
         {
-            if (draggedItem.Type == Item.EType.OffHand && TwoHandEquipped)
+            if (draggedItem.Type == Item.EType.OffHand && manager.TwoHandEquipped)
             {
                 willEquip = false;
             }
-            else if (draggedItem.Type == Item.EType.TwoHand && OffHandEquipped)
+            else if (draggedItem.Type == Item.EType.TwoHand && manager.OffHandEquipped)
             {
                 willEquip = false;
             }
