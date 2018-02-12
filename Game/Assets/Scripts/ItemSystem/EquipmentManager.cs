@@ -19,18 +19,8 @@ public class EquipmentManager : MonoBehaviour
     {
         get
         {
-            if (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem != null)
-            {
-                if (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem.Type != Item.EType.TwoHand)
-                {
-                    return false;
-                }
-                return true;
-            }
-            return false;
-
-            //    return (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem != null &&
-            //        slots[Item.EType.TwoHand.ToSlotType()].ContainedItem.Type == Item.EType.TwoHand);
+            return (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem != null &&
+                slots[Item.EType.TwoHand.ToSlotType()].ContainedItem.Type == Item.EType.TwoHand);
         }
     }
 
