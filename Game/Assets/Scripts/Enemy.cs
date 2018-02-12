@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     PathFinder pf;
-    [SerializeField]
+
     Transform target;
 
     Vector3 oldTargetPos;
@@ -14,8 +14,9 @@ public class Enemy : MonoBehaviour
     List<Vector3> path;
     Vector3 pathTarget;
 
-    private void Awake()
+    private void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         path = pf.FindPath(transform.position, target.position);
         pathTarget = path[0];
     }

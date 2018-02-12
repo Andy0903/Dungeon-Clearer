@@ -28,7 +28,7 @@ public class Joystick : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, I
         }
     }
 
-    void Start ()
+    void Awake ()
     {
         backgroundImg = GetComponent<Image>();
         joyStickImg = transform.GetChild(0).GetComponentInChildren<Image>(); //Should always result in JoyStick Image  

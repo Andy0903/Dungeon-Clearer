@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-
-    [SerializeField]
     private Joystick joystick;
-    [SerializeField]
     private Joystick_Action joystickAction;
     [SerializeField]
     private int speed;
@@ -21,15 +19,38 @@ public class Player : MonoBehaviour
     private Vector2 viewDirection;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
+        DontDestroyOnLoad(this);
         stats = new Stats();
         input = Vector2.zero;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex > 1)
+        {
+            joystick = GameObject.FindObjectOfType<Joystick>();
+            joystickAction = GameObject.FindObjectOfType<Joystick_Action>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (joystick == null || joystickAction == null)
+            return;
+
         HandleInput();
         Movement();
 

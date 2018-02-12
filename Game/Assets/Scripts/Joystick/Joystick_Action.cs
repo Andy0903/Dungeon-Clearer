@@ -22,7 +22,7 @@ public class Joystick_Action : MonoBehaviour, IPointerUpHandler, IPointerDownHan
         }
     }
 
-    void Start()
+    void Awake()
     {
         actionImage = GetComponent<Image>();
         attackPressed = false;
