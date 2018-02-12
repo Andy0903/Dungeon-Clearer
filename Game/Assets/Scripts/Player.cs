@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,8 @@ public class Player : MonoBehaviour
     
     private int attackRange = 3;
     private int attackDamage = 10;
-    Stats stats;
+
+    public Stats Stats { get; private set; }
 
     private Vector2 input;
     //Normalized direction based on input
@@ -22,7 +24,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this);
-        stats = new Stats();
+        Stats = new Stats();
         input = Vector2.zero;
     }
 
@@ -56,8 +58,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log("Strength " + Strength);
-            //Debug.Log("Vitality " + Vitality);
+            foreach (Stats.EType stat in Enum.GetValues(typeof(Stats.EType)))
+            {
+                Debug.Log(stat.ToString() + " " + Stats[stat]);
+            }
         }
     }
 

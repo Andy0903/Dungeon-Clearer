@@ -5,9 +5,9 @@ public class EquipmentManager : MonoBehaviour
 {
     Dictionary<string, EquipmentSlot> slots = new Dictionary<string, EquipmentSlot>();
 
-    public void Awake()
+    public void Start()
     {
-        EquipmentSlot[] equipmentSlots = FindObjectsOfType<EquipmentSlot>();
+        EquipmentSlot[] equipmentSlots = FindObjectOfType<MenuManager>().transform.GetComponentsInChildren<EquipmentSlot>(true);
 
         foreach (EquipmentSlot eq in equipmentSlots)
         {
@@ -19,8 +19,18 @@ public class EquipmentManager : MonoBehaviour
     {
         get
         {
-            return (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem != null &&
-                slots[Item.EType.TwoHand.ToSlotType()].ContainedItem.Type == Item.EType.TwoHand);
+            if (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem != null)
+            {
+                if (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem.Type != Item.EType.TwoHand)
+                {
+                    return false;
+                }
+                return true;
+            }
+            return false;
+
+            //    return (slots[Item.EType.TwoHand.ToSlotType()].ContainedItem != null &&
+            //        slots[Item.EType.TwoHand.ToSlotType()].ContainedItem.Type == Item.EType.TwoHand);
         }
     }
 

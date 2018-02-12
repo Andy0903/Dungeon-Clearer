@@ -27,12 +27,16 @@ public class StatComponent : IItemComponent
     void Item_OnEquip(InventorySlot inventory)
     {
         Debug.Log("Equipped " + Description);
-        //Do some stuff when equipped
+        Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+        p.Stats[type] += value;
     }
 
     void Item_OnUnequip(InventorySlot invetory)
     {
         Debug.Log("Unequipped " + Description);
-        //Do some stuff when unequipped
+        Player p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
+        p.Stats[type] -= value;
     }
 }

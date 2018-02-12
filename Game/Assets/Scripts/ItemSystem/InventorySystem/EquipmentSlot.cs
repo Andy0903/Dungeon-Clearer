@@ -7,7 +7,7 @@ public class EquipmentSlot : InventorySlot
 {
     EquipmentManager manager;
 
-    private void Start()
+    public void OnEnable()
     {
         manager = GameObject.FindObjectOfType<EquipmentManager>();
     }
