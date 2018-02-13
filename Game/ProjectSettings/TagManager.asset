@@ -19,6 +19,7 @@ TagManager:
   - LegsSlot
   - FeetSlot
   - Enemy
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

@@ -34,8 +34,17 @@ public class GroundBasedPathFinder : PathFinder
                     result.Add(current.WorldPosition);
                     current = current.Parent;
                 }
-                result[0] = to;
-                result.Reverse();
+
+                if (result.Count < 1)
+                {
+                    result.Add(to);
+                }
+                else
+                {
+                    result[0] = to;
+                    result.Reverse();
+                }
+
                 return result;
             }
 
