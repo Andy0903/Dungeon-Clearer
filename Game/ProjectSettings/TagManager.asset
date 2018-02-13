@@ -20,6 +20,7 @@ TagManager:
   - FeetSlot
   - Enemy
   - SpawnPoint
+  - PlayerStatDescriptionText
   layers:
   - Default
   - TransparentFX

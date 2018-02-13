@@ -57,14 +57,6 @@ public class Player : MonoBehaviour
 
         HandleInput();
         Movement();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            foreach (Stats.EType stat in Enum.GetValues(typeof(Stats.EType)))
-            {
-                Debug.Log(stat.ToString() + " " + Stats[stat]);
-            }
-        }
     }
 
     void Movement()

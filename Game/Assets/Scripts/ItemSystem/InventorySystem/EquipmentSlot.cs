@@ -42,11 +42,15 @@ public class EquipmentSlot : InventorySlot
     {
         ContainedItem.Unequip(manager);
         base.RemoveItem();
+
+        manager.UpdateText();
     }
 
     public override void AddItem(GameObject item)
     {
         base.AddItem(item);
         ContainedItem.Equip(manager);
+
+        manager.UpdateText();
     }
 }
