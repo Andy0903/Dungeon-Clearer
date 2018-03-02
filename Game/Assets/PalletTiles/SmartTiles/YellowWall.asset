@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e23c15b487e54987ad13f525aa701, type: 3}
+  m_Name: YellowWall
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: c28552b651c63fe46aaed2595dceccc7, type: 3}
+  - {fileID: 21300000, guid: 673716ba9a5a6ed4ca9fac413e6cf48c, type: 3}
+  - {fileID: 21300000, guid: ed82c27596226e943b5d503cedc145e8, type: 3}
+  - {fileID: 21300000, guid: 9170a4f5e3eff4547b4c0b57c293a3fc, type: 3}
+  - {fileID: 21300000, guid: 3564216d2b430e7488572d07a50588c7, type: 3}
+  - {fileID: 21300000, guid: 968518612ed08a2418287ee25b4ba659, type: 3}
+  - {fileID: 21300000, guid: 80d1dcab640401c46a186c4d74b04b86, type: 3}
+  - {fileID: 21300000, guid: 4687dac05b1e7134aaf9d52f02202135, type: 3}
+  - {fileID: 21300000, guid: ebda51dbee06cb545a6fa9fb7239ec71, type: 3}
+  - {fileID: 21300000, guid: 3822cdfc76af71847b7e91c2c561b10e, type: 3}
+  - {fileID: 21300000, guid: 8cf1e436dbf3e46458a1a96c46ef7e66, type: 3}
+  - {fileID: 21300000, guid: 07890db79124bf9499a0b964076e01fb, type: 3}
+  - {fileID: 21300000, guid: 2f131a40d11a6fa41a1fb8eb851a8bc9, type: 3}
+  - {fileID: 21300000, guid: 84e97812f3234ca46b09d6d35cf59dc8, type: 3}
+  - {fileID: 21300000, guid: c93e11bf427287c40afaedbdb10a7a1d, type: 3}
+  - {fileID: 21300000, guid: cbcfdb604155bbe4ea14963e4cc41361, type: 3}
+  preview: {fileID: 21300000, guid: c28552b651c63fe46aaed2595dceccc7, type: 3}
+  m_TileColliderType: 1

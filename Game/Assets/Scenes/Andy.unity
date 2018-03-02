@@ -738,7 +738,7 @@ Tilemap:
   - serializedVersion: 1
     m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 1
+    m_DirtyIndex: 0
 --- !u!114 &1776257872
 MonoBehaviour:
   m_ObjectHideFlags: 0

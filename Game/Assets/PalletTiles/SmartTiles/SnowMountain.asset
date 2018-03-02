@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e23c15b487e54987ad13f525aa701, type: 3}
+  m_Name: SnowMountain
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 28b2cc46bcdceba41991b94ec44e1059, type: 3}
+  - {fileID: 21300000, guid: c888c610df31c6b458cc546e59a465fe, type: 3}
+  - {fileID: 21300000, guid: b7c6faa47f962d0448882b5dfc938ce6, type: 3}
+  - {fileID: 21300000, guid: 1d641d93d8fc6c64d8e1eb2209eb1c80, type: 3}
+  - {fileID: 21300000, guid: e44bcb26cc3216e469e5b4048521547c, type: 3}
+  - {fileID: 21300000, guid: 054e4c444bfbe944982632ba5577eee9, type: 3}
+  - {fileID: 21300000, guid: 37a5d3528882bf347b0d305f440d379c, type: 3}
+  - {fileID: 21300000, guid: 03c6f22a85288d344bd24aca8c4fc1d7, type: 3}
+  - {fileID: 21300000, guid: 869bd716f98bfe748b6f3680be4421f9, type: 3}
+  - {fileID: 21300000, guid: a092601eb7bed22468a2b5057c18814b, type: 3}
+  - {fileID: 21300000, guid: 407f169a82c3c1a4fad58b430ba4e060, type: 3}
+  - {fileID: 21300000, guid: 98d0ca851053c8d4b9835e37a5c6ddd7, type: 3}
+  - {fileID: 21300000, guid: ac9680fee61feff46bfe6b02004516b4, type: 3}
+  - {fileID: 21300000, guid: f56c3472cf491444182c89c02902e9c0, type: 3}
+  - {fileID: 21300000, guid: e3dc29ac693e6ae4481bc7dbe8fc8eb4, type: 3}
+  - {fileID: 21300000, guid: 0fd7ea7c565b4bd4daaf3f2a7af5f490, type: 3}
+  preview: {fileID: 21300000, guid: 28b2cc46bcdceba41991b94ec44e1059, type: 3}
+  m_TileColliderType: 1

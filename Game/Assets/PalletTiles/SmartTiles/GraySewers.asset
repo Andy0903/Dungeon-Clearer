@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e23c15b487e54987ad13f525aa701, type: 3}
+  m_Name: GraySewers
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 4b1b32b799f761d418401dd903861c41, type: 3}
+  - {fileID: 21300000, guid: 502394bbcb5816e488b75b03fdb77f0c, type: 3}
+  - {fileID: 21300000, guid: e6b8f67b2d57eb5499710fd0353ee581, type: 3}
+  - {fileID: 21300000, guid: 06c1dd86a75379a43a4f2128993a6133, type: 3}
+  - {fileID: 21300000, guid: 27f7bc02bec14e546b0f7c2709e1458e, type: 3}
+  - {fileID: 21300000, guid: dcc2a0a5aa49d3840b02d736c28d9077, type: 3}
+  - {fileID: 21300000, guid: ee550fe9aab1d6145bdfc699dc3bd230, type: 3}
+  - {fileID: 21300000, guid: d938cc90ad106204585edad805f7953f, type: 3}
+  - {fileID: 21300000, guid: 55e9218566061f446b28c2dc7e9fd8e1, type: 3}
+  - {fileID: 21300000, guid: 9e13e1075950adc4f8441ef83ce910ea, type: 3}
+  - {fileID: 21300000, guid: 3b8e2e3043e92914ba8d08fa9272fa3b, type: 3}
+  - {fileID: 21300000, guid: 7bd47cb223092d041bfb80b5adbe4298, type: 3}
+  - {fileID: 21300000, guid: 7c5ab6717179940459908246bfe5ec2e, type: 3}
+  - {fileID: 21300000, guid: dba7b077472c4be428a7a82db0adde20, type: 3}
+  - {fileID: 21300000, guid: 08e8c341925c81b4eb4183301270e7f8, type: 3}
+  - {fileID: 21300000, guid: f638da5d7b7ec9d4ea1c96710d30417c, type: 3}
+  preview: {fileID: 21300000, guid: 4b1b32b799f761d418401dd903861c41, type: 3}
+  m_TileColliderType: 1

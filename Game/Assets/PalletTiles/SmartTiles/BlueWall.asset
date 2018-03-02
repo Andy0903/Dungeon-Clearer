@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e23c15b487e54987ad13f525aa701, type: 3}
+  m_Name: BlueWall
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 156fc15200cbdb14d9d47f54df1ac355, type: 3}
+  - {fileID: 21300000, guid: 2422c2d2b7477cc4aaeed148a28a5c39, type: 3}
+  - {fileID: 21300000, guid: 14bb74694edbb424d9f075a7608ee85d, type: 3}
+  - {fileID: 21300000, guid: 49696ffab2a4aa9409b84e935d945d93, type: 3}
+  - {fileID: 21300000, guid: 8769fffb569d5224db0717c67894db97, type: 3}
+  - {fileID: 21300000, guid: a4a221a6aa0d0e149bae1470d8c67b0d, type: 3}
+  - {fileID: 21300000, guid: 4d38928a408312c41ab77587dcd7423c, type: 3}
+  - {fileID: 21300000, guid: da288f282fddecc43b69aa51fbe5c976, type: 3}
+  - {fileID: 21300000, guid: 1abb72fc71493c04687123888ec4d8b3, type: 3}
+  - {fileID: 21300000, guid: 37096a59c12568347ba4243a29eba34b, type: 3}
+  - {fileID: 21300000, guid: 23eef5294b1058e4db950c3c5b77bad1, type: 3}
+  - {fileID: 21300000, guid: af37626fa5fe1dd4ea1ab9cd14ee470d, type: 3}
+  - {fileID: 21300000, guid: e7e4abbc11fb1a644ac7326920e7aaa0, type: 3}
+  - {fileID: 21300000, guid: 75c06658d0e537443b6e2debe7dae2ac, type: 3}
+  - {fileID: 21300000, guid: def49048ce640a244945c6e858e00b8b, type: 3}
+  - {fileID: 21300000, guid: dd98d3e47f6275041b6be560ef9cb155, type: 3}
+  preview: {fileID: 21300000, guid: 156fc15200cbdb14d9d47f54df1ac355, type: 3}
+  m_TileColliderType: 1

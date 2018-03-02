@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e23c15b487e54987ad13f525aa701, type: 3}
+  m_Name: GrayRuin
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 29346fe174204d040a23d3aec72971cd, type: 3}
+  - {fileID: 21300000, guid: 35b7b1ed00782134d92cc692a249fda3, type: 3}
+  - {fileID: 21300000, guid: 6a40535401c3ae34a808e30a354630e4, type: 3}
+  - {fileID: 21300000, guid: e709bbfef03c7814c9e9c067eb40a82e, type: 3}
+  - {fileID: 21300000, guid: ecae8a99a3061be42a24d4444364eb2d, type: 3}
+  - {fileID: 21300000, guid: c0ba402ab2da7e147ba3fa43720e0a01, type: 3}
+  - {fileID: 21300000, guid: 4caa9ddc8d391de4eb27bf5297fe01d4, type: 3}
+  - {fileID: 21300000, guid: 1b1fff7f92d619643abf7e5aae8e3425, type: 3}
+  - {fileID: 21300000, guid: e9cdeaea1e47ce9458c3118a13797d33, type: 3}
+  - {fileID: 21300000, guid: 10fdd47e58aa6da41a42b0e8639857c2, type: 3}
+  - {fileID: 21300000, guid: a7cada64b42f8ff4fae448147ddf18a5, type: 3}
+  - {fileID: 21300000, guid: e08ad61d4163b2842aaa2b23637b8cbb, type: 3}
+  - {fileID: 21300000, guid: 2166f5ad670acec439bc2e397fbadeb5, type: 3}
+  - {fileID: 21300000, guid: 0cdc88f7eab12474698d9423a3c9526e, type: 3}
+  - {fileID: 21300000, guid: a0c8cf35e4779de458d4ca1ecbf36ee6, type: 3}
+  - {fileID: 21300000, guid: 79aa448adb1cb6d49b131e9c5dbb2700, type: 3}
+  preview: {fileID: 21300000, guid: 29346fe174204d040a23d3aec72971cd, type: 3}
+  m_TileColliderType: 1

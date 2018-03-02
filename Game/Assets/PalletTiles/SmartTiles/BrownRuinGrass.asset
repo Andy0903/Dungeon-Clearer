@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e23c15b487e54987ad13f525aa701, type: 3}
+  m_Name: BrownRuinGrass
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 6489ab0e06f290b48ade057f1bb2588b, type: 3}
+  - {fileID: 21300000, guid: 3c2f9b3aa77c0f944bd82bfadcc9fa2b, type: 3}
+  - {fileID: 21300000, guid: 38c96901f7c228e4a8941c0f075980b0, type: 3}
+  - {fileID: 21300000, guid: a01c20a8c2bb4c94a9cf5342234fe867, type: 3}
+  - {fileID: 21300000, guid: f6687ac4cd426114c9ad5cbe54534352, type: 3}
+  - {fileID: 21300000, guid: 190ae4cd43d267a4d9618eec77bfda9f, type: 3}
+  - {fileID: 21300000, guid: 213d0090196f37e4bab170292bd0a834, type: 3}
+  - {fileID: 21300000, guid: 3bf3f246bca0e38408fa260ace1a10a9, type: 3}
+  - {fileID: 21300000, guid: f05d8a7fe515106418244a014bae08b3, type: 3}
+  - {fileID: 21300000, guid: 563e343d51f1ede409994fd8b4c5a6aa, type: 3}
+  - {fileID: 21300000, guid: a153d0eef1e2cde40b4da4acec8c8141, type: 3}
+  - {fileID: 21300000, guid: 29656490a5104ee47a5254d803e727bd, type: 3}
+  - {fileID: 21300000, guid: fb9966ad59fcd5f449fd83971138271b, type: 3}
+  - {fileID: 21300000, guid: dc9e561e42b9117489500566f19321c2, type: 3}
+  - {fileID: 21300000, guid: 5aa948f1fc49ca644a12e79197b9d384, type: 3}
+  - {fileID: 21300000, guid: 81954dff015cdbe4e84b0173faf8afad, type: 3}
+  preview: {fileID: 21300000, guid: 6489ab0e06f290b48ade057f1bb2588b, type: 3}
+  m_TileColliderType: 1

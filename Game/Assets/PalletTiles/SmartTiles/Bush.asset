@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e23c15b487e54987ad13f525aa701, type: 3}
+  m_Name: Bush
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 3a60fa3741209764692e067b75570824, type: 3}
+  - {fileID: 21300000, guid: d63fc2820b6469347a42e04b095979e6, type: 3}
+  - {fileID: 21300000, guid: 3596dc2184307094f89717ec69322369, type: 3}
+  - {fileID: 21300000, guid: aed6da8fb6f4aaa4ea1fbde3bb42e0e6, type: 3}
+  - {fileID: 21300000, guid: 11925a963467f9b44a4e5a9b7e4d0bd7, type: 3}
+  - {fileID: 21300000, guid: 4eebbb839d31a484d83b98c08aafe841, type: 3}
+  - {fileID: 21300000, guid: 5228546d7840cdc49945e3fa09a74bfa, type: 3}
+  - {fileID: 21300000, guid: 36af4028021296443a65e66a17a0d57e, type: 3}
+  - {fileID: 21300000, guid: b3b7785a000a92844a9b8f182ac264b4, type: 3}
+  - {fileID: 21300000, guid: db03628f3a372c6449b1116fc28a3a6c, type: 3}
+  - {fileID: 21300000, guid: e9616fca12face548bcaf429a01a051a, type: 3}
+  - {fileID: 21300000, guid: 1060a243671f20d4a97f9722bfde7315, type: 3}
+  - {fileID: 21300000, guid: 0c7d2e9d58e53284e9e46c89a438f8a3, type: 3}
+  - {fileID: 21300000, guid: 3547274036b6128459391542fb304f15, type: 3}
+  - {fileID: 21300000, guid: 3b9dd30d2e066da4f948245099181e3c, type: 3}
+  - {fileID: 21300000, guid: 17d9406e98ab1914f96d91213beea0b9, type: 3}
+  preview: {fileID: 21300000, guid: 3a60fa3741209764692e067b75570824, type: 3}
+  m_TileColliderType: 1

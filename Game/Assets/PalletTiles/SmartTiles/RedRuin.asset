@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e23c15b487e54987ad13f525aa701, type: 3}
+  m_Name: RedRuin
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 6dd8bd3bd61a47d49baaa0ae9db1031b, type: 3}
+  - {fileID: 21300000, guid: 49270b750faac924d9ca880418e50268, type: 3}
+  - {fileID: 21300000, guid: 676996a497da0fe41b4b74d05ed80d47, type: 3}
+  - {fileID: 21300000, guid: 30c8220e800ac4b4a96f5d522cedbe3c, type: 3}
+  - {fileID: 21300000, guid: 85f02c18b7fa7c7459e8326e3f2321ca, type: 3}
+  - {fileID: 21300000, guid: 5272af79ad695a348827a014854c9d5b, type: 3}
+  - {fileID: 21300000, guid: a01694fb38e2c894797b07c6ca309618, type: 3}
+  - {fileID: 21300000, guid: 21d1058cf5242c54386e2436961167f1, type: 3}
+  - {fileID: 21300000, guid: 0eedad5d51e73e542bfbd0fcff344ef3, type: 3}
+  - {fileID: 21300000, guid: b7bf00e87d16d6844b86ec3244397865, type: 3}
+  - {fileID: 21300000, guid: 6b8d0fbceee54254e973e66d0e40c64a, type: 3}
+  - {fileID: 21300000, guid: 0e0f0674e12328249bb9d5ec58b512ca, type: 3}
+  - {fileID: 21300000, guid: e1471b4cf96b88a49baecf5a119a45fe, type: 3}
+  - {fileID: 21300000, guid: 2361569a5cec43549a2556ce7ff2379c, type: 3}
+  - {fileID: 21300000, guid: 5609f468444f8304eb40b2afd1adb4b7, type: 3}
+  - {fileID: 21300000, guid: 88ecb79003410c5448876941db040500, type: 3}
+  preview: {fileID: 21300000, guid: 6dd8bd3bd61a47d49baaa0ae9db1031b, type: 3}
+  m_TileColliderType: 1
