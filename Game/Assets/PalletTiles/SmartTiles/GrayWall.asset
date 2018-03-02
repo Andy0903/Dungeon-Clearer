@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867e23c15b487e54987ad13f525aa701, type: 3}
+  m_Name: GrayWall
+  m_EditorClassIdentifier: 
+  m_Sprite: {fileID: 21300000, guid: f5abf5cccb51f0c4e963933775b1ff57, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Transform:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
+  m_InstancedGameObject: {fileID: 0}
+  m_Flags: 1
+  m_ColliderType: 1
+  sprites:
+  - {fileID: 21300000, guid: f5abf5cccb51f0c4e963933775b1ff57, type: 3}
+  - {fileID: 21300000, guid: 50dc20f6c0bac4945819ab003f23a0ff, type: 3}
+  - {fileID: 21300000, guid: a95b6355e8b3a7b4db181acee69dae0a, type: 3}
+  - {fileID: 21300000, guid: bd456fa28a06f514a8dbea7733fd7524, type: 3}
+  - {fileID: 21300000, guid: effa804449d245c45a707bb97c29798c, type: 3}
+  - {fileID: 21300000, guid: 44e131eb7dcdcfc479c24500a6797d1e, type: 3}
+  - {fileID: 21300000, guid: e9bbfc80e1cfb334fa913426fbc3e464, type: 3}
+  - {fileID: 21300000, guid: b5efcaaf0a34ca74da7500a973be07a3, type: 3}
+  - {fileID: 21300000, guid: ba11a4c1cdf2ff247bf6acdd528e4283, type: 3}
+  - {fileID: 21300000, guid: 2826d0349d01aec4f9653fc78c7ae5d5, type: 3}
+  - {fileID: 21300000, guid: c6c364fb252273243ab7387e4f51932c, type: 3}
+  - {fileID: 21300000, guid: 86bec5367a870ee478fef32ff58db0a3, type: 3}
+  - {fileID: 21300000, guid: 431f72d1ca26797418063af87dcd88d1, type: 3}
+  - {fileID: 21300000, guid: 8dc43d8a96baec345b3ac9ee6fafa7a7, type: 3}
+  - {fileID: 21300000, guid: 8123d2daac5c4c740ba6583718499441, type: 3}
+  - {fileID: 21300000, guid: 73253a5746de1624ea126208fe57a2d4, type: 3}
+  preview: {fileID: 21300000, guid: f5abf5cccb51f0c4e963933775b1ff57, type: 3}
