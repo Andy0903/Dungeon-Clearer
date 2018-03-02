@@ -11,28 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867e23c15b487e54987ad13f525aa701, type: 3}
   m_Name: BrownWall
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 26810d3983f808849a942f03957f2cb7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Transform:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
-  m_ColliderType: 1
   sprites:
   - {fileID: 21300000, guid: 26810d3983f808849a942f03957f2cb7, type: 3}
   - {fileID: 21300000, guid: e3040058d7042ed44b15fdf9f269f7bf, type: 3}
@@ -51,3 +29,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b7498375da6ba824d9a9043e7bdabc76, type: 3}
   - {fileID: 21300000, guid: c7aba88aa39ca8a48be39d0132afa923, type: 3}
   preview: {fileID: 21300000, guid: 26810d3983f808849a942f03957f2cb7, type: 3}
+  m_TileColliderType: 1

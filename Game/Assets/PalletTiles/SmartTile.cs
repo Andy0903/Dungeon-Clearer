@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class SmartTile : Tile
+public class SmartTile : TileBase
 {
     [Flags]
     enum NeighborsAt
@@ -21,6 +21,9 @@ public class SmartTile : Tile
 
     [SerializeField]
     private Sprite preview;
+
+    [SerializeField]
+    private Tile.ColliderType m_TileColliderType;
 
     public override void RefreshTile(Vector3Int position, ITilemap tilemap)
     {
@@ -39,6 +42,7 @@ public class SmartTile : Tile
 
     public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
     {
+        tileData.colliderType = m_TileColliderType;
         NeighborsAt neighborsAt = 0;
         for (int y = -1; y <= 1; y++)
         {
@@ -51,7 +55,6 @@ public class SmartTile : Tile
                 }
             }
         }
-        Debug.Log(neighborsAt);
 
         //int randomVal = Random.Range(0, 100);
         //if (randomVal < 15)
