@@ -6,7 +6,7 @@ public class RoomExit : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("!");
+        WorldBuilder.Instance.SpawnRoom(transform);
         Destroy(gameObject.GetComponent<Collider2D>());
     }
 }

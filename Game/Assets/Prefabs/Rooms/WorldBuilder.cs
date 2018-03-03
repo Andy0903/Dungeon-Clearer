@@ -29,4 +29,13 @@ public class WorldBuilder : MonoBehaviour
             GameObject.Instantiate(roomPrefabs[0], new Vector3(0, 0, 0), Quaternion.identity, gameObject.transform);
         }
     }
+
+    public void SpawnRoom(Transform transform)
+    {
+        Vector3 colliderPos = transform.position;
+
+        Vector3 pos = colliderPos - roomPrefabs[1].transform.Find("DoorPoint").position;
+
+        GameObject.Instantiate(roomPrefabs[1], pos, Quaternion.identity, gameObject.transform);
+    }
 }

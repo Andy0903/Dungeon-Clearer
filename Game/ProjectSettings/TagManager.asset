@@ -21,6 +21,7 @@ TagManager:
   - Enemy
   - SpawnPoint
   - PlayerStatDescriptionText
+  - DoorPoint
   layers:
   - Default
   - TransparentFX
