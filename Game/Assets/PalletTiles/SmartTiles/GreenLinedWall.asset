@@ -15,6 +15,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0a26b3d2bfc66b040a08ebcaa947c9c5, type: 3}
   - {fileID: 21300000, guid: 24e3422b0fd150c4f974912d34d29456, type: 3}
   - {fileID: 21300000, guid: 1113c2bc3fdbd894b918c92d9e38807d, type: 3}
+  - {fileID: 21300000, guid: 0221adc69b358b44e96837b8393ff8a3, type: 3}
   - {fileID: 21300000, guid: 0b668c548f08c48408dc012a20424be4, type: 3}
   - {fileID: 21300000, guid: 8bdcd85d2fa085346b63ddee8410f38f, type: 3}
   - {fileID: 21300000, guid: 9b060d08d4d637545aa79a780be1baa4, type: 3}
@@ -27,6 +28,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 454d43e13c96a1a4494cbc5bbe820713, type: 3}
   - {fileID: 21300000, guid: 0bc24d58c3c5aa74b8a96c58517d2634, type: 3}
   - {fileID: 21300000, guid: 050af9c8b363c8843b3ea0198aa31a0a, type: 3}
-  - {fileID: 21300000, guid: e7900c300d7ee63479bec0d25cdc8edc, type: 3}
   preview: {fileID: 21300000, guid: 0a26b3d2bfc66b040a08ebcaa947c9c5, type: 3}
   m_TileColliderType: 1
