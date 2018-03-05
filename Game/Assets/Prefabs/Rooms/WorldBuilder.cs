@@ -30,12 +30,99 @@ public class WorldBuilder : MonoBehaviour
         }
     }
 
-    public void SpawnRoom(Transform transform)
+    public void SpawnRoom(Transform trans, RoomExit.EDirection direction)
     {
-        Vector3 colliderPos = transform.position;
+        if (direction == RoomExit.EDirection.East)
+        {
+            RoomExit[] doorPoints = trans.parent.GetComponentsInChildren<RoomExit>();
 
-        Vector3 pos = colliderPos - roomPrefabs[1].transform.Find("DoorPoint").position;
+            foreach (RoomExit exit in doorPoints)
+            {
+                if (exit.Direction != RoomExit.EDirection.East)
+                    continue;
+                
+                Vector3 pos = new Vector3(trans.position.x, trans.position.y - 1, trans.position.z) + exit.transform.localPosition;
+                GameObject go = GameObject.Instantiate(roomPrefabs[0], pos.ToVector3IntOnGrid(), Quaternion.identity, gameObject.transform);
 
-        GameObject.Instantiate(roomPrefabs[1], pos, Quaternion.identity, gameObject.transform);
+                RoomExit[] newDoorPoints = go.GetComponentsInChildren<RoomExit>();
+                foreach (RoomExit newExit in newDoorPoints)
+                {
+                    if (newExit.Direction == RoomExit.EDirection.West)
+                    {
+                        Destroy(newExit.gameObject);
+                    }
+                }
+            }
+        }
+
+        if (direction == RoomExit.EDirection.West)
+        {
+            RoomExit[] doorPoints = trans.parent.GetComponentsInChildren<RoomExit>();
+
+            foreach (RoomExit exit in doorPoints)
+            {
+                if (exit.Direction != RoomExit.EDirection.West)
+                    continue;
+
+                Vector3 pos = new Vector3(trans.position.x - 2, trans.position.y - 1, trans.position.z) + exit.transform.localPosition;
+                GameObject go = GameObject.Instantiate(roomPrefabs[0], pos.ToVector3IntOnGrid(), Quaternion.identity, gameObject.transform);
+
+                RoomExit[] newDoorPoints = go.GetComponentsInChildren<RoomExit>();
+                foreach (RoomExit newExit in newDoorPoints)
+                {
+                    if (newExit.Direction == RoomExit.EDirection.East)
+                    {
+                        Destroy(newExit.gameObject);
+                    }
+                }
+            }
+        }
+
+        if (direction == RoomExit.EDirection.North)
+        {
+            RoomExit[] doorPoints = trans.parent.GetComponentsInChildren<RoomExit>();
+
+            foreach (RoomExit exit in doorPoints)
+            {
+                if (exit.Direction != RoomExit.EDirection.North)
+                    continue;
+
+                Vector3 pos = new Vector3(trans.position.x - 1, trans.position.y, trans.position.z) + exit.transform.localPosition;
+                GameObject go = GameObject.Instantiate(roomPrefabs[0], pos.ToVector3IntOnGrid(), Quaternion.identity, gameObject.transform);
+
+                RoomExit[] newDoorPoints = go.GetComponentsInChildren<RoomExit>();
+                foreach (RoomExit newExit in newDoorPoints)
+                {
+                    if (newExit.Direction == RoomExit.EDirection.South)
+                    {
+                        Destroy(newExit.gameObject);
+                    }
+                }
+            }
+        }
+
+
+        if (direction == RoomExit.EDirection.South)
+        {
+            RoomExit[] doorPoints = trans.parent.GetComponentsInChildren<RoomExit>();
+
+            foreach (RoomExit exit in doorPoints)
+            {
+                if (exit.Direction != RoomExit.EDirection.South)
+                    continue;
+
+                Vector3 pos = new Vector3(trans.position.x - 1, trans.position.y - 2, trans.position.z) + exit.transform.localPosition;
+                GameObject go = GameObject.Instantiate(roomPrefabs[0], pos.ToVector3IntOnGrid(), Quaternion.identity, gameObject.transform);
+
+                RoomExit[] newDoorPoints = go.GetComponentsInChildren<RoomExit>();
+                foreach (RoomExit newExit in newDoorPoints)
+                {
+                    if (newExit.Direction == RoomExit.EDirection.North)
+                    {
+                        Destroy(newExit.gameObject);
+                    }
+                }
+            }
+        }
     }
 }
