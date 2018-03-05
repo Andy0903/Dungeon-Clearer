@@ -38,7 +38,7 @@ public class RoomExit : MonoBehaviour
 
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 2f);
-        if (hit.collider.tag == "DoorPoint")
+        if (hit && hit.collider.tag == "DoorPoint")
         {
             Destroy(hit.collider.gameObject);
             Destroy(gameObject);
