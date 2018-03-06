@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
             transform.position = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
         }
     }
-
+    
     // Update is called once per frame
     void Update()
     {

@@ -47,11 +47,12 @@ public class WorldBuilder : MonoBehaviour
         }
 
         dungeon = new Dictionary<Vector2Int, GameObject>();
-
         foreach (GameObject room in roomPrefabs)
         {
             templates.Add(new RoomTemplate(room, room.GetComponent<RoomInfo>().GetDoors()));
         }
+        
+        GameObject go = AddRoom(0, 0, FindAppropriateRoom(GetDoorRequirements(Vector2Int.zero)), Vector3.zero);
     }
 
     private GameObject AddRoom(int x, int y, GameObject room, Vector3 pos)
@@ -63,19 +64,10 @@ public class WorldBuilder : MonoBehaviour
         return go;
     }
 
-    private void Start()
+    private Vector3 GetPositionOfNewRoom(Transform trigger, RoomExit.EDirection direction, out Vector2Int newRoomDungeonGridPos)
     {
-        if (transform.childCount == 0)
-        {
-            AddRoom(0, 0, roomPrefabs[0], new Vector3(0, 0, 0));
-        }
-    }
-
-    public void SpawnRoom(Transform trigger, RoomExit.EDirection direction)
-    {
-        Vector2Int parentDungeonPos = trigger.parent.GetComponentInChildren<RoomInfo>().DungeonPosition;
-        Vector2Int newRoomPosInDictionary = Vector2Int.zero;
-        RoomExit[] doorPoints = trigger.parent.GetComponentsInChildren<RoomExit>();
+        Vector2Int currentDungeonGridPos = trigger.parent.GetComponentInChildren<RoomInfo>().DungeonPosition;
+        newRoomDungeonGridPos = Vector2Int.zero;
         int offsetX = 0;
         int offsetY = 0;
 
@@ -84,32 +76,34 @@ public class WorldBuilder : MonoBehaviour
             case RoomExit.EDirection.North:
                 offsetX = -1;
                 offsetY = 0;
-                newRoomPosInDictionary = new Vector2Int(parentDungeonPos.x, parentDungeonPos.y + 1);
+                newRoomDungeonGridPos = new Vector2Int(currentDungeonGridPos.x, currentDungeonGridPos.y + 1);
                 break;
             case RoomExit.EDirection.East:
                 offsetX = 0;
                 offsetY = -1;
-                newRoomPosInDictionary = new Vector2Int(parentDungeonPos.x + 1, parentDungeonPos.y);
+                newRoomDungeonGridPos = new Vector2Int(currentDungeonGridPos.x + 1, currentDungeonGridPos.y);
                 break;
             case RoomExit.EDirection.South:
                 offsetX = -1;
                 offsetY = -2;
-                newRoomPosInDictionary = new Vector2Int(parentDungeonPos.x, parentDungeonPos.y - 1);
+                newRoomDungeonGridPos = new Vector2Int(currentDungeonGridPos.x, currentDungeonGridPos.y - 1);
                 break;
             case RoomExit.EDirection.West:
                 offsetX = -2;
                 offsetY = -1;
-                newRoomPosInDictionary = new Vector2Int(parentDungeonPos.x - 1, parentDungeonPos.y);
+                newRoomDungeonGridPos = new Vector2Int(currentDungeonGridPos.x - 1, currentDungeonGridPos.y);
                 break;
         }
+        
+        return new Vector3(trigger.position.x + offsetX, trigger.position.y + offsetY, trigger.position.z) + trigger.transform.localPosition;
+    }
 
-        Vector3 pos = new Vector3(trigger.position.x + offsetX, trigger.position.y + offsetY, trigger.position.z) + trigger.transform.localPosition;
+    private Dictionary<RoomExit.EDirection, DoorStatus> GetDoorRequirements(Vector2Int newRoomDungeonGridPos)
+    {
         Dictionary<RoomExit.EDirection, DoorStatus> doors = new Dictionary<RoomExit.EDirection, DoorStatus>();
-
-        //Check if there are neighboring rooms with doors etc and choose another prefab.
         foreach (RoomExit.EDirection dir in Enum.GetValues(typeof(RoomExit.EDirection)))
         {
-            GameObject newRoomNeighbor = FindAdjacentRoom(newRoomPosInDictionary, dir);
+            GameObject newRoomNeighbor = FindAdjacentRoom(newRoomDungeonGridPos, dir);
             if (newRoomNeighbor == null)
                 doors[dir] = DoorStatus.Optional;
             else if (newRoomNeighbor.GetComponent<RoomInfo>().HasDoorAt(OppositeDirection(dir)))
@@ -118,7 +112,15 @@ public class WorldBuilder : MonoBehaviour
                 doors[dir] = DoorStatus.Forbidden;
         }
 
-        GameObject go = AddRoom(newRoomPosInDictionary.x, newRoomPosInDictionary.y, FindAppropriateRoom(doors), pos.ToVector3IntOnGrid());
+        return doors;
+    }
+
+    public void SpawnRoom(Transform trigger, RoomExit.EDirection direction)
+    {
+        Vector2Int newRoomDungeonGridPos;
+        Vector3 newRoomPos = GetPositionOfNewRoom(trigger, direction, out newRoomDungeonGridPos);
+        GameObject go = AddRoom(newRoomDungeonGridPos.x, newRoomDungeonGridPos.y, 
+            FindAppropriateRoom(GetDoorRequirements(newRoomDungeonGridPos)), newRoomPos.ToVector3IntOnGrid());
         DestoryUnnecessaryExits(go, direction);
     }
 
