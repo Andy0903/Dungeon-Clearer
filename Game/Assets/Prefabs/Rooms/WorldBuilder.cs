@@ -1,9 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldBuilder : MonoBehaviour
 {
+    class RoomTemplate
+    {
+        public GameObject RoomPrefab { get; private set; }
+        public List<RoomExit.EDirection> Doors { get; private set; }
+
+        public RoomTemplate(GameObject prefab, List<RoomExit.EDirection> doors)
+        {
+            RoomPrefab = prefab;
+            Doors = doors;
+        }
+    }
+
     enum DoorStatus
     {
         Required,
@@ -13,6 +26,9 @@ public class WorldBuilder : MonoBehaviour
 
     public static WorldBuilder Instance { get; private set; }
     Dictionary<Vector2Int, GameObject> dungeon;
+
+    //TODO make readonly
+    List<RoomTemplate> templates = new List<RoomTemplate>();
 
     [SerializeField]
     GameObject[] roomPrefabs;
@@ -30,6 +46,11 @@ public class WorldBuilder : MonoBehaviour
         }
 
         dungeon = new Dictionary<Vector2Int, GameObject>();
+
+        foreach (GameObject room in roomPrefabs)
+        {
+            templates.Add(new RoomTemplate(room, room.GetComponent<RoomInfo>().GetDoors()));
+        }
     }
 
     private GameObject AddRoom(int x, int y, GameObject room, Vector3 pos)
@@ -85,7 +106,7 @@ public class WorldBuilder : MonoBehaviour
         Dictionary<RoomExit.EDirection, DoorStatus> doors = new Dictionary<RoomExit.EDirection, DoorStatus>();
 
         //Check if there are neighboring rooms with doors etc and choose another prefab.
-        foreach (RoomExit.EDirection dir in RoomExit.EDirection.GetValues(typeof(RoomExit.EDirection)))
+        foreach (RoomExit.EDirection dir in Enum.GetValues(typeof(RoomExit.EDirection)))
         {
             GameObject newRoomNeighbor = FindAdjacentRoom(newRoomPosInDictionary, dir);
             if (newRoomNeighbor == null)
@@ -95,30 +116,32 @@ public class WorldBuilder : MonoBehaviour
             else
                 doors[dir] = DoorStatus.Forbidden;
         }
-
-        GameObject appropriateRoomPrefab = FindAppropriateRoom(doors);
-        GameObject go = AddRoom(newRoomPosInDictionary.x, newRoomPosInDictionary.y, appropriateRoomPrefab, pos.ToVector3IntOnGrid());
+        
+        GameObject go = AddRoom(newRoomPosInDictionary.x, newRoomPosInDictionary.y, FindAppropriateRoom(doors), pos.ToVector3IntOnGrid());
         DestoryUnnecessaryExits(go, direction);
     }
 
     private GameObject FindAppropriateRoom(Dictionary<RoomExit.EDirection, DoorStatus> doors)
     {
-        if (doors[RoomExit.EDirection.North] == DoorStatus.Forbidden || doors[RoomExit.EDirection.South] == DoorStatus.Forbidden)
+        List<RoomTemplate> candidates = new List<RoomTemplate>(templates);
+
+        foreach (RoomExit.EDirection dir in Enum.GetValues(typeof(RoomExit.EDirection)))
         {
-            return roomPrefabs[1];
-        }
-        else
-        {
-            if (Random.Range(0, 2) == 0)
+            if (doors[dir] == DoorStatus.Forbidden || doors[dir] == DoorStatus.Required)
             {
-               return roomPrefabs[0];
-            }
-            else
-            {
-                return roomPrefabs[1];
+                for (int i = candidates.Count - 1; i >= 0; i--)
+                {
+                    if ((doors[dir] == DoorStatus.Forbidden && candidates[i].Doors.Contains(dir)) ||
+                        (doors[dir] == DoorStatus.Required && !candidates[i].Doors.Contains(dir)))
+                    {
+                        candidates.RemoveAt(i);
+                    }
+                }
             }
         }
 
+        candidates.TrimExcess();
+        return candidates[UnityEngine.Random.Range(0, candidates.Count)].RoomPrefab;
     }
 
     private void DestoryUnnecessaryExits(GameObject room, RoomExit.EDirection direction)
