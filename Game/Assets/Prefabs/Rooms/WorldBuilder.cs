@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WorldBuilder : MonoBehaviour
@@ -116,7 +117,7 @@ public class WorldBuilder : MonoBehaviour
             else
                 doors[dir] = DoorStatus.Forbidden;
         }
-        
+
         GameObject go = AddRoom(newRoomPosInDictionary.x, newRoomPosInDictionary.y, FindAppropriateRoom(doors), pos.ToVector3IntOnGrid());
         DestoryUnnecessaryExits(go, direction);
     }
@@ -125,17 +126,32 @@ public class WorldBuilder : MonoBehaviour
     {
         List<RoomTemplate> candidates = new List<RoomTemplate>(templates);
 
+        //Remove dead ends if not needed
+        int allowedDoors = doors.Values.Where(d => d != DoorStatus.Forbidden).Select(t => t).Count();
+        if (allowedDoors > 1)
+        {
+            for (int i = candidates.Count - 1; i >= 0; i--)
+            {
+                if (candidates[i].Doors.Count == 1)
+                {
+                    candidates.RemoveAt(i);
+                }
+            }
+        }
+
         foreach (RoomExit.EDirection dir in Enum.GetValues(typeof(RoomExit.EDirection)))
         {
-            if (doors[dir] == DoorStatus.Forbidden || doors[dir] == DoorStatus.Required)
+            if (doors[dir] == DoorStatus.Optional)
             {
-                for (int i = candidates.Count - 1; i >= 0; i--)
+                continue;
+            }
+
+            for (int i = candidates.Count - 1; i >= 0; i--)
+            {
+                if ((doors[dir] == DoorStatus.Forbidden && candidates[i].Doors.Contains(dir)) ||
+                    (doors[dir] == DoorStatus.Required && !candidates[i].Doors.Contains(dir)))
                 {
-                    if ((doors[dir] == DoorStatus.Forbidden && candidates[i].Doors.Contains(dir)) ||
-                        (doors[dir] == DoorStatus.Required && !candidates[i].Doors.Contains(dir)))
-                    {
-                        candidates.RemoveAt(i);
-                    }
+                    candidates.RemoveAt(i);
                 }
             }
         }
