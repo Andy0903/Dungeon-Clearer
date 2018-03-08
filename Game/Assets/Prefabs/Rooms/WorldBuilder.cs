@@ -9,9 +9,9 @@ public class WorldBuilder : MonoBehaviour
     class RoomTemplate
     {
         public GameObject RoomPrefab { get; private set; }
-        public List<RoomExit.EDirection> Doors { get; private set; }
+        public List<EDirection> Doors { get; private set; }
 
-        public RoomTemplate(GameObject prefab, List<RoomExit.EDirection> doors)
+        public RoomTemplate(GameObject prefab, List<EDirection> doors)
         {
             RoomPrefab = prefab;
             Doors = doors;
@@ -64,7 +64,7 @@ public class WorldBuilder : MonoBehaviour
         return go;
     }
 
-    private Vector3 GetPositionOfNewRoom(Transform trigger, RoomExit.EDirection direction, out Vector2Int newRoomDungeonGridPos)
+    private Vector3 GetPositionOfNewRoom(Transform trigger, EDirection direction, out Vector2Int newRoomDungeonGridPos)
     {
         Vector2Int currentDungeonGridPos = trigger.parent.GetComponentInChildren<RoomInfo>().DungeonPosition;
         newRoomDungeonGridPos = Vector2Int.zero;
@@ -73,22 +73,22 @@ public class WorldBuilder : MonoBehaviour
 
         switch (direction)
         {
-            case RoomExit.EDirection.North:
+            case EDirection.North:
                 offsetX = -1;
                 offsetY = 0;
                 newRoomDungeonGridPos = new Vector2Int(currentDungeonGridPos.x, currentDungeonGridPos.y + 1);
                 break;
-            case RoomExit.EDirection.East:
+            case EDirection.East:
                 offsetX = 0;
                 offsetY = -1;
                 newRoomDungeonGridPos = new Vector2Int(currentDungeonGridPos.x + 1, currentDungeonGridPos.y);
                 break;
-            case RoomExit.EDirection.South:
+            case EDirection.South:
                 offsetX = -1;
                 offsetY = -2;
                 newRoomDungeonGridPos = new Vector2Int(currentDungeonGridPos.x, currentDungeonGridPos.y - 1);
                 break;
-            case RoomExit.EDirection.West:
+            case EDirection.West:
                 offsetX = -2;
                 offsetY = -1;
                 newRoomDungeonGridPos = new Vector2Int(currentDungeonGridPos.x - 1, currentDungeonGridPos.y);
@@ -98,10 +98,10 @@ public class WorldBuilder : MonoBehaviour
         return new Vector3(trigger.position.x + offsetX, trigger.position.y + offsetY, trigger.position.z) + trigger.transform.localPosition;
     }
 
-    private Dictionary<RoomExit.EDirection, DoorStatus> GetDoorRequirements(Vector2Int newRoomDungeonGridPos)
+    private Dictionary<EDirection, DoorStatus> GetDoorRequirements(Vector2Int newRoomDungeonGridPos)
     {
-        Dictionary<RoomExit.EDirection, DoorStatus> doors = new Dictionary<RoomExit.EDirection, DoorStatus>();
-        foreach (RoomExit.EDirection dir in Enum.GetValues(typeof(RoomExit.EDirection)))
+        Dictionary<EDirection, DoorStatus> doors = new Dictionary<EDirection, DoorStatus>();
+        foreach (EDirection dir in Enum.GetValues(typeof(EDirection)))
         {
             GameObject newRoomNeighbor = FindAdjacentRoom(newRoomDungeonGridPos, dir);
             if (newRoomNeighbor == null)
@@ -115,7 +115,7 @@ public class WorldBuilder : MonoBehaviour
         return doors;
     }
 
-    public void SpawnRoom(Transform trigger, RoomExit.EDirection direction)
+    public void SpawnRoom(Transform trigger, EDirection direction)
     {
         Vector2Int newRoomDungeonGridPos;
         Vector3 newRoomPos = GetPositionOfNewRoom(trigger, direction, out newRoomDungeonGridPos);
@@ -124,7 +124,7 @@ public class WorldBuilder : MonoBehaviour
         DestoryUnnecessaryExits(go, direction);
     }
 
-    private GameObject FindAppropriateRoom(Dictionary<RoomExit.EDirection, DoorStatus> doors)
+    private GameObject FindAppropriateRoom(Dictionary<EDirection, DoorStatus> doors)
     {
         List<RoomTemplate> candidates = new List<RoomTemplate>(templates);
 
@@ -141,7 +141,7 @@ public class WorldBuilder : MonoBehaviour
             }
         }
 
-        foreach (RoomExit.EDirection dir in Enum.GetValues(typeof(RoomExit.EDirection)))
+        foreach (EDirection dir in Enum.GetValues(typeof(EDirection)))
         {
             if (doors[dir] == DoorStatus.Optional)
             {
@@ -162,7 +162,7 @@ public class WorldBuilder : MonoBehaviour
         return candidates[UnityEngine.Random.Range(0, candidates.Count)].RoomPrefab;
     }
 
-    private void DestoryUnnecessaryExits(GameObject room, RoomExit.EDirection direction)
+    private void DestoryUnnecessaryExits(GameObject room, EDirection direction)
     {
         RoomExit[] newDoorPoints = room.GetComponentsInChildren<RoomExit>();
         foreach (RoomExit newExit in newDoorPoints)
@@ -174,23 +174,23 @@ public class WorldBuilder : MonoBehaviour
         }
     }
 
-    private GameObject FindAdjacentRoom(Vector2Int dictionaryPosition, RoomExit.EDirection direction)
+    private GameObject FindAdjacentRoom(Vector2Int dictionaryPosition, EDirection direction)
     {
         GameObject adjacentRoom;
         Vector2Int pos = Vector2Int.zero;
 
         switch (direction)
         {
-            case RoomExit.EDirection.North:
+            case EDirection.North:
                 pos = new Vector2Int(dictionaryPosition.x, dictionaryPosition.y + 1);
                 break;
-            case RoomExit.EDirection.East:
+            case EDirection.East:
                 pos = new Vector2Int(dictionaryPosition.x + 1, dictionaryPosition.y);
                 break;
-            case RoomExit.EDirection.South:
+            case EDirection.South:
                 pos = new Vector2Int(dictionaryPosition.x, dictionaryPosition.y - 1);
                 break;
-            case RoomExit.EDirection.West:
+            case EDirection.West:
                 pos = new Vector2Int(dictionaryPosition.x - 1, dictionaryPosition.y);
                 break;
         }
@@ -199,20 +199,20 @@ public class WorldBuilder : MonoBehaviour
         return adjacentRoom;
     }
 
-    private RoomExit.EDirection OppositeDirection(RoomExit.EDirection direction)
+    private EDirection OppositeDirection(EDirection direction)
     {
         switch (direction)
         {
-            case RoomExit.EDirection.North:
-                return RoomExit.EDirection.South;
-            case RoomExit.EDirection.East:
-                return RoomExit.EDirection.West;
-            case RoomExit.EDirection.South:
-                return RoomExit.EDirection.North;
-            case RoomExit.EDirection.West:
-                return RoomExit.EDirection.East;
+            case EDirection.North:
+                return EDirection.South;
+            case EDirection.East:
+                return EDirection.West;
+            case EDirection.South:
+                return EDirection.North;
+            case EDirection.West:
+                return EDirection.East;
         }
 
-        return RoomExit.EDirection.North;
+        return EDirection.North;
     }
 }

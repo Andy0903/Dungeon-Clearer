@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class RoomExit : MonoBehaviour
 {
-    public enum EDirection
-    {
-        North,
-        East,
-        South,
-        West,
-    }
-
     [SerializeField]
     EDirection direction;
 
