@@ -164,8 +164,7 @@ public class WorldBuilder : MonoBehaviour
         List<RoomTemplate> candidates = new List<RoomTemplate>(templates);
         RemoveDeadEndRoomsIfUnnecessary(doors, ref candidates);
         RemoveRoomsWithoutAppropriateDoorStatus(doors, ref candidates);
-
-
+        
         candidates.TrimExcess();
         return candidates[UnityEngine.Random.Range(0, candidates.Count)].RoomPrefab;
     }
