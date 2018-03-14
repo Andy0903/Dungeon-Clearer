@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class InitializeSceneForwarder : MonoBehaviour
 {
+    [SerializeField]
+    int lvlIndex = 1;
     private void Start()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(lvlIndex);
     }
 }

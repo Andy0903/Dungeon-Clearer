@@ -50,7 +50,7 @@ public class APIManager : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            Debug.Log(Weather.Data.weather[0].description);
+            Debug.Log(Weather.Data.main.temp);
             Debug.Log(Time.ConvertDateTime(Time.Data.results.astronomical_twilight_begin));
         }
     }

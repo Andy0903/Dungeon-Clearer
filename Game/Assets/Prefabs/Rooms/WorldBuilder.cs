@@ -18,6 +18,7 @@ public class WorldBuilder : MonoBehaviour
             RoomPrefab = prefab;
             RoomInfo info = RoomPrefab.GetComponent<RoomInfo>();
 
+            Debug.Log("Get in RoomTemplate");
             Doors = info.GetDoors();
             MaxTemp = info.MaxTemp;
             MinTemp = info.MinTemp;
@@ -126,11 +127,11 @@ public class WorldBuilder : MonoBehaviour
         Vector2Int newRoomDungeonGridPos;
         Vector3 newRoomPos = GetPositionOfNewRoom(trigger, direction, out newRoomDungeonGridPos);
         GameObject go = AddRoom(newRoomDungeonGridPos.x, newRoomDungeonGridPos.y, 
-            FindAppropriateRoom(GetDoorRequirements(newRoomDungeonGridPos)), newRoomPos.ToVector3IntOnGrid());
+        FindAppropriateRoom(GetDoorRequirements(newRoomDungeonGridPos)), newRoomPos.ToVector3IntOnGrid());
         DestoryUnnecessaryExits(go, direction);
     }
 
-    private void RemoveDeadEndRoomsIfUnnecessary(Dictionary<EDirection, DoorStatus> doors, ref List<RoomTemplate> candidates)
+    private void RemoveDeadEndRoomsIfUnnecessary(Dictionary<EDirection, DoorStatus> doors, List<RoomTemplate> candidates)
     {
         int allowedDoors = doors.Values.Where(d => d != DoorStatus.Forbidden).Select(t => t).Count();
         if (allowedDoors > 1)
@@ -145,7 +146,7 @@ public class WorldBuilder : MonoBehaviour
         }
     }
 
-    private void RemoveRoomsWithoutAppropriateDoorStatus(Dictionary<EDirection, DoorStatus> doors, ref List<RoomTemplate> candidates)
+    private void RemoveRoomsWithoutAppropriateDoorStatus(Dictionary<EDirection, DoorStatus> doors, List<RoomTemplate> candidates)
     {
         foreach (EDirection dir in Enum.GetValues(typeof(EDirection)))
         {
@@ -165,10 +166,9 @@ public class WorldBuilder : MonoBehaviour
         }
     }
 
-    private void RemoveRoomsWithUnfittingTemperatures(ref List<RoomTemplate> candidates)
+    private void RemoveRoomsWithUnfittingTemperatures(List<RoomTemplate> candidates)
     {
-        float temperature = APIManager.Instance.Weather.Data.main.temp;
-
+        float temperature = Mathf.Round(APIManager.Instance.Weather.Data.main.temp);
         for (int i = candidates.Count - 1; i >= 0; i--)
         {
             if (!(temperature <= candidates[i].MaxTemp && temperature >= candidates[i].MinTemp))
@@ -181,9 +181,9 @@ public class WorldBuilder : MonoBehaviour
     private GameObject FindAppropriateRoom(Dictionary<EDirection, DoorStatus> doors)
     {
         List<RoomTemplate> candidates = new List<RoomTemplate>(templates);
-        RemoveDeadEndRoomsIfUnnecessary(doors, ref candidates);
-        RemoveRoomsWithoutAppropriateDoorStatus(doors, ref candidates);
-        RemoveRoomsWithUnfittingTemperatures(ref candidates);
+        RemoveDeadEndRoomsIfUnnecessary(doors, candidates);
+        RemoveRoomsWithoutAppropriateDoorStatus(doors, candidates);
+        RemoveRoomsWithUnfittingTemperatures(candidates);
         
         candidates.TrimExcess();
         return candidates[UnityEngine.Random.Range(0, candidates.Count)].RoomPrefab;

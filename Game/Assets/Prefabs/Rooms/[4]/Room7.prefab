@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4880470162729058}
   - component: {fileID: 8195094281025706214}
   - component: {fileID: 3664157346332743400}
+  - component: {fileID: 2113883507157654412}
+  - component: {fileID: 114147598629518276}
   m_Layer: 0
   m_Name: Room7
   m_TagString: Untagged
@@ -41,6 +43,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114147598629518276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029625810710044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f44f3e27cbc5a42bc8eec36b79e610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 1573786877012072, guid: 0b82e7d634dc7514c82ca9e0e42eb258, type: 2}
+  doorPoint: {fileID: 1742126022178532, guid: fdb1e7808089778479349a10aad7d716, type: 2}
+  maxTemp: 15
+  minTemp: 10
+  northDoor: 0
+  eastDoor: 0
+  southDoor: 1
+  westDoor: 1
+--- !u!19719996 &2113883507157654412
+TilemapCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029625810710044}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
 --- !u!483693784 &3664157346332743400
 TilemapRenderer:
   m_ObjectHideFlags: 1
