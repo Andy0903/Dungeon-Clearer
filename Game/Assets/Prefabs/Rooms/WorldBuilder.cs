@@ -124,11 +124,8 @@ public class WorldBuilder : MonoBehaviour
         DestoryUnnecessaryExits(go, direction);
     }
 
-    private GameObject FindAppropriateRoom(Dictionary<EDirection, DoorStatus> doors)
+    private void RemoveDeadEndRoomsIfUnnecessary(Dictionary<EDirection, DoorStatus> doors, ref List<RoomTemplate> candidates)
     {
-        List<RoomTemplate> candidates = new List<RoomTemplate>(templates);
-
-        //Remove dead ends if not needed
         int allowedDoors = doors.Values.Where(d => d != DoorStatus.Forbidden).Select(t => t).Count();
         if (allowedDoors > 1)
         {
@@ -140,7 +137,10 @@ public class WorldBuilder : MonoBehaviour
                 }
             }
         }
+    }
 
+    private void RemoveRoomsWithoutAppropriateDoorStatus(Dictionary<EDirection, DoorStatus> doors, ref List<RoomTemplate> candidates)
+    {
         foreach (EDirection dir in Enum.GetValues(typeof(EDirection)))
         {
             if (doors[dir] == DoorStatus.Optional)
@@ -157,6 +157,14 @@ public class WorldBuilder : MonoBehaviour
                 }
             }
         }
+    }
+
+    private GameObject FindAppropriateRoom(Dictionary<EDirection, DoorStatus> doors)
+    {
+        List<RoomTemplate> candidates = new List<RoomTemplate>(templates);
+        RemoveDeadEndRoomsIfUnnecessary(doors, ref candidates);
+        RemoveRoomsWithoutAppropriateDoorStatus(doors, ref candidates);
+
 
         candidates.TrimExcess();
         return candidates[UnityEngine.Random.Range(0, candidates.Count)].RoomPrefab;
