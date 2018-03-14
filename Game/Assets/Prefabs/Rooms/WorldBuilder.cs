@@ -10,11 +10,17 @@ public class WorldBuilder : MonoBehaviour
     {
         public GameObject RoomPrefab { get; private set; }
         public List<EDirection> Doors { get; private set; }
+        public float MaxTemp { get; private set; }
+        public float MinTemp { get; private set; }
 
-        public RoomTemplate(GameObject prefab, List<EDirection> doors)
+        public RoomTemplate(GameObject prefab)
         {
             RoomPrefab = prefab;
-            Doors = doors;
+            RoomInfo info = RoomPrefab.GetComponent<RoomInfo>();
+
+            Doors = info.GetDoors();
+            MaxTemp = info.MaxTemp;
+            MinTemp = info.MinTemp;
         }
     }
 
@@ -49,7 +55,7 @@ public class WorldBuilder : MonoBehaviour
         dungeon = new Dictionary<Vector2Int, GameObject>();
         foreach (GameObject room in roomPrefabs)
         {
-            templates.Add(new RoomTemplate(room, room.GetComponent<RoomInfo>().GetDoors()));
+            templates.Add(new RoomTemplate(room));
         }
         
         GameObject go = AddRoom(0, 0, FindAppropriateRoom(GetDoorRequirements(Vector2Int.zero)), Vector3.zero);
@@ -159,11 +165,25 @@ public class WorldBuilder : MonoBehaviour
         }
     }
 
+    private void RemoveRoomsWithUnfittingTemperatures(ref List<RoomTemplate> candidates)
+    {
+        float temperature = APIManager.Instance.Weather.Data.main.temp;
+
+        for (int i = candidates.Count - 1; i >= 0; i--)
+        {
+            if (!(temperature <= candidates[i].MaxTemp && temperature >= candidates[i].MinTemp))
+            {
+                candidates.RemoveAt(i);
+            }
+        }
+    }
+
     private GameObject FindAppropriateRoom(Dictionary<EDirection, DoorStatus> doors)
     {
         List<RoomTemplate> candidates = new List<RoomTemplate>(templates);
         RemoveDeadEndRoomsIfUnnecessary(doors, ref candidates);
         RemoveRoomsWithoutAppropriateDoorStatus(doors, ref candidates);
+        RemoveRoomsWithUnfittingTemperatures(ref candidates);
         
         candidates.TrimExcess();
         return candidates[UnityEngine.Random.Range(0, candidates.Count)].RoomPrefab;

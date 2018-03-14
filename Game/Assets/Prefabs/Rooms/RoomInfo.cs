@@ -7,6 +7,14 @@ public class RoomInfo : MonoBehaviour
     public Vector2Int DungeonPosition { get; set; }
     Dictionary<EDirection, bool> doorsExist;
 
+    public float MaxTemp { get { return maxTemp; } }
+    public float MinTemp { get { return minTemp; } }
+
+    [SerializeField]
+    float maxTemp;
+    [SerializeField]
+    float minTemp;
+
     public List<EDirection> GetDoors()
     {
         List<EDirection> doors = new List<EDirection>();
