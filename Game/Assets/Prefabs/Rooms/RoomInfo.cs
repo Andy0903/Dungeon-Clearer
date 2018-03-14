@@ -5,11 +5,11 @@ using UnityEngine;
 public class RoomInfo : MonoBehaviour
 {
     public Vector2Int DungeonPosition { get; set; }
-    Dictionary<RoomExit.EDirection, bool> doorsExist;
+    Dictionary<EDirection, bool> doorsExist;
 
-    public List<RoomExit.EDirection> GetDoors()
+    public List<EDirection> GetDoors()
     {
-        List<RoomExit.EDirection> doors = new List<RoomExit.EDirection>();
+        List<EDirection> doors = new List<EDirection>();
         foreach (RoomExit exit in GetComponentsInChildren<RoomExit>())
         {
             doors.Add(exit.Direction);
@@ -20,7 +20,7 @@ public class RoomInfo : MonoBehaviour
 
     public void Start()
     {
-        doorsExist = new Dictionary<RoomExit.EDirection, bool>();
+        doorsExist = new Dictionary<EDirection, bool>();
 
         RoomExit[] exits = GetComponentsInChildren<RoomExit>();
         foreach (RoomExit exit in exits)
@@ -29,7 +29,7 @@ public class RoomInfo : MonoBehaviour
         }
     }
 
-    public bool HasDoorAt(RoomExit.EDirection exitDirection)
+    public bool HasDoorAt(EDirection exitDirection)
     {
         bool exists = false;
         doorsExist.TryGetValue(exitDirection, out exists);
