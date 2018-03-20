@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,16 +15,27 @@ public class Enemy : MonoBehaviour
     List<Vector3> path;
     Vector3 pathTarget;
 
-    private void Start()
-    {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        path = pf.FindPath(transform.position, target.position);
-        pathTarget = path[0];
-    }
-
     private void Update()
     {
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            try
+            {
+                path = pf.FindPath(transform.position, target.position);
+                pathTarget = path[0];
+            }
+            catch (NullReferenceException)
+            {
+                target = null;
+            }
+            return;
+        }
+
         const float distanceTreashold = 0.000001f;
+
+
+        ///Något fel i movement logiken.
 
         if (Vector3.Distance(oldTargetPos, target.position) > distanceTreashold)
         {

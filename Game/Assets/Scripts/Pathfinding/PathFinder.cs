@@ -12,10 +12,13 @@ public abstract class PathFinder : ScriptableObject
 
     private void Initialize()
     {
-        if (BackgroundLayer == null && ForegroundLayer == null)
+       // if (BackgroundLayer == null)// && ForegroundLayer == null)
         {
             BackgroundLayer = GameObject.FindGameObjectWithTag("BackgroundLayer").GetComponent<Tilemap>();
-            ForegroundLayer = GameObject.FindGameObjectWithTag("ForegroundLayer").GetComponent<Tilemap>();
+
+          //  GameObject.Find
+            
+            //ForegroundLayer = GameObject.FindGameObjectWithTag("ForegroundLayer").GetComponent<Tilemap>();
         }
         MapNodesToDictionary();
     }
@@ -23,7 +26,7 @@ public abstract class PathFinder : ScriptableObject
     private void MapNodesToDictionary()
     {
         BackgroundLayer.CompressBounds();
-        ForegroundLayer.CompressBounds();
+        //ForegroundLayer.CompressBounds();
 
         BoundsInt bounds = BackgroundLayer.cellBounds;
         WorldNode = new Dictionary<Vector3Int, Node>();
