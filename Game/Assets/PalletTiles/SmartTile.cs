@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class SmartTile : TileBase
+public class SmartTile : Tile
 {
     [Flags]
     enum NeighborsAt

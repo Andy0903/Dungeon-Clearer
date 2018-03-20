@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class WorldBuilder : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class WorldBuilder : MonoBehaviour
             RoomPrefab = prefab;
             RoomInfo info = RoomPrefab.GetComponent<RoomInfo>();
 
-            Debug.Log("Get in RoomTemplate");
             Doors = info.GetDoors();
             MaxTemp = info.MaxTemp;
             MinTemp = info.MinTemp;
@@ -40,6 +40,8 @@ public class WorldBuilder : MonoBehaviour
 
     [SerializeField]
     GameObject[] roomPrefabs;
+    [SerializeField]
+    GameObject[] enemyPrefabs;
 
     void Awake()
     {
@@ -58,7 +60,7 @@ public class WorldBuilder : MonoBehaviour
         {
             templates.Add(new RoomTemplate(room));
         }
-        
+
         GameObject go = AddRoom(0, 0, FindAppropriateRoom(GetDoorRequirements(Vector2Int.zero)), Vector3.zero);
     }
 
@@ -101,7 +103,7 @@ public class WorldBuilder : MonoBehaviour
                 newRoomDungeonGridPos = new Vector2Int(currentDungeonGridPos.x - 1, currentDungeonGridPos.y);
                 break;
         }
-        
+
         return new Vector3(trigger.position.x + offsetX, trigger.position.y + offsetY, trigger.position.z) + trigger.transform.localPosition;
     }
 
@@ -122,13 +124,57 @@ public class WorldBuilder : MonoBehaviour
         return doors;
     }
 
+    /// <summary>
+    /// Note that only rooms made with this method can have enemies. The first room is added with "AddRoom" only, hence it shan't ever have enemies appearing.
+    /// </summary>
     public void SpawnRoom(Transform trigger, EDirection direction)
     {
         Vector2Int newRoomDungeonGridPos;
         Vector3 newRoomPos = GetPositionOfNewRoom(trigger, direction, out newRoomDungeonGridPos);
-        GameObject go = AddRoom(newRoomDungeonGridPos.x, newRoomDungeonGridPos.y, 
+        GameObject room = AddRoom(newRoomDungeonGridPos.x, newRoomDungeonGridPos.y,
         FindAppropriateRoom(GetDoorRequirements(newRoomDungeonGridPos)), newRoomPos.ToVector3IntOnGrid());
-        DestoryUnnecessaryExits(go, direction);
+        DestoryUnnecessaryExits(room, direction);
+
+
+        PopulateWithEnemies(room);
+    }
+
+    private bool FoundValidSpawnLocation(GameObject room, Vector2 enemySize, out Vector3 position)
+    {
+        Tilemap tm = room.GetComponent<Tilemap>();
+        BoundsInt bounds = tm.cellBounds;
+        bool result = false;
+        Vector3Int tempWorldPosInt = Vector3Int.zero;
+
+        for (int i = 0; i < 100; i++)
+        {
+            int x = UnityEngine.Random.Range(bounds.xMin, bounds.xMax);
+            int y = UnityEngine.Random.Range(bounds.yMin, bounds.yMax);
+
+            Vector3Int tempCellPos = new Vector3Int(x, y, 0);
+            TileBase tile = tm.GetTile(tempCellPos);
+            
+            if (tile != null && (tile as Tile).colliderType == Tile.ColliderType.None)
+            {
+                Vector3 tempWorldPos = tm.CellToWorld(tempCellPos);
+                tempWorldPosInt = tempWorldPos.ToVector3Int();
+                result = true;
+                break;
+            }
+        }
+
+        position = tempWorldPosInt;
+        return result;
+    }
+
+    private void PopulateWithEnemies(GameObject room)
+    {
+        Vector3 enemySize = new Vector3(1, 1, 0);
+        Vector3 position;
+        if (FoundValidSpawnLocation(room, enemySize, out position))
+        {
+            GameObject.Instantiate(enemyPrefabs[0], position + (enemySize / 2), Quaternion.identity, room.transform);
+        }
     }
 
     private void RemoveDeadEndRoomsIfUnnecessary(Dictionary<EDirection, DoorStatus> doors, List<RoomTemplate> candidates)
@@ -184,7 +230,7 @@ public class WorldBuilder : MonoBehaviour
         RemoveDeadEndRoomsIfUnnecessary(doors, candidates);
         RemoveRoomsWithoutAppropriateDoorStatus(doors, candidates);
         RemoveRoomsWithUnfittingTemperatures(candidates);
-        
+
         candidates.TrimExcess();
         return candidates[UnityEngine.Random.Range(0, candidates.Count)].RoomPrefab;
     }

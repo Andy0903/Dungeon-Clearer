@@ -54,7 +54,6 @@ public class RoomInfo : MonoBehaviour
 
     public void Awake()
     {
-        Debug.Log("Awake in RoomInfo");
         doors = new List<EDirection>();
         if (northDoor)
             InstantiateDoorPoint(EDirection.North);

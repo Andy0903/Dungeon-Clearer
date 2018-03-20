@@ -48,7 +48,7 @@ public class APIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Debug.Log(Weather.Data.main.temp);
             Debug.Log(Time.ConvertDateTime(Time.Data.results.astronomical_twilight_begin));

@@ -11,7 +11,7 @@ using UnityEngine;
 namespace UnityEngine.Tilemaps
 {
     [Serializable]
-    public class AnimatedTile : TileBase
+    public class AnimatedTile : Tile
     {
         public Sprite[] m_AnimatedSprites;
         public float m_MinSpeed = 1f;
