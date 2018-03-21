@@ -15,6 +15,20 @@ public class Enemy : MonoBehaviour
     List<Vector3> path;
     Vector3 pathTarget;
 
+    Vector3 spawnPos;
+
+    private void InitializeNewPathTarget()
+    {
+        oldTargetPos = target.position;
+        path = pf.FindPath(transform.position, target.position);
+        pathTarget = path[0];
+    }
+
+    private void Start()
+    {
+        spawnPos = transform.position;
+    }
+
     private void Update()
     {
         if (target == null)
@@ -22,8 +36,7 @@ public class Enemy : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("Player").transform;
             try
             {
-                path = pf.FindPath(transform.position, target.position);
-                pathTarget = path[0];
+                InitializeNewPathTarget();
             }
             catch (NullReferenceException)
             {
@@ -33,15 +46,18 @@ public class Enemy : MonoBehaviour
         }
 
         const float distanceTreashold = 0.000001f;
-
-
-        ///Något fel i movement logiken.
-
         if (Vector3.Distance(oldTargetPos, target.position) > distanceTreashold)
         {
-            path = pf.FindPath(transform.position, target.position);
-            oldTargetPos = target.position;
+            try
+            {
+                InitializeNewPathTarget();
+            }
+            catch (NullReferenceException)
+            {
+                transform.position = spawnPos;
+            }
         }
+
         const float speed = 3;
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, pathTarget, step);
