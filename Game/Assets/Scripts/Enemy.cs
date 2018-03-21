@@ -54,7 +54,10 @@ public class Enemy : MonoBehaviour
             }
             catch (NullReferenceException)
             {
-                transform.position = spawnPos;
+                if (transform.parent.tag !=  "BackgroundLayer")
+                {
+                    transform.position = spawnPos;
+                }
             }
         }
 

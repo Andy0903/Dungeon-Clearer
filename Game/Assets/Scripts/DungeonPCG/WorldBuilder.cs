@@ -171,9 +171,12 @@ public class WorldBuilder : MonoBehaviour
     {
         Vector3 enemySize = new Vector3(1, 1, 0);
         Vector3 position;
-        if (FoundValidSpawnLocation(room, enemySize, out position))
+        for (int i = 0; i < 5; i++)
         {
-            GameObject.Instantiate(enemyPrefabs[0], position + (enemySize / 2), Quaternion.identity, room.transform);
+            if (FoundValidSpawnLocation(room, enemySize, out position))
+            {
+                GameObject.Instantiate(enemyPrefabs[0], position + (enemySize / 2), Quaternion.identity, room.transform);
+            }
         }
     }
 
