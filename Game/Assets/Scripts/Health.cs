@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
 
+    private float timeInvincible;
+
+    [SerializeField]
+    private float MaxInvincibilityTime;
+
     public bool isAlive
     {
         get
         {
             return currentHealth > 0;
         }
+    }
+
+    public bool isInvincible
+    {
+        get;
+        private set;
     }
 
     private int currentHealth;
@@ -22,10 +33,29 @@ public class Health : MonoBehaviour {
         currentHealth = MaxHealth;
 	}
 	
+    void Update()
+    {
+        if(isInvincible)
+        {
+            timeInvincible += Time.deltaTime;
+
+            if (timeInvincible > MaxInvincibilityTime)
+            {
+                isInvincible = false;
+            }
+        }
+    }
+
     public void DealDamage(int amount)
     {
         currentHealth -= amount;
         Debug.Log("Damage dealt to " + tag + " hp is now: " + currentHealth);
+    }
+
+    public void ActivateInvincibility()
+    {
+        isInvincible = true;
+        timeInvincible = 0;
     }
 
     public void Heal(int amount)

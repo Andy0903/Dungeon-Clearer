@@ -17,6 +17,12 @@ public class Enemy : MonoBehaviour
 
     Vector3 spawnPos;
 
+    float attackRange = 2.0f;
+    float attackIntervall = 0.4f;
+    float timeSinceLastAttack = 0;
+    int attackDamage = 5;
+    
+
     private void InitializeNewPathTarget()
     {
         oldTargetPos = target.position;
@@ -31,6 +37,8 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        timeSinceLastAttack += Time.deltaTime;
+
         if (target == null)
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -43,6 +51,11 @@ public class Enemy : MonoBehaviour
                 target = null;
             }
             return;
+        }
+
+        if(Vector3.Distance(transform.position, target.position) < attackRange)
+        {
+            TryDealDamage();
         }
 
         const float distanceTreashold = 0.000001f;
@@ -74,6 +87,19 @@ public class Enemy : MonoBehaviour
             }
 
             pathTarget = path[index];
+        }
+    }
+
+    private void TryDealDamage()
+    {
+        Health eHP = target.GetComponent<Health>();
+
+        //Only attacks when intervall is reached and player isn't invincible
+        if (timeSinceLastAttack > attackIntervall && !eHP.isInvincible)
+        {
+            eHP.DealDamage(attackDamage);
+            timeSinceLastAttack = 0;
+            eHP.ActivateInvincibility();
         }
     }
 }

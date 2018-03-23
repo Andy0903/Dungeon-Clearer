@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     private int attackRange = 3;
     private int attackDamage = 10;
 
+    private float timeSinceSpriteChange = 0;
+    private const float SpriteIntervall = 0.15f;
+
     public Stats Stats { get; private set; }
 
     private Vector2 input;
@@ -64,6 +67,7 @@ public class Player : MonoBehaviour
             return;
 
         HandleInput();
+        HandleSprite();
         Movement();
     }
 
@@ -77,12 +81,34 @@ public class Player : MonoBehaviour
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, viewDirection, attackRange);
 
+        //Just to doublecheck hits
+        Debug.DrawRay(transform.position, viewDirection * attackRange);
+
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider != null && hit.collider.tag == "Enemy")
             {
                 hit.collider.GetComponent<Health>().DealDamage(attackDamage);
             }
+        }
+    }
+
+    void HandleSprite()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (GetComponent<Health>().isInvincible)
+        {
+            timeSinceSpriteChange += Time.deltaTime;
+            if (timeSinceSpriteChange > SpriteIntervall)
+            {
+                sr.enabled = sr.enabled == true ? false : true;
+                timeSinceSpriteChange = 0;
+            }
+        }
+        else if(!sr.enabled)
+        {
+            //Makes sure SR is enabled if we're no longer invincible
+            sr.enabled = true;
         }
     }
 
