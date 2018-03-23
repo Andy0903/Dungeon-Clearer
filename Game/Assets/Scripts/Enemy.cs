@@ -98,6 +98,7 @@ public class Enemy : MonoBehaviour
         {
             eHP.DealDamage(attackDamage);
             timeSinceLastAttack = 0;
+            eHP.ActivateInvincibility();
         }
     }
 }
