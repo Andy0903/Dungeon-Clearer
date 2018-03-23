@@ -11,7 +11,8 @@ public class MenuManager : MonoBehaviour
             GameObject play = GameObject.FindGameObjectWithTag("PlayButton");
             play.GetComponent<Button>().interactable = true;
             Text text = play.GetComponentInChildren<Text>();
-            text.color = new Color(text.color.r, text.color.g, text.color.b, 255); ;
+            text.color = new Color(text.color.r, text.color.g, text.color.b, 255);
+            enabled = false;
         }
     }
 

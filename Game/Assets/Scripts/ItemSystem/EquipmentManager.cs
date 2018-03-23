@@ -10,14 +10,10 @@ public class EquipmentManager : MonoBehaviour
     public Player Player { get; private set; }
     Text descriptionText;
 
-    private void Awake()
+    public void Start()
     {
         descriptionText = GameObject.FindGameObjectWithTag("PlayerStatDescriptionText").GetComponent<Text>();
         descriptionText.gameObject.SetActive(false);
-    }
-
-    public void Start()
-    {
         EquipmentSlot[] equipmentSlots = FindObjectOfType<MenuManager>().transform.GetComponentsInChildren<EquipmentSlot>(true);
 
         foreach (EquipmentSlot eq in equipmentSlots)
@@ -26,6 +22,7 @@ public class EquipmentManager : MonoBehaviour
         }
 
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        GameObject.FindGameObjectWithTag("InventoryPanel").SetActive(false);
     }
 
     public void UpdateText()
