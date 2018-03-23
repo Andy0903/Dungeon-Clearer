@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        timeSinceLastAttack += Time.deltaTime;
+
         if (target == null)
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -92,6 +94,7 @@ public class Enemy : MonoBehaviour
     private bool TryDealDamage()
     {
         Health eHP = target.GetComponent<Health>();
+
         if (timeSinceLastAttack > attackIntervall && !eHP.isInvincible)
         {
             eHP.DealDamage(attackDamage);
