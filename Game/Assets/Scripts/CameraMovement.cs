@@ -19,7 +19,7 @@ public class CameraMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        GameObject[] points = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        GameObject[] points = GameObject.FindGameObjectsWithTag("CameraPoint");
 
         float distance = float.PositiveInfinity;
         Vector3 bestPos = Vector3.zero;

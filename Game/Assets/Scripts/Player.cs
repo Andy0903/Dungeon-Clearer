@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
             joystick = GameObject.FindObjectOfType<Joystick>();
             joystickAction = GameObject.FindObjectOfType<Joystick_Action>();
 
-            transform.position = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
+            transform.position = GameObject.FindGameObjectWithTag("CameraPoint").transform.position;
         }
     }
     

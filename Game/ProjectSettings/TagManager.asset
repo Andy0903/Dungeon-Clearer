@@ -22,6 +22,7 @@ TagManager:
   - SpawnPoint
   - PlayerStatDescriptionText
   - DoorPoint
+  - CameraPoint
   layers:
   - Default
   - TransparentFX

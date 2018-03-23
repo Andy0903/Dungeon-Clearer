@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4435860368733106}
   m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: SpawnPoint
+  m_Name: CameraPoint
+  m_TagString: CameraPoint
   m_Icon: {fileID: -3839803715187477772, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

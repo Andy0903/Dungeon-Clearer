@@ -11,7 +11,7 @@ public class RoomInfo : MonoBehaviour
     public float MinTemp { get { return minTemp; } }
 
     [SerializeField]
-    GameObject spawnPoint;
+    GameObject CameraPoint;
     [SerializeField]
     GameObject doorPoint;
 
@@ -64,7 +64,7 @@ public class RoomInfo : MonoBehaviour
         if (westDoor)
             InstantiateDoorPoint(EDirection.West);
         
-        GameObject.Instantiate(spawnPoint, transform);
+        GameObject.Instantiate(CameraPoint, transform);
     }
 
     public bool HasDoorAt(EDirection exitDirection)
