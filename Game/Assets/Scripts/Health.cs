@@ -15,7 +15,7 @@ public class Health : MonoBehaviour {
     public bool isInvincible
     {
         get;
-        set;
+        private set;
     }
 
     private int currentHealth;
