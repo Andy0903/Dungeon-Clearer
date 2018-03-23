@@ -23,6 +23,7 @@ TagManager:
   - PlayerStatDescriptionText
   - DoorPoint
   - CameraPoint
+  - PlayButton
   layers:
   - Default
   - TransparentFX

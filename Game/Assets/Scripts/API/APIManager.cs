@@ -22,9 +22,11 @@ public class APIManager : MonoBehaviour
     public static APIManager Instance { get; private set; }
     public WeatherAPIClient Weather { get; private set; }
     public TimeAPIClient Time { get; private set; }
+    public bool Ready { get; private set; }
 
     void Awake()
     {
+        Ready = false;
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -48,10 +50,10 @@ public class APIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Weather.Data != null && Time.Data != null)
         {
-            Debug.Log(Weather.Data.main.temp);
-            Debug.Log(Time.ConvertDateTime(Time.Data.results.astronomical_twilight_begin));
+            Ready = true;
+            enabled = false;
         }
     }
 }
