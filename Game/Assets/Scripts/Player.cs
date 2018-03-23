@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     private int attackRange = 3;
     private int attackDamage = 10;
+    private int attackKnockback = 5;
 
     private float timeSinceSpriteChange = 0;
     private const float SpriteIntervall = 0.15f;
@@ -89,6 +90,8 @@ public class Player : MonoBehaviour
             if (hit.collider != null && hit.collider.tag == "Enemy")
             {
                 hit.collider.GetComponent<Health>().DealDamage(attackDamage);
+                Vector2 knockDirection = (transform.position - hit.transform.position).normalized;
+                hit.collider.GetComponent<Rigidbody2D>().AddForce(knockDirection * attackKnockback);
             }
         }
     }
