@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961340002267938}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,9 +54,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f44f3e27cbc5a42bc8eec36b79e610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraPoint: {fileID: 1573786877012072, guid: 0b82e7d634dc7514c82ca9e0e42eb258,
-    type: 2}
-  doorPoint: {fileID: 1742126022178532, guid: fdb1e7808089778479349a10aad7d716, type: 2}
   maxTemp: 18
   minTemp: -5
   northDoor: 1
