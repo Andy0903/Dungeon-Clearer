@@ -10,9 +10,7 @@ public class RoomInfo : MonoBehaviour
     public float MaxTemp { get { return maxTemp; } }
     public float MinTemp { get { return minTemp; } }
 
-    [SerializeField]
-    GameObject CameraPoint;
-    [SerializeField]
+    GameObject cameraPoint;
     GameObject doorPoint;
 
     [SerializeField]
@@ -54,6 +52,11 @@ public class RoomInfo : MonoBehaviour
 
     public void Awake()
     {
+        if (cameraPoint == null)
+            cameraPoint = (GameObject)Resources.Load("RoomPoints/CameraPoint");
+        if (doorPoint == null)
+            doorPoint = (GameObject)Resources.Load("RoomPoints/DoorPoint");
+
         doors = new List<EDirection>();
         if (northDoor)
             InstantiateDoorPoint(EDirection.North);
@@ -63,8 +66,8 @@ public class RoomInfo : MonoBehaviour
             InstantiateDoorPoint(EDirection.South);
         if (westDoor)
             InstantiateDoorPoint(EDirection.West);
-        
-        GameObject.Instantiate(CameraPoint, transform);
+
+        GameObject.Instantiate(cameraPoint, transform);
     }
 
     public bool HasDoorAt(EDirection exitDirection)
