@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Joystick_Action joystickAction;
     [SerializeField]
     private int speed;
-    
+
     private int attackRange = 3;
     private int attackDamage = 10;
 
@@ -45,10 +45,18 @@ public class Player : MonoBehaviour
             joystick = GameObject.FindObjectOfType<Joystick>();
             joystickAction = GameObject.FindObjectOfType<Joystick_Action>();
 
-            transform.position = GameObject.FindGameObjectWithTag("CameraPoint").transform.position;
+            GameObject spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+            if (spawnPoint != null)
+            {
+                transform.position = spawnPoint.transform.position;
+            }
+            else
+            {
+                transform.position = GameObject.FindGameObjectWithTag("CameraPoint").transform.position;
+            }
         }
     }
-    
+
     // Update is called once per frame
     void Update()
     {
