@@ -12,6 +12,12 @@ public class Health : MonoBehaviour {
         }
     }
 
+    public bool isInvincible
+    {
+        get;
+        set;
+    }
+
     private int currentHealth;
 
     [SerializeField]

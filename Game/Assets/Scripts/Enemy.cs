@@ -17,6 +17,12 @@ public class Enemy : MonoBehaviour
 
     Vector3 spawnPos;
 
+    float attackRange = 2.0f;
+    float attackIntervall = 0.4f;
+    float timeSinceLastAttack = 0;
+    int attackDamage = 5;
+    
+
     private void InitializeNewPathTarget()
     {
         oldTargetPos = target.position;
@@ -40,9 +46,15 @@ public class Enemy : MonoBehaviour
             }
             catch (NullReferenceException)
             {
+
                 target = null;
             }
             return;
+        }
+
+        if(Vector3.Distance(transform.position, target.position) < attackRange)
+        {
+            TryDealDamage();
         }
 
         const float distanceTreashold = 0.000001f;
@@ -75,5 +87,17 @@ public class Enemy : MonoBehaviour
 
             pathTarget = path[index];
         }
+    }
+
+    private bool TryDealDamage()
+    {
+        Health eHP = target.GetComponent<Health>();
+        if (timeSinceLastAttack > attackIntervall && !eHP.isInvincible)
+        {
+            eHP.DealDamage(attackDamage);
+            timeSinceLastAttack = 0;
+            return true;
+        }
+        return false;
     }
 }

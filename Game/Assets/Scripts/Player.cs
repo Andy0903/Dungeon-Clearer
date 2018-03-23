@@ -77,6 +77,9 @@ public class Player : MonoBehaviour
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, viewDirection, attackRange);
 
+        //Just to doublecheck hits
+        Debug.DrawRay(transform.position, viewDirection * attackRange);
+
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider != null && hit.collider.tag == "Enemy")
