@@ -94,6 +94,7 @@ public class Enemy : MonoBehaviour
     {
         Health eHP = target.GetComponent<Health>();
 
+        //Only attacks when intervall is reached and player isn't invincible
         if (timeSinceLastAttack > attackIntervall && !eHP.isInvincible)
         {
             eHP.DealDamage(attackDamage);
