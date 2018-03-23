@@ -48,7 +48,6 @@ public class Enemy : MonoBehaviour
             }
             catch (NullReferenceException)
             {
-
                 target = null;
             }
             return;
@@ -91,7 +90,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private bool TryDealDamage()
+    private void TryDealDamage()
     {
         Health eHP = target.GetComponent<Health>();
 
@@ -99,8 +98,6 @@ public class Enemy : MonoBehaviour
         {
             eHP.DealDamage(attackDamage);
             timeSinceLastAttack = 0;
-            return true;
         }
-        return false;
     }
 }
