@@ -49,7 +49,7 @@ public class Health : MonoBehaviour {
     public void DealDamage(int amount)
     {
         currentHealth -= amount;
-        Debug.Log("Damage dealt to " + tag + " hp is now: " + currentHealth);
+        //Debug.Log("Damage dealt to " + tag + " hp is now: " + currentHealth);
     }
 
     public void ActivateInvincibility()
