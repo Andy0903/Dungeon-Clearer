@@ -136,6 +136,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  LockPrefab: {fileID: 1848547448166846, guid: 42ddda7b4722f874eb5ed7504072f810, type: 2}
 --- !u!156049354 &2569400266920961630
 Grid:
   m_ObjectHideFlags: 1

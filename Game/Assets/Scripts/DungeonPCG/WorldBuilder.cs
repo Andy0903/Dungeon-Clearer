@@ -49,6 +49,9 @@ public class WorldBuilder : MonoBehaviour
     AnimationCurve bossSpawnCurve;
     float dungeonStartTime;
 
+    [SerializeField]
+    GameObject lockPrefab;
+
     void Awake()
     {
         if (Instance != null)
@@ -142,9 +145,6 @@ public class WorldBuilder : MonoBehaviour
         FindAppropriateRoom(GetDoorRequirements(newRoomDungeonGridPos)), newRoomPos.ToVector3IntOnGrid());
         DestoryUnnecessaryExits(room, direction);
 
-
-
-
         if (bossSpawnCurve.Evaluate(Time.timeSinceLevelLoad) >= UnityEngine.Random.value * 100)
         {
             PopulateWithBoss(room);
@@ -228,9 +228,12 @@ public class WorldBuilder : MonoBehaviour
         if (FoundValidSpawnLocation(room, out position, true))
         {
             GameObject.Instantiate(bossPrefabs[0], position + (bossSize / 2), Quaternion.identity, room.transform);
+            BoxCollider2D lockTrigger = room.AddComponent<BoxCollider2D>();
+            lockTrigger.isTrigger = true;
+            lockTrigger.size = new Vector2(lockTrigger.size.x - 3, lockTrigger.size.y - 3);
         }
     }
-
+    
     private void RemoveDeadEndRoomsIfUnnecessary(Dictionary<EDirection, DoorStatus> doors, List<RoomTemplate> candidates)
     {
         int allowedDoors = doors.Values.Where(d => d != DoorStatus.Forbidden).Select(t => t).Count();

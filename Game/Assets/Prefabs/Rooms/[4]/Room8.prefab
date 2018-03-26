@@ -89,6 +89,7 @@ MonoBehaviour:
   eastDoor: 0
   southDoor: 1
   westDoor: 0
+  LockPrefab: {fileID: 1848547448166846, guid: 42ddda7b4722f874eb5ed7504072f810, type: 2}
 --- !u!19719996 &2113883505492506796
 TilemapCollider2D:
   m_ObjectHideFlags: 1

@@ -54,15 +54,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f44f3e27cbc5a42bc8eec36b79e610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraPoint: {fileID: 1573786877012072, guid: 0b82e7d634dc7514c82ca9e0e42eb258,
-    type: 2}
-  doorPoint: {fileID: 1742126022178532, guid: fdb1e7808089778479349a10aad7d716, type: 2}
   maxTemp: 18
   minTemp: -5
   northDoor: 0
   eastDoor: 0
   southDoor: 0
   westDoor: 1
+  LockPrefab: {fileID: 1848547448166846, guid: 42ddda7b4722f874eb5ed7504072f810, type: 2}
 --- !u!19719996 &2113883505260979154
 TilemapCollider2D:
   m_ObjectHideFlags: 1
