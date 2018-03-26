@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 
     private int attackRange = 3;
     private int attackDamage = 10;
+    private int attackKnockback = 5;
 
     private float timeSinceSpriteChange = 0;
     private const float SpriteIntervall = 0.15f;
@@ -79,8 +80,8 @@ public class Player : MonoBehaviour
 
     void TryDealDamage()
     {
+        
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, viewDirection, attackRange);
-
         //Just to doublecheck hits
         Debug.DrawRay(transform.position, viewDirection * attackRange);
 
@@ -88,7 +89,13 @@ public class Player : MonoBehaviour
         {
             if (hit.collider != null && hit.collider.tag == "Enemy")
             {
+                Debug.Log("We tried to Decrease HP");
                 hit.collider.GetComponent<Health>().DealDamage(attackDamage);
+
+                //TODO: Might wanna move this to the Health scripts DealDamage() function?
+                Debug.Log("We tried to knockback");
+                Vector2 knockDirection = (transform.position - hit.transform.position).normalized;
+                hit.collider.GetComponent<Rigidbody2D>().AddForce(knockDirection * attackKnockback);
             }
         }
     }
