@@ -42,6 +42,12 @@ public class WorldBuilder : MonoBehaviour
     GameObject[] roomPrefabs;
     [SerializeField]
     GameObject[] enemyPrefabs;
+    [SerializeField]
+    GameObject[] bossPrefabs;
+
+    [SerializeField]
+    AnimationCurve bossSpawnCurve;
+    float dungeonStartTime;
 
     void Awake()
     {
@@ -62,6 +68,7 @@ public class WorldBuilder : MonoBehaviour
         }
 
         GameObject go = AddRoom(0, 0, FindAppropriateRoom(GetDoorRequirements(Vector2Int.zero)), Vector3.zero);
+        dungeonStartTime = Time.time;
     }
 
     private GameObject AddRoom(int x, int y, GameObject room, Vector3 pos)
@@ -136,10 +143,27 @@ public class WorldBuilder : MonoBehaviour
         DestoryUnnecessaryExits(room, direction);
 
 
-        PopulateWithEnemies(room);
+
+
+        if (bossSpawnCurve.Evaluate(Time.timeSinceLevelLoad) >= UnityEngine.Random.value * 100)
+        {
+            PopulateWithBoss(room);
+        }
+        else
+        {
+            PopulateWithEnemies(room);
+        }
     }
 
-    private bool FoundValidSpawnLocation(GameObject room, Vector2 enemySize, out Vector3 position)
+    private bool IsTileColliderless(TileBase tile)
+    {
+        return tile != null && (tile as Tile).colliderType == Tile.ColliderType.None;
+    }
+
+    /// <summary>
+    /// If boss is true it checks 2x2 tiles instead of just 1 tile. Since bosses are assumed to be double in scale on X and Y axis.
+    /// </summary>
+    private bool FoundValidSpawnLocation(GameObject room, out Vector3 position, bool boss = false)
     {
         Tilemap tm = room.GetComponent<Tilemap>();
         BoundsInt bounds = tm.cellBounds;
@@ -153,13 +177,29 @@ public class WorldBuilder : MonoBehaviour
 
             Vector3Int tempCellPos = new Vector3Int(x, y, 0);
             TileBase tile = tm.GetTile(tempCellPos);
-            
-            if (tile != null && (tile as Tile).colliderType == Tile.ColliderType.None)
+
+            if (boss)
             {
-                Vector3 tempWorldPos = tm.CellToWorld(tempCellPos);
-                tempWorldPosInt = tempWorldPos.ToVector3Int();
-                result = true;
-                break;
+                TileBase tile2 = tm.GetTile(tempCellPos + new Vector3Int(1, 0, 0));
+                TileBase tile3 = tm.GetTile(tempCellPos + new Vector3Int(0, 1, 0));
+                TileBase tile4 = tm.GetTile(tempCellPos + new Vector3Int(1, 1, 0));
+                if (IsTileColliderless(tile) && IsTileColliderless(tile2) && IsTileColliderless(tile3) && IsTileColliderless(tile4))
+                {
+                    Vector3 tempWorldPos = tm.CellToWorld(tempCellPos);
+                    tempWorldPosInt = tempWorldPos.ToVector3Int();
+                    result = true;
+                    break;
+                }
+            }
+            else
+            {
+                if (IsTileColliderless(tile))
+                {
+                    Vector3 tempWorldPos = tm.CellToWorld(tempCellPos);
+                    tempWorldPosInt = tempWorldPos.ToVector3Int();
+                    result = true;
+                    break;
+                }
             }
         }
 
@@ -173,10 +213,21 @@ public class WorldBuilder : MonoBehaviour
         Vector3 position;
         for (int i = 0; i < 5; i++)
         {
-            if (FoundValidSpawnLocation(room, enemySize, out position))
+            if (FoundValidSpawnLocation(room, out position))
             {
                 GameObject.Instantiate(enemyPrefabs[0], position + (enemySize / 2), Quaternion.identity, room.transform);
             }
+        }
+    }
+
+    private void PopulateWithBoss(GameObject room)
+    {
+        Vector3 bossSize = new Vector3(2, 2, 0);
+        Vector3 position;
+
+        if (FoundValidSpawnLocation(room, out position, true))
+        {
+            GameObject.Instantiate(bossPrefabs[0], position + (bossSize / 2), Quaternion.identity, room.transform);
         }
     }
 

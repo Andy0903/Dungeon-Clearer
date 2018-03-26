@@ -116,6 +116,26 @@ MonoBehaviour:
   - {fileID: 1397093454290436, guid: 05e7cd1ce1e84b742bffcf06ed969e2c, type: 2}
   enemyPrefabs:
   - {fileID: 1599843830198114, guid: 01358429186344240b2c1b5a35b1c784, type: 2}
+  bossPrefabs:
+  - {fileID: 1599843830198114, guid: afff7bb0bf5d8f94f8bf83f36cb99cfa, type: 2}
+  bossSpawnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0.16601996
+      outSlope: 0.16601996
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 5.916565
+      value: 100.22298
+      inSlope: 0.16363557
+      outSlope: 0.16363557
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!156049354 &2569400266920961630
 Grid:
   m_ObjectHideFlags: 1
