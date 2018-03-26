@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114139091628151220}
   - component: {fileID: 50034768156239178}
   - component: {fileID: 61541035808348358}
+  - component: {fileID: 114221271594888320}
   m_Layer: 0
   m_Name: oryx_16bit_fantasy_creatures_223
   m_TagString: Enemy
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1599843830198114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.47, y: -3.41, z: 0}
+  m_LocalPosition: {x: -2.5623796, y: -1.3999672, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,7 +75,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -108,6 +109,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114139091628151220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1599843830198114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bef8e2b37e3f124988d4efa52ae3a6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxInvincibilityTime: 0
+  MaxHealth: 100
+--- !u!114 &114221271594888320
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
