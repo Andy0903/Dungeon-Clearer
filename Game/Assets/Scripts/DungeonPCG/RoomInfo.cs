@@ -27,6 +27,11 @@ public class RoomInfo : MonoBehaviour
     [SerializeField]
     bool westDoor;
 
+    [SerializeField]
+    GameObject LockPrefab;
+
+    List<Vector3> doorPointPositions = new List<Vector3>();
+
     public List<EDirection> GetDoors()
     {
         if (northDoor && !doors.Contains(EDirection.North))
@@ -48,6 +53,7 @@ public class RoomInfo : MonoBehaviour
 
         GameObject go = GameObject.Instantiate(doorPoint, transform);
         go.GetComponent<RoomExit>().Direction = direction;
+        doorPointPositions.Add(go.transform.position);
     }
 
     public void Awake()
@@ -73,5 +79,15 @@ public class RoomInfo : MonoBehaviour
     public bool HasDoorAt(EDirection exitDirection)
     {
         return doors.Contains(exitDirection);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        LockRoom();
+    }
+
+    private void LockRoom()
+    {
+        doorPointPositions.ForEach(p => GameObject.Instantiate(LockPrefab, p, Quaternion.identity, transform));
     }
 }
