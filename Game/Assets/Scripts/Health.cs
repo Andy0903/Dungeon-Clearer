@@ -49,6 +49,11 @@ public class Health : MonoBehaviour {
     public void DealDamage(int amount)
     {
         currentHealth -= amount;
+        if(currentHealth < 0 && tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
+
         //Debug.Log("Damage dealt to " + tag + " hp is now: " + currentHealth);
     }
 
