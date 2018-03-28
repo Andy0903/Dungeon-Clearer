@@ -3,6 +3,7 @@ using System.Collections;
 
 namespace DigitalRuby.RainMaker
 {
+    //TODO remove sound from here and use audiomanager
     public class RainScript2D : BaseRainScript
     {
         private static readonly Color32 explosionColor = new Color32(255, 255, 255, 255);
@@ -188,10 +189,11 @@ namespace DigitalRuby.RainMaker
             base.Update();
 
             cameraMultiplier = (Camera.orthographicSize * 0.25f);
-            visibleBounds.min = Camera.main.ViewportToWorldPoint(Vector3.zero);
-            visibleBounds.max = Camera.main.ViewportToWorldPoint(Vector3.one);
+            //visibleBounds.min = Camera.main.ViewportToWorldPoint(Vector3.zero);
+            //visibleBounds.max = Camera.main.ViewportToWorldPoint(Vector3.one);
+            visibleBounds = transform.parent.GetComponent<Renderer>().bounds;
             visibleWorldWidth = visibleBounds.size.x;
-            yOffset = (visibleBounds.max.y - visibleBounds.min.y) * RainHeightMultiplier;
+            yOffset = -0.5f;//(visibleBounds.max.y - visibleBounds.min.y) * RainHeightMultiplier;
 
             TransformParticleSystem(RainFallParticleSystem, initialStartSpeedRain, initialStartSizeRain);
             TransformParticleSystem(RainMistParticleSystem, initialStartSpeedMist, initialStartSizeMist);

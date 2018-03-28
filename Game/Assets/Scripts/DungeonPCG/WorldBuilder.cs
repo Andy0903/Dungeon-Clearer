@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DigitalRuby.RainMaker;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,15 @@ public class WorldBuilder : MonoBehaviour
     float dungeonStartTime;
 
     [SerializeField]
-    GameObject lockPrefab;
+    GameObject rainMistEffectPrefab;
+    [SerializeField]
+    GameObject lightningPrefab;
+    [SerializeField]
+    GameObject[] lightPrefabs;
+    [SerializeField]
+    GameObject snowParticleSystem;
+    [SerializeField]
+    GameObject drizzleMistEffectPrefab;
 
     void Awake()
     {
@@ -141,8 +150,14 @@ public class WorldBuilder : MonoBehaviour
     {
         Vector2Int newRoomDungeonGridPos;
         Vector3 newRoomPos = GetPositionOfNewRoom(trigger, direction, out newRoomDungeonGridPos);
+
+        ///Two pass algorithm, first find appropriate room and spawn it, then find appropriate weather effect and adds to the room heirarchy.
         GameObject room = AddRoom(newRoomDungeonGridPos.x, newRoomDungeonGridPos.y,
-        FindAppropriateRoom(GetDoorRequirements(newRoomDungeonGridPos)), newRoomPos.ToVector3IntOnGrid());
+                          FindAppropriateRoom(GetDoorRequirements(newRoomDungeonGridPos)),
+                          newRoomPos.ToVector3IntOnGrid());
+        FindAppropriateWeatherEffect(room);
+        ///
+
         DestoryUnnecessaryExits(room, direction);
 
         if (bossSpawnCurve.Evaluate(Time.timeSinceLevelLoad) >= UnityEngine.Random.value * 100)
@@ -152,6 +167,225 @@ public class WorldBuilder : MonoBehaviour
         else
         {
             PopulateWithEnemies(room);
+        }
+    }
+
+    private void FindAppropriateWeatherEffect(GameObject room)
+    {
+        string main = APIManager.Instance.Weather.Data.weather[0].main;
+
+        switch (main)
+        {
+            case "Rain":
+                RainEffects(room);
+                break;
+            case "Clouds":
+                CloudEffects(room);
+                break;
+            case "Thunderstorm":
+                ThunderEffects(room);
+                break;
+            case "Drizzle":
+                DrizzleEffects(room);
+                break;
+            case "Snow":
+                SnowEffect(room);
+                break;
+            case "Clear":
+                ClearEffect(room);
+                break;
+            case "Extreme":
+                break;
+            case "Additional":
+                break;
+            default:
+                Debug.Log("Unknown main");
+                break;
+        }
+    }
+
+    private void DrizzleEffect(GameObject room)
+    {
+        string description = APIManager.Instance.Weather.Data.weather[0].description;
+        GameObject go = GameObject.Instantiate(rainMistEffectPrefab, room.transform, false);
+        RainScript2D r = go.GetComponent<RainScript2D>();
+
+        //TODO do stuff here.
+        switch (description)
+        {
+            case "light intensity drizzle":
+            case "drizzle":
+            case "heavy intensity drizzle":
+            case "light intensity drizzle rain":
+            case "drizzle rain":
+            case "heavy intensity drizzle rain":
+            case "shower rain and drizzle":
+            case "heavy shower and drizzle":
+            case "shower drizzle":
+
+            default:
+                Debug.Log("Unknown description");
+                break;
+        }
+    }
+
+    private void SnowEffect(GameObject room)
+    {
+        string description = APIManager.Instance.Weather.Data.weather[0].description;
+        GameObject go = GameObject.Instantiate(snowParticleSystem, room.transform, false);
+        int rate = 0;
+        //TODO add rain etc
+        switch (description)
+        {
+            case "light snow":
+                rate = 1;
+                break;
+            case "snow":
+                rate = 3;
+                break;
+            case "heavy snow":
+                rate = 6;
+                break;
+            case "sleet":
+                rate = 2;
+                break;
+            case "shower sleet":
+                rate = 2;
+                break;
+            case "light rain and snow":
+                rate = 3;
+                break;
+            case "light shower snow":
+                rate = 3;
+                break;
+            case "shower snow":
+                rate = 3;
+                break;
+            case "heavy shower snow":
+                rate = 6;
+                break;
+            default:
+                Debug.Log("Unknown description");
+                break;
+        }
+
+        ParticleSystem[] ps = GetComponentsInChildren<ParticleSystem>();
+
+        foreach (ParticleSystem p in ps)
+        {
+            var emission = p.emission;
+            emission.rateOverTime = rate;
+        }
+    }
+
+    private void ClearEffect(GameObject room)
+    {
+        GameObject.Instantiate(lightPrefabs[UnityEngine.Random.Range(0, lightPrefabs.Length - 1)], room.transform, false);
+    }
+
+    private void ThunderEffects(GameObject room)
+    {
+        string description = APIManager.Instance.Weather.Data.weather[0].description;
+        GameObject go = GameObject.Instantiate(rainMistEffectPrefab, room.transform, false);
+        RainScript2D r = go.GetComponent<RainScript2D>();
+        GameObject go2 = GameObject.Instantiate(lightningPrefab, room.transform, false);
+        LightningBehaviour l = go2.GetComponent<LightningBehaviour>();
+        
+        switch (description)
+        {
+            case "thunderstom with light rain":
+                r.RainIntensity = 0.024f;
+                l.Initialize(10, 30);
+                break;
+            case "thunderstom with rain":
+                r.RainIntensity = 0.1f;
+                l.Initialize(10, 30);
+                break;
+            case "thuderstorm with heavy rain":
+                r.RainIntensity = 0.6f;
+                l.Initialize(10, 30);
+                break;
+            case "light thunderstorm":
+                l.Initialize(10, 60);
+                break;
+            case "thunderstorm":
+                l.Initialize(10, 30);
+                break;
+            case "heavy thunderstorm":
+            case "ragged thunderstrom":
+                l.Initialize(10, 20);
+                break;
+            case "thunderstorm with light drizzle":
+            case "Thunderstorm with drizzle":
+            case "thunderstorm with heavy drizzle":
+                l.Initialize(10, 30);
+                //TODO drizzle?
+                break;
+            default:
+                Debug.Log("Unknown description");
+                break;
+        }
+    }
+
+    private void CloudEffects(GameObject room)
+    {
+        string description = APIManager.Instance.Weather.Data.weather[0].description;
+        GameObject go = GameObject.Instantiate(rainMistEffectPrefab, room.transform, false);
+        RainScript2D r = go.GetComponent<RainScript2D>();
+
+        switch (description)
+        {
+            case "few clouds":
+                r.MistIntensity = 0.2f;
+                break;
+            case "scattered clouds":
+                r.MistIntensity = 0.4f;
+                break;
+            case "broken clouds":
+                r.MistIntensity = 0.6f;
+                break;
+            case "overcast clouds":
+                r.MistIntensity = 0.8f;
+                break;
+
+            default:
+                Debug.Log("Unknown description");
+                break;
+        }
+    }
+
+    private void RainEffects(GameObject room)
+    {
+        string description = APIManager.Instance.Weather.Data.weather[0].description;
+        GameObject go = GameObject.Instantiate(rainMistEffectPrefab, room.transform, false);
+        RainScript2D r = go.GetComponent<RainScript2D>();
+
+        switch (description)
+        {
+            case "light rain":
+            case "light intensity shower rain":
+                r.RainIntensity = 0.024f;
+                break;
+            case "moderate rain":
+            case "shower rain":
+            case "freezing rain":
+                r.RainIntensity = 0.1f;
+                break;
+            case "heavy intensity rain":
+            case "heavy intensity shower rain":
+                r.RainIntensity = 0.4f;
+                break;
+            case "very heavy rain":
+            case "ragged shower rain":
+                r.RainIntensity = 0.6f;
+                break;
+            case "extreme rain":
+                r.RainIntensity = 1f;
+                break;
+
+            default:
+                Debug.Log("Unknown description");
+                break;
         }
     }
 
@@ -233,7 +467,7 @@ public class WorldBuilder : MonoBehaviour
             lockTrigger.size = new Vector2(lockTrigger.size.x - 3, lockTrigger.size.y - 3);
         }
     }
-    
+
     private void RemoveDeadEndRoomsIfUnnecessary(Dictionary<EDirection, DoorStatus> doors, List<RoomTemplate> candidates)
     {
         int allowedDoors = doors.Values.Where(d => d != DoorStatus.Forbidden).Select(t => t).Count();

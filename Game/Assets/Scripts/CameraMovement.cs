@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DigitalRuby.RainMaker;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,15 +10,15 @@ public class CameraMovement : MonoBehaviour
 
     Transform player;
     int currentPointIndex;
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         currentPointIndex = 0;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         GameObject[] points = GameObject.FindGameObjectsWithTag("CameraPoint");
 

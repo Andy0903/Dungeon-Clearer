@@ -27,6 +27,10 @@ namespace DigitalRuby.RainMaker
         [Range(0.0f, 1.0f)]
         public float RainIntensity;
 
+        [Tooltip("Intensity of mist (0-1)")]
+        [Range(0.0f, 1.0f)]
+        public float MistIntensity;
+
         [Tooltip("Rain particle system")]
         public ParticleSystem RainFallParticleSystem;
 
@@ -68,6 +72,7 @@ namespace DigitalRuby.RainMaker
         protected Material rainMistMaterial;
 
         private float lastRainIntensityValue = -1.0f;
+        float lastMistIntensityValue = -1.0f;
         private float nextWindTime;
 
         private void UpdateWind()
@@ -174,29 +179,32 @@ namespace DigitalRuby.RainMaker
                         rate.constantMin = rate.constantMax = RainFallEmissionRate();
                         e.rateOverTime = rate;
                     }
-                    if (RainMistParticleSystem != null)
+                }
+            }
+        }
+
+
+        private void CheckForMistChange()
+        {
+            if (lastMistIntensityValue != MistIntensity)
+            {
+                lastMistIntensityValue = MistIntensity;
+                if (RainMistParticleSystem != null)
+                {
+                    ParticleSystem.EmissionModule e = RainMistParticleSystem.emission;
+                    e.enabled = RainMistParticleSystem.GetComponent<Renderer>().enabled = true;
+                    if (!RainMistParticleSystem.isPlaying)
                     {
-                        ParticleSystem.EmissionModule e = RainMistParticleSystem.emission;
-                        e.enabled = RainMistParticleSystem.GetComponent<Renderer>().enabled = true;
-                        if (!RainMistParticleSystem.isPlaying)
-                        {
-                            RainMistParticleSystem.Play();
-                        }
-                        float emissionRate;
-                        if (RainIntensity < RainMistThreshold)
-                        {
-                            emissionRate = 0.0f;
-                        }
-                        else
-                        {
-                            // must have RainMistThreshold or higher rain intensity to start seeing mist
-                            emissionRate = MistEmissionRate();
-                        }
-                        ParticleSystem.MinMaxCurve rate = e.rateOverTime;
-                        rate.mode = ParticleSystemCurveMode.Constant;
-                        rate.constantMin = rate.constantMax = emissionRate;
-                        e.rateOverTime = rate;
+                        RainMistParticleSystem.Play();
                     }
+                    float emissionRate;
+
+                    emissionRate = MistEmissionRate();
+
+                    ParticleSystem.MinMaxCurve rate = e.rateOverTime;
+                    rate.mode = ParticleSystemCurveMode.Constant;
+                    rate.constantMin = rate.constantMax = emissionRate;
+                    e.rateOverTime = rate;
                 }
             }
         }
@@ -276,6 +284,7 @@ namespace DigitalRuby.RainMaker
 #endif
 
             CheckForRainChange();
+            CheckForMistChange();
             UpdateWind();
             audioSourceRainLight.Update();
             audioSourceRainMedium.Update();
@@ -289,7 +298,7 @@ namespace DigitalRuby.RainMaker
 
         protected virtual float MistEmissionRate()
         {
-            return (RainMistParticleSystem.main.maxParticles / RainMistParticleSystem.main.startLifetime.constant) * RainIntensity * RainIntensity;
+            return (RainMistParticleSystem.main.maxParticles / RainMistParticleSystem.main.startLifetime.constant) * MistIntensity * MistIntensity;
         }
 
         protected virtual bool UseRainMistSoftParticles
