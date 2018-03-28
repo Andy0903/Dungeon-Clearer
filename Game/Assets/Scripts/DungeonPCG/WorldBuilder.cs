@@ -186,7 +186,7 @@ public class WorldBuilder : MonoBehaviour
                 ThunderEffects(room);
                 break;
             case "Drizzle":
-                DrizzleEffects(room);
+                DrizzleEffect(room);
                 break;
             case "Snow":
                 SnowEffect(room);

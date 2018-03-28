@@ -515,24 +515,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4033320369732344, guid: ed32225f3da32ee4ebd1b71d5838e0bf,
     type: 2}
   m_PrefabInternal: {fileID: 1038318349}
---- !u!1 &1446063456 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1599843830198114, guid: 01358429186344240b2c1b5a35b1c784,
-    type: 2}
-  m_PrefabInternal: {fileID: 2001470170}
---- !u!114 &1446063461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1446063456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bef8e2b37e3f124988d4efa52ae3a6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxInvincibilityTime: 0
-  MaxHealth: 100
 --- !u!4 &1734445494 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4310922360104778, guid: 157126fedd4af7f41b7868c3bfea2390,
