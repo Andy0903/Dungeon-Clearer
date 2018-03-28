@@ -83,7 +83,6 @@ public class RoomInfo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Locked room collision with " + collision.tag);
         if (collision.tag == "Player")
         {
             LockRoom();
@@ -92,7 +91,6 @@ public class RoomInfo : MonoBehaviour
 
     private void LockRoom()
     {
-        Debug.Log("Locked Room!");
         doorPointPositions.ForEach(p => GameObject.Instantiate(LockPrefab, p, Quaternion.identity, transform));
     }
 }
