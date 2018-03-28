@@ -51,7 +51,10 @@ public class RoomExit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        WorldBuilder.Instance.SpawnRoom(transform, Direction);
-        Destroy(gameObject);
+        if (collision.tag == "Player")
+        {
+            WorldBuilder.Instance.SpawnRoom(transform, Direction);
+            Destroy(gameObject);
+        }
     }
 }
