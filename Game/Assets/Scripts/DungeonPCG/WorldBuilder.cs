@@ -155,7 +155,8 @@ public class WorldBuilder : MonoBehaviour
         GameObject room = AddRoom(newRoomDungeonGridPos.x, newRoomDungeonGridPos.y,
                           FindAppropriateRoom(GetDoorRequirements(newRoomDungeonGridPos)),
                           newRoomPos.ToVector3IntOnGrid());
-        FindAppropriateWeatherEffect(room);
+        //FindAppropriateWeatherEffect(room);
+        SnowEffects(room);
         ///
 
         DestoryUnnecessaryExits(room, direction);
@@ -186,13 +187,13 @@ public class WorldBuilder : MonoBehaviour
                 ThunderEffects(room);
                 break;
             case "Drizzle":
-                DrizzleEffect(room);
+                DrizzleEffects(room);
                 break;
             case "Snow":
-                SnowEffect(room);
+                SnowEffects(room);
                 break;
             case "Clear":
-                ClearEffect(room);
+                ClearEffects(room);
                 break;
             case "Extreme":
                 break;
@@ -204,7 +205,7 @@ public class WorldBuilder : MonoBehaviour
         }
     }
 
-    private void DrizzleEffect(GameObject room)
+    private void DrizzleEffects(GameObject room)
     {
         string description = APIManager.Instance.Weather.Data.weather[0].description;
         GameObject go = GameObject.Instantiate(rainMistEffectPrefab, room.transform, false);
@@ -229,10 +230,13 @@ public class WorldBuilder : MonoBehaviour
         }
     }
 
-    private void SnowEffect(GameObject room)
+    private void SnowEffects(GameObject room)
     {
         string description = APIManager.Instance.Weather.Data.weather[0].description;
         GameObject go = GameObject.Instantiate(snowParticleSystem, room.transform, false);
+
+        description = "light snow";
+
         int rate = 0;
         //TODO add rain etc
         switch (description)
@@ -278,7 +282,7 @@ public class WorldBuilder : MonoBehaviour
         }
     }
 
-    private void ClearEffect(GameObject room)
+    private void ClearEffects(GameObject room)
     {
         GameObject.Instantiate(lightPrefabs[UnityEngine.Random.Range(0, lightPrefabs.Length - 1)], room.transform, false);
     }
