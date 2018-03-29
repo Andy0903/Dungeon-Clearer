@@ -83,11 +83,15 @@ public class WorldBuilder : MonoBehaviour
         dungeonStartTime = Time.time;
     }
 
+    /// <summary>
+    /// Adds a new room to the dungeon, gives appropriateWeatherEffects to it.
+    /// </summary>
     private GameObject AddRoom(int x, int y, GameObject room, Vector3 pos)
     {
         GameObject go = GameObject.Instantiate(room, pos, Quaternion.identity, gameObject.transform);
         dungeon.Add(new Vector2Int(x, y), go);
         go.GetComponentInChildren<RoomInfo>().DungeonPosition = new Vector2Int(x, y);
+        FindAppropriateWeatherEffect(go);
 
         return go;
     }
@@ -151,13 +155,9 @@ public class WorldBuilder : MonoBehaviour
         Vector2Int newRoomDungeonGridPos;
         Vector3 newRoomPos = GetPositionOfNewRoom(trigger, direction, out newRoomDungeonGridPos);
 
-        ///Two pass algorithm, first find appropriate room and spawn it, then find appropriate weather effect and adds to the room heirarchy.
         GameObject room = AddRoom(newRoomDungeonGridPos.x, newRoomDungeonGridPos.y,
                           FindAppropriateRoom(GetDoorRequirements(newRoomDungeonGridPos)),
                           newRoomPos.ToVector3IntOnGrid());
-        //FindAppropriateWeatherEffect(room);
-        SnowEffects(room);
-        ///
 
         DestoryUnnecessaryExits(room, direction);
 
@@ -208,21 +208,39 @@ public class WorldBuilder : MonoBehaviour
     private void DrizzleEffects(GameObject room)
     {
         string description = APIManager.Instance.Weather.Data.weather[0].description;
-        GameObject go = GameObject.Instantiate(rainMistEffectPrefab, room.transform, false);
-        RainScript2D r = go.GetComponent<RainScript2D>();
+        GameObject go = GameObject.Instantiate(drizzleMistEffectPrefab, room.transform, false);
+        RainScript2D drizzle = go.GetComponent<RainScript2D>();
+        GameObject go2 = GameObject.Instantiate(rainMistEffectPrefab, room.transform, false);
+        RainScript2D r = go2.GetComponent<RainScript2D>();
 
-        //TODO do stuff here.
+        description = "shower rain and drizzle";
+
         switch (description)
         {
             case "light intensity drizzle":
+                drizzle.RainIntensity = 0.024f;
+                break;
             case "drizzle":
-            case "heavy intensity drizzle":
-            case "light intensity drizzle rain":
-            case "drizzle rain":
-            case "heavy intensity drizzle rain":
-            case "shower rain and drizzle":
-            case "heavy shower and drizzle":
             case "shower drizzle":
+                drizzle.RainIntensity = 0.1f;
+                break;
+            case "heavy intensity drizzle":
+                drizzle.RainIntensity = 0.4f;
+                break;
+            case "light intensity drizzle rain":
+                drizzle.RainIntensity = 0.024f;
+                r.RainIntensity = 0.024f;
+                break;
+            case "drizzle rain":
+            case "shower rain and drizzle":
+                drizzle.RainIntensity = 0.1f;
+                r.RainIntensity = 0.1f;
+                break;
+            case "heavy intensity drizzle rain":
+            case "heavy shower and drizzle":
+                drizzle.RainIntensity = 0.4f;
+                r.RainIntensity = 0.4f;
+                break;
 
             default:
                 Debug.Log("Unknown description");
@@ -234,8 +252,6 @@ public class WorldBuilder : MonoBehaviour
     {
         string description = APIManager.Instance.Weather.Data.weather[0].description;
         GameObject go = GameObject.Instantiate(snowParticleSystem, room.transform, false);
-
-        description = "light snow";
 
         int rate = 0;
         //TODO add rain etc
@@ -294,7 +310,7 @@ public class WorldBuilder : MonoBehaviour
         RainScript2D r = go.GetComponent<RainScript2D>();
         GameObject go2 = GameObject.Instantiate(lightningPrefab, room.transform, false);
         LightningBehaviour l = go2.GetComponent<LightningBehaviour>();
-        
+
         switch (description)
         {
             case "thunderstom with light rain":
