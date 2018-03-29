@@ -15,6 +15,8 @@ public class WeatherEffectFactory : MonoBehaviour
     GameObject snowParticleSystem;
     [SerializeField]
     GameObject[] lightPrefabs;
+    [SerializeField]
+    GameObject windArea;
 
     public void AddWeather(GameObject room)
     {
@@ -100,7 +102,7 @@ public class WeatherEffectFactory : MonoBehaviour
                 break;
             case "heavy intensity rain":
                 AddRain(room, 3);
-                    break;
+                break;
             case "very heavy rain":
                 AddRain(room, 4);
                 break;
@@ -213,6 +215,20 @@ public class WeatherEffectFactory : MonoBehaviour
                 //case "hurricane":
 
         }
+    }
+
+    GameObject AddWind(GameObject room, int intensity)
+    {
+        GameObject go = GameObject.Instantiate(windArea, room.transform, false);
+        WindArea wa = go.GetComponent<WindArea>();
+
+        switch (intensity)
+        {
+            case 1: wa.Initialize(1, 4, 10); break;
+            default: Debug.Log("Faulty intensity given"); break;
+        }
+
+        return go;
     }
 
     GameObject AddClear(GameObject room)
