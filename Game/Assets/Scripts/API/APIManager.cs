@@ -3,20 +3,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 
-/*
-    SunRise
-    //Day
-    SunSet
-    CivilEnd
-    NautEnd
-    AstroEnd
-
-    AstroBeg
-    NautBeg
-    CivilBeg
-    //Night
-*/
-
 public class APIManager : MonoBehaviour
 {
     public static APIManager Instance { get; private set; }

@@ -27,10 +27,10 @@ public class TimeAPIClient : APIClient<TimeAPIClient.Response>
         }
     }
 
-    public string ConvertDateTime(string datetime)
+    public DateTime ConvertDateTime(string datetime)
     {
         return DateTime.Parse(datetime, null,
-            System.Globalization.DateTimeStyles.RoundtripKind).ToString();
+            System.Globalization.DateTimeStyles.RoundtripKind);
     }
 
     [Serializable]

@@ -51,6 +51,7 @@ public class WorldBuilder : MonoBehaviour
     float dungeonStartTime;
 
     WeatherEffectFactory weatherFactory;
+    TimeEffectFactory timeFactory;
 
     void Awake()
     {
@@ -65,6 +66,7 @@ public class WorldBuilder : MonoBehaviour
         }
 
         weatherFactory = GetComponent<WeatherEffectFactory>();
+        timeFactory = GetComponent<TimeEffectFactory>();
         dungeon = new Dictionary<Vector2Int, GameObject>();
         foreach (GameObject room in roomPrefabs)
         {
@@ -84,6 +86,7 @@ public class WorldBuilder : MonoBehaviour
         dungeon.Add(new Vector2Int(x, y), go);
         go.GetComponentInChildren<RoomInfo>().DungeonPosition = new Vector2Int(x, y);
         weatherFactory.AddWeather(go);
+        timeFactory.AddTimeFilter(go);
 
         return go;
     }
