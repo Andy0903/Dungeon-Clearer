@@ -180,6 +180,7 @@ MonoBehaviour:
   - {fileID: 1871315981118318, guid: 2c0d7be1d25a55544bd4c2ca72c6c5c2, type: 2}
   - {fileID: 1871315981118318, guid: c22d44bac0df6444ba8eaa417b2e4329, type: 2}
   - {fileID: 1871315981118318, guid: 1a8f28235345d00458d86c8ddebbdf58, type: 2}
+  windArea: {fileID: 1353292671696000, guid: a1e12ce490f06cc45a23dbd16a71fd38, type: 2}
 --- !u!156049354 &2569400266920961630
 Grid:
   m_ObjectHideFlags: 1

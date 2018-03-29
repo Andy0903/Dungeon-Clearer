@@ -21,6 +21,7 @@ public class WeatherEffectFactory : MonoBehaviour
     public void AddWeather(GameObject room)
     {
         string description = APIManager.Instance.Weather.Data.weather[0].description;
+        AddWind(room);
 
         switch (description)
         {
@@ -217,17 +218,13 @@ public class WeatherEffectFactory : MonoBehaviour
         }
     }
 
-    GameObject AddWind(GameObject room, int intensity)
+    GameObject AddWind(GameObject room)
     {
         GameObject go = GameObject.Instantiate(windArea, room.transform, false);
         WindArea wa = go.GetComponent<WindArea>();
 
-        switch (intensity)
-        {
-            case 1: wa.Initialize(1, 4, 10); break;
-            default: Debug.Log("Faulty intensity given"); break;
-        }
-
+        float windSpeed = APIManager.Instance.Weather.Data.wind.speed;
+        wa.Initialize(windSpeed * 2f, 4, 10);
         return go;
     }
 
