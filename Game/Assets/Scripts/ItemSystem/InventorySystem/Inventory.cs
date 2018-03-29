@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Inventory : MonoBehaviour
             if (slot.ContainedItem == null)
             {
                 slotFound = true;
-                
+
                 Item.EType type = Item.EType.Back;
                 switch (Random.Range(0, 10))
                 {
@@ -35,6 +36,21 @@ public class Inventory : MonoBehaviour
                 }
 
                 slot.AddItem(ItemFactory.Instance.Create(type));
+            }
+        }
+    }
+
+    public void DeleteItem()
+    {
+        for (int i = 0; i < inventory.transform.childCount; i++)
+        {
+            InventorySlot slot = inventory.GetChild(i).GetComponent<InventorySlot>();
+
+            if (slot.ContainedItem != null && slot.GetComponent<Outline>().enabled)
+            {
+                Destroy(slot.ContainedItem.gameObject);
+                slot.RemoveItem();
+                slot.Deselect();
             }
         }
     }
