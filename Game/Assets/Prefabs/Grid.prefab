@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 2569400266920961630}
   - component: {fileID: 8195094279597209134}
   - component: {fileID: 114861710270853260}
+  - component: {fileID: 114919506483285396}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -142,19 +143,29 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114919506483285396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961555734217782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c825461d321b74ea4bad3f40e01323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   rainMistEffectPrefab: {fileID: 191326, guid: b046278bb9b6e104790392b566667ba5, type: 2}
   lightningPrefab: {fileID: 1418595581954900, guid: 31cd93f28d0642148b7c861666889ea1,
+    type: 2}
+  drizzleMistEffectPrefab: {fileID: 191326, guid: 90de05d1775dfb94db196090bbf77d5e,
+    type: 2}
+  snowParticleSystem: {fileID: 1057980587506578, guid: 614237ea16bd3574f9272f0241c45151,
     type: 2}
   lightPrefabs:
   - {fileID: 1871315981118318, guid: 88284f155d87d4f41a41da701f7cd47c, type: 2}
   - {fileID: 1871315981118318, guid: 2c0d7be1d25a55544bd4c2ca72c6c5c2, type: 2}
   - {fileID: 1871315981118318, guid: c22d44bac0df6444ba8eaa417b2e4329, type: 2}
   - {fileID: 1871315981118318, guid: 1a8f28235345d00458d86c8ddebbdf58, type: 2}
-  - {fileID: 1871315981118318, guid: 668f1cabcb8c10d45b41b9f3bc7a5a6c, type: 2}
-  snowParticleSystem: {fileID: 1057980587506578, guid: 614237ea16bd3574f9272f0241c45151,
-    type: 2}
-  drizzleMistEffectPrefab: {fileID: 191326, guid: 90de05d1775dfb94db196090bbf77d5e,
-    type: 2}
 --- !u!156049354 &2569400266920961630
 Grid:
   m_ObjectHideFlags: 1
