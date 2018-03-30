@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Animator attackAnimator;
     private float animationTimer;
-    private bool isActive;
 
     private const float ExitTime = 0.75f;
 
@@ -37,7 +36,6 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(this);
         Stats = new Stats();
         input = Vector2.zero;
-        isActive = true;
     }
 
     void OnDisable()
@@ -88,7 +86,6 @@ public class Player : MonoBehaviour
         if (!attackAnimator.GetBool("Attacking"))
         {
             attackAnimator.GetComponent<SpriteRenderer>().enabled = false;
-            isActive = false;
         }
         else
         {
