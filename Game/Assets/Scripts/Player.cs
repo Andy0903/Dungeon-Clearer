@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Animator attackAnimator;
     private float animationTimer;
 
-    private const float ExitTime = 0.75f;
+    private float ExitTime = 0.5f;
 
     private Joystick joystick;
     private Joystick_Action joystickAction;
@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(this);
         Stats = new Stats();
         input = Vector2.zero;
+        //The exit time from this runs 1/3 of the clip again?
+        //ExitTime = attackAnimator.runtimeAnimatorController.animationClips[0].length;
+        Debug.Log(ExitTime);
     }
 
     void OnDisable()
@@ -116,11 +119,8 @@ public class Player : MonoBehaviour
         //Just to doublecheck hits
         Debug.DrawRay(transform.position, viewDirection * attackRange);
 
-        if(hits.Length > 0)
-        {
-            attackAnimator.SetBool("Attacking", true);
-            attackAnimator.GetComponent<SpriteRenderer>().enabled = true;
-        }
+        attackAnimator.SetBool("Attacking", true);
+        attackAnimator.GetComponent<SpriteRenderer>().enabled = true;
 
         foreach (RaycastHit2D hit in hits)
         {
