@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+    private enum GameState
+    {
+        MainMenu,
+        PausMenu,
+        Playing
+    }
+
+	void Awake ()
+    {
+        DontDestroyOnLoad(gameObject);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+        CheckWinCondition();
 	}
+
+    void CheckWinCondition()
+    {
+
+    }
 }
