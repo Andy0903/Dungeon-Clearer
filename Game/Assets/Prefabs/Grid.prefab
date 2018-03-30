@@ -135,13 +135,13 @@ MonoBehaviour:
   - {fileID: 1599843830198114, guid: 271b1a1063be69c4d8788303f4a1c2b5, type: 2}
   - {fileID: 1599843830198114, guid: 1ed88ebe40abf7a48bffcffb5fa949c4, type: 2}
   bossPrefabs:
-  - {fileID: 1599843830198114, guid: afff7bb0bf5d8f94f8bf83f36cb99cfa, type: 2}
+  - {fileID: 1599843830198114, guid: 4c99e0ed3c02beb44a8ca6492844da64, type: 2}
   bossSpawnCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0
-      value: 0
+      time: 14.020859
+      value: -4.8377686
       inSlope: 0
       outSlope: 0
       tangentMode: 0

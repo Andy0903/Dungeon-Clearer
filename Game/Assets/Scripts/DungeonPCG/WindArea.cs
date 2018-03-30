@@ -23,10 +23,14 @@ public class WindArea : MonoBehaviour
     void WindPush()
     {
         ps.Play();
+        float pushforce = force;
         foreach (Rigidbody2D rb in bodies)
         {
+            if (rb.gameObject.tag == "Player")
+                pushforce *= 10;
+
             if (rb != null)
-                rb.AddForce(force * rb.transform.right, ForceMode2D.Impulse);
+                rb.AddForce(pushforce * rb.transform.right, ForceMode2D.Impulse);
         }
         bodies.TrimExcess();
     }
