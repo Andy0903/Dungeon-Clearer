@@ -226,7 +226,7 @@ public class WorldBuilder : MonoBehaviour
         {
             if (FoundValidSpawnLocation(room, out position))
             {
-                GameObject.Instantiate(enemyPrefabs[0], position + (enemySize / 2), Quaternion.identity, room.transform);
+                GameObject.Instantiate(enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Length)], position + (enemySize / 2), Quaternion.identity, room.transform);
             }
         }
     }
@@ -310,7 +310,7 @@ public class WorldBuilder : MonoBehaviour
         {
             if (newExit.Direction == OppositeDirection(direction))
             {
-                Destroy(newExit.gameObject);
+                newExit.CanSpawnRoom = false;
             }
         }
     }

@@ -35,10 +35,10 @@ TagManager:
   - 
   - 
   - Environment
-  - 
-  - 
-  - 
-  - 
+  - Door
+  - Player
+  - Enemy
+  - FlyingEnemy
   - 
   - 
   - 

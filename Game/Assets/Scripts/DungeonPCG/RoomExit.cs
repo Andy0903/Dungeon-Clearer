@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomExit : MonoBehaviour
 {
     EDirection direction;
+    public bool CanSpawnRoom { get; set; }
 
     /// <summary>
     /// The set is used instead of Awake, never change direction of anything that wasn't spawned but a moment ago.
@@ -17,6 +18,7 @@ public class RoomExit : MonoBehaviour
         }
         set
         {
+            CanSpawnRoom = true;
             direction = value;
             Vector2 dirVec = Vector2.zero;
 
@@ -43,8 +45,8 @@ public class RoomExit : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVec, 2f);
             if (hit && hit.collider.tag == "DoorPoint")
             {
-                Destroy(hit.collider.gameObject);
-                Destroy(gameObject);
+                hit.collider.gameObject.GetComponent<RoomExit>().CanSpawnRoom = false;
+                CanSpawnRoom = false;
             }
         }
     }
@@ -53,8 +55,11 @@ public class RoomExit : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            WorldBuilder.Instance.SpawnRoom(transform, Direction);
-            Destroy(gameObject);
+            if (CanSpawnRoom)
+            {
+                WorldBuilder.Instance.SpawnRoom(transform, Direction);
+            }
+            CanSpawnRoom = false;
         }
     }
 }

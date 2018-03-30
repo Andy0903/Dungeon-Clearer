@@ -25,8 +25,10 @@ public class WindArea : MonoBehaviour
         ps.Play();
         foreach (Rigidbody2D rb in bodies)
         {
-            rb.AddForce(force * rb.transform.right, ForceMode2D.Impulse);
+            if (rb != null)
+                rb.AddForce(force * rb.transform.right, ForceMode2D.Impulse);
         }
+        bodies.TrimExcess();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
