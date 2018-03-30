@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        if (attackAnimator.GetBool("Attacking"))
+        if (!attackAnimator.GetBool("Attacking"))
         {
             Vector3 movement = input * speed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, transform.position + movement, speed * Time.deltaTime);
@@ -112,7 +112,6 @@ public class Player : MonoBehaviour
 
     void TryDealDamage()
     {
-        
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, viewDirection, attackRange);
         //Just to doublecheck hits
         Debug.DrawRay(transform.position, viewDirection * attackRange);
