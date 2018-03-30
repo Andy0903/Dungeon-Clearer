@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private Animator attackAnimator;
+    private float animationTimer;
+    private bool isActive;
+
+    private const float ExitTime = 0.75f;
+
     private Joystick joystick;
     private Joystick_Action joystickAction;
     [SerializeField]
@@ -30,6 +37,7 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(this);
         Stats = new Stats();
         input = Vector2.zero;
+        isActive = true;
     }
 
     void OnDisable()
@@ -69,13 +77,40 @@ public class Player : MonoBehaviour
 
         HandleInput();
         HandleSprite();
+        HandleAnimation();
         Movement();
+
+        
+    }
+
+    void HandleAnimation()
+    {
+        if (!attackAnimator.GetBool("Attacking"))
+        {
+            attackAnimator.GetComponent<SpriteRenderer>().enabled = false;
+            isActive = false;
+        }
+        else
+        {
+            if(animationTimer > ExitTime)
+            {
+                animationTimer = 0f;
+                attackAnimator.SetBool("Attacking", false);
+            }
+            else
+            {
+                animationTimer += Time.deltaTime;
+            }
+        }
     }
 
     void Movement()
     {
-        Vector3 movement = input * speed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, transform.position + movement, speed * Time.deltaTime);
+        if (attackAnimator.GetBool("Attacking"))
+        {
+            Vector3 movement = input * speed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, transform.position + movement, speed * Time.deltaTime);
+        }
     }
 
     void TryDealDamage()
@@ -84,6 +119,12 @@ public class Player : MonoBehaviour
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, viewDirection, attackRange);
         //Just to doublecheck hits
         Debug.DrawRay(transform.position, viewDirection * attackRange);
+
+        if(hits.Length > 0)
+        {
+            attackAnimator.SetBool("Attacking", true);
+            attackAnimator.GetComponent<SpriteRenderer>().enabled = true;
+        }
 
         foreach (RaycastHit2D hit in hits)
         {
