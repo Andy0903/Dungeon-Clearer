@@ -132,6 +132,8 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 1599843830198114, guid: 01358429186344240b2c1b5a35b1c784, type: 2}
   - {fileID: 1599843830198114, guid: 67a235f25a2706b40b8cbbb3546aa99e, type: 2}
+  - {fileID: 1599843830198114, guid: 271b1a1063be69c4d8788303f4a1c2b5, type: 2}
+  - {fileID: 1599843830198114, guid: 1ed88ebe40abf7a48bffcffb5fa949c4, type: 2}
   bossPrefabs:
   - {fileID: 1599843830198114, guid: afff7bb0bf5d8f94f8bf83f36cb99cfa, type: 2}
   bossSpawnCurve:

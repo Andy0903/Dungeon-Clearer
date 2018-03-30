@@ -26,8 +26,8 @@ GameObject:
   - component: {fileID: 50034768156239178}
   - component: {fileID: 61541035808348358}
   - component: {fileID: 114221271594888320}
-  m_Layer: 11
-  m_Name: oryx_16bit_fantasy_creatures_113
+  m_Layer: 12
+  m_Name: oryx_16bit_fantasy_creatures_233
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 1599843830198114}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a03907218eb55b048b3bc4a46d561c54, type: 2}
+  m_Controller: {fileID: 9100000, guid: 430253971c924a549bf0661e12561dcc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99b135fd999ffb44b877177c08cce21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pf: {fileID: 0}
+  pf: {fileID: 11400000, guid: 43abb4df1762ae5479d350e1ec7a665e, type: 2}
 --- !u!212 &212122615623709540
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300226, guid: 12ce0f3134ba47a4788697ccf1f703f3, type: 3}
+  m_Sprite: {fileID: 21300466, guid: 12ce0f3134ba47a4788697ccf1f703f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
