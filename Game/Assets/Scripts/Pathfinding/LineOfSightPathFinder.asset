@@ -9,5 +9,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ab13333fadea5a48a09d0857921e859, type: 3}
-  m_Name: GreenSoldierPathFinder
+  m_Name: LineOfSightPathFinder
   m_EditorClassIdentifier: 

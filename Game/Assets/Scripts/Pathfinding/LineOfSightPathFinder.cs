@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Pathfinder/GreenSoldier")]
-public class GreenSoldierPathFinder : PathFinder
+[CreateAssetMenu(menuName = "PluggableAI/Pathfinder/LineOfSightPathFinder")]
+public class LineOfSightPathFinder : PathFinder
 {
     protected override List<Vector3> FindPathBehaviour(Vector3 from, Vector3 to)
     {
