@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
         input = Vector2.zero;
         //The exit time from this runs 1/3 of the clip again?
         //ExitTime = attackAnimator.runtimeAnimatorController.animationClips[0].length;
-        Debug.Log(ExitTime);
     }
 
     void OnDisable()
@@ -59,6 +58,7 @@ public class Player : MonoBehaviour
             joystickAction = GameObject.FindObjectOfType<Joystick_Action>();
 
             GameObject spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+
             if (spawnPoint != null)
             {
                 transform.position = spawnPoint.transform.position;
@@ -80,28 +80,6 @@ public class Player : MonoBehaviour
         HandleSprite();
         HandleAnimation();
         Movement();
-
-        
-    }
-
-    void HandleAnimation()
-    {
-        if (!attackAnimator.GetBool("Attacking"))
-        {
-            attackAnimator.GetComponent<SpriteRenderer>().enabled = false;
-        }
-        else
-        {
-            if(animationTimer > ExitTime)
-            {
-                animationTimer = 0f;
-                attackAnimator.SetBool("Attacking", false);
-            }
-            else
-            {
-                animationTimer += Time.deltaTime;
-            }
-        }
     }
 
     void Movement()
@@ -134,6 +112,26 @@ public class Player : MonoBehaviour
                 Vector2 knockDirection = -(transform.position - hit.transform.position).normalized;
                 hit.collider.GetComponent<Rigidbody2D>().AddForce(knockDirection * attackKnockback);
                 Debug.Log("We tried to knockback");
+            }
+        }
+    }
+
+    void HandleAnimation()
+    {
+        if (!attackAnimator.GetBool("Attacking"))
+        {
+            attackAnimator.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        else
+        {
+            if (animationTimer > ExitTime)
+            {
+                animationTimer = 0f;
+                attackAnimator.SetBool("Attacking", false);
+            }
+            else
+            {
+                animationTimer += Time.deltaTime;
             }
         }
     }
