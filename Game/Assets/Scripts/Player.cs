@@ -40,6 +40,14 @@ public class Player : MonoBehaviour
         //ExitTime = attackAnimator.runtimeAnimatorController.animationClips[0].length;
     }
 
+    #region Public Methods
+    public void Reset()
+    {
+        GetComponent<Health>().Reset();
+    }
+    #endregion
+
+
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;

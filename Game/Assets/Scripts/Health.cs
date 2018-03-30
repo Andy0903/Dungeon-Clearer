@@ -69,4 +69,11 @@ public class Health : MonoBehaviour {
         currentHealth += (MaxHealth % currentHealth > amount) ? amount : MaxHealth % currentHealth;
     }
 
+    public void Reset()
+    {
+        currentHealth = MaxHealth;
+        isInvincible = false;
+        timeInvincible = 0;
+    }
+
 }

@@ -238,11 +238,14 @@ public class WorldBuilder : MonoBehaviour
 
         if (FoundValidSpawnLocation(room, out position, true))
         {
-            GameObject.Instantiate(bossPrefabs[0], position + (bossSize / 2), Quaternion.identity, room.transform);
+            GameObject go = GameObject.Instantiate(bossPrefabs[0], position + (bossSize / 2), Quaternion.identity, room.transform);
+            GameObject.Find("GameMaster").GetComponent<GameMaster>().SetBoss(go.GetComponent<Enemy>());
             BoxCollider2D lockTrigger = room.AddComponent<BoxCollider2D>();
             lockTrigger.isTrigger = true;
             lockTrigger.size = new Vector2(lockTrigger.size.x - 3, lockTrigger.size.y - 3);
         }
+
+        
     }
 
     private void RemoveDeadEndRoomsIfUnnecessary(Dictionary<EDirection, DoorStatus> doors, List<RoomTemplate> candidates)
