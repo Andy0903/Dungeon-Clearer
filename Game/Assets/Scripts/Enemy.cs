@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     Vector3 spawnPos;
 
+    const float movementSpeed = 3;
     float attackRange = 2.0f;
     float attackIntervall = 0.4f;
     float timeSinceLastAttack = 0;
@@ -74,8 +75,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        const float speed = 3;
-        float step = speed * Time.deltaTime;
+        float step = movementSpeed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, pathTarget, step);
 
         if (Vector3.Distance(transform.position, pathTarget) < distanceTreashold)

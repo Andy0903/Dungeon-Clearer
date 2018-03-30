@@ -30,7 +30,7 @@ public class RoomInfo : MonoBehaviour
     [SerializeField]
     GameObject LockPrefab;
 
-    List<Vector3> doorPointPositions = new List<Vector3>();
+    //List<Vector3> doorPointPositions = new List<Vector3>();
 
     public List<EDirection> GetDoors()
     {
@@ -53,7 +53,7 @@ public class RoomInfo : MonoBehaviour
 
         GameObject go = GameObject.Instantiate(doorPoint, transform);
         go.GetComponent<RoomExit>().Direction = direction;
-        doorPointPositions.Add(go.transform.position);
+        //doorPointPositions.Add(go.transform.position);
     }
 
     public void Awake()
@@ -91,6 +91,9 @@ public class RoomInfo : MonoBehaviour
 
     private void LockRoom()
     {
-        doorPointPositions.ForEach(p => GameObject.Instantiate(LockPrefab, p, Quaternion.identity, transform));
+        foreach (RoomExit exit in GetComponentsInChildren<RoomExit>())
+        {
+            GameObject.Instantiate(LockPrefab, exit.transform);
+        }
     }
 }

@@ -310,7 +310,7 @@ public class WorldBuilder : MonoBehaviour
         {
             if (newExit.Direction == OppositeDirection(direction))
             {
-                Destroy(newExit.gameObject);
+                newExit.CanSpawnRoom = false;
             }
         }
     }
