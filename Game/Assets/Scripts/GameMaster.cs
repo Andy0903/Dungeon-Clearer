@@ -53,6 +53,7 @@ public class GameMaster : MonoBehaviour
         {
             //TODO: We probably want this to be a Loss screen instead
             Restart();
+            SceneManager.LoadScene(1);
         }
     }
 
