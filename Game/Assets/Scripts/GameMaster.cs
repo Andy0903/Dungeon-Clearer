@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameMaster : MonoBehaviour
 
     private Enemy boss;
     private bool hasBossSpawned;
+    bool won;
 
     /*
     private enum GameState
@@ -24,7 +26,7 @@ public class GameMaster : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Player>();
         hasBossSpawned = false;
 	}
-	
+
     public void SetBoss(Enemy boss)
     {
         this.boss = boss;
@@ -56,9 +58,31 @@ public class GameMaster : MonoBehaviour
 
     void CheckWinCondition()
     {
-        if(hasBossSpawned && !boss.GetComponent<Health>().isAlive)
+        if(hasBossSpawned && boss == null)   //!boss.GetComponent<Health>().isAlive
         {
             //Change menu to "win screen"
+            Restart();
+            won = true;
+            SceneManager.LoadScene(1);
+        }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    private void nDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 1 && won)
+        {
+            won = false;
+            GameObject.FindGameObjectWithTag("InventoryPanel").GetComponent<Inventory>().PutItemToFirstEmptySlot();
         }
     }
 }

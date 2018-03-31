@@ -62,7 +62,7 @@ public class WorldBuilder : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+          //  DontDestroyOnLoad(gameObject);
         }
 
         weatherFactory = GetComponent<WeatherEffectFactory>();
