@@ -21,11 +21,19 @@ public class RoomInfo : MonoBehaviour
     [SerializeField]
     bool northDoor;
     [SerializeField]
+    Quest.Type northQuest = Quest.Type.None;
+    [SerializeField]
     bool eastDoor;
+    [SerializeField]
+    Quest.Type eastQuest = Quest.Type.None;
     [SerializeField]
     bool southDoor;
     [SerializeField]
+    Quest.Type southQuest = Quest.Type.None;
+    [SerializeField]
     bool westDoor;
+    [SerializeField]
+    Quest.Type westQuest = Quest.Type.None;
 
     [SerializeField]
     GameObject LockPrefab;
@@ -46,13 +54,14 @@ public class RoomInfo : MonoBehaviour
         return doors;
     }
 
-    private void InstantiateDoorPoint(EDirection direction)
+    private void InstantiateDoorPoint(EDirection direction, Quest.Type questType)
     {
         if (!doors.Contains(direction))
             doors.Add(direction);
 
         GameObject go = GameObject.Instantiate(doorPoint, transform);
         go.GetComponent<RoomExit>().Direction = direction;
+        go.GetComponentInChildren<Quest>().type = questType;
         //doorPointPositions.Add(go.transform.position);
     }
 
@@ -65,13 +74,13 @@ public class RoomInfo : MonoBehaviour
 
         doors = new List<EDirection>();
         if (northDoor)
-            InstantiateDoorPoint(EDirection.North);
+            InstantiateDoorPoint(EDirection.North, northQuest);
         if (eastDoor)
-            InstantiateDoorPoint(EDirection.East);
+            InstantiateDoorPoint(EDirection.East, eastQuest);
         if (southDoor)
-            InstantiateDoorPoint(EDirection.South);
+            InstantiateDoorPoint(EDirection.South, southQuest);
         if (westDoor)
-            InstantiateDoorPoint(EDirection.West);
+            InstantiateDoorPoint(EDirection.West, westQuest);
 
         GameObject.Instantiate(cameraPoint, transform);
     }

@@ -57,9 +57,13 @@ MonoBehaviour:
   maxTemp: 18
   minTemp: -5
   northDoor: 0
+  northQuest: 1
   eastDoor: 0
+  eastQuest: 1
   southDoor: 1
+  southQuest: 1
   westDoor: 1
+  westQuest: 1
   LockPrefab: {fileID: 1848547448166846, guid: 42ddda7b4722f874eb5ed7504072f810, type: 2}
 --- !u!19719996 &2113883505260979154
 TilemapCollider2D:

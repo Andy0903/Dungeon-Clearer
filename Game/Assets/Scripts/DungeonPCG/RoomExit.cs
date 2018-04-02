@@ -43,9 +43,23 @@ public class RoomExit : MonoBehaviour
             }
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVec, 2f);
-            if (hit && hit.collider.tag == "DoorPoint")
+            if (hit && hit.collider.tag == "DoorPoint" || hit && hit.transform.parent.tag == "DoorPoint")
             {
-                hit.collider.gameObject.GetComponent<RoomExit>().CanSpawnRoom = false;
+                RoomExit r;
+                Quest q;
+                if (hit.collider.tag == "DoorPoint")
+                {
+                    r = hit.collider.gameObject.GetComponent<RoomExit>();
+                    q = GetComponentInChildren<Quest>();
+                }
+                else
+                {
+                    r = hit.transform.parent.gameObject.GetComponent<RoomExit>();
+                    q = GetComponentInChildren<Quest>();
+                }
+
+                q.RemoveQuest();
+                r.CanSpawnRoom = false;
                 CanSpawnRoom = false;
             }
         }

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114306250859958240}
   - component: {fileID: 199121102328986352}
   - component: {fileID: 198967346863439936}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WindArea
   m_TagString: WindArea
   m_Icon: {fileID: 0}
