@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
                     Vector2 knockDirection = -(transform.position - hit.transform.position).normalized;
                     hit.collider.GetComponent<Rigidbody2D>().AddForce(knockDirection * attackKnockback);
                 }
-                else if(hit.collider.tag == "InteractiveObject")
+                else if(hit.collider.tag == "Interactive")
                 {
                     hit.collider.GetComponent<InteractiveObject>().RegisterHit();
                 }
