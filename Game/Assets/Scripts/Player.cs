@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
         AudioManager.Instance.Play("Slash", true);
         attackAnimator.SetBool("Attacking", true);
         attackAnimator.GetComponent<SpriteRenderer>().enabled = true;
+        attackAnimator.GetComponent<Transform>().localPosition = viewDirection;
 
         foreach (RaycastHit2D hit in hits)
         {
