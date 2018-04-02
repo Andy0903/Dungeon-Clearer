@@ -26,6 +26,7 @@ TagManager:
   - PlayButton
   - WindArea
   - Destroyable
+  - Interactive
   layers:
   - Default
   - TransparentFX
