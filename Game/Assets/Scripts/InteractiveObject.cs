@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HittableObject : MonoBehaviour
+public class InteractiveObject : MonoBehaviour
 {
     public bool isActivated
     {

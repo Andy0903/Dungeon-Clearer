@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
                 }
                 else if(hit.collider.name == "HittableObject")
                 {
-                    hit.collider.GetComponent<HittableObject>().RegisterHit();
+                    hit.collider.GetComponent<InteractiveObject>().RegisterHit();
                 }
             }
         }
