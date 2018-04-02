@@ -20,7 +20,11 @@ public class WeatherEffectFactory : MonoBehaviour
 
     public void AddWeather(GameObject room)
     {
-        string description = APIManager.Instance.Weather.Data.weather[0].description;
+        string description = "extreme rain";//APIManager.Instance.Weather.Data.weather[0].description;
+
+        if (Input.GetKey(KeyCode.K))
+            description = "light rain";
+
         AddWind(room);
 
         switch (description)

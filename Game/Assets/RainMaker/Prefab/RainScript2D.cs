@@ -3,7 +3,6 @@ using System.Collections;
 
 namespace DigitalRuby.RainMaker
 {
-    //TODO remove sound from here and use audiomanager
     public class RainScript2D : BaseRainScript
     {
         private static readonly Color32 explosionColor = new Color32(255, 255, 255, 255);

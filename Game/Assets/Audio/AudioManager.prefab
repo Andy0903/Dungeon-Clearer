@@ -132,7 +132,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594f3288618e27b499e5aae0628d88b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: LightRain
+    clips:
+    - {fileID: 8300000, guid: c980eda1ec9b9ff4b930005976b00f41, type: 3}
+    volume: 1
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+  - name: MediumRain
+    clips:
+    - {fileID: 8300000, guid: 3359e9d10af08ca46ae396298dbd1ed9, type: 3}
+    volume: 1
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+  - name: HeavyRain
+    clips:
+    - {fileID: 8300000, guid: db1471092e49b7445bfbd374a17ea61a, type: 3}
+    volume: 1
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
   backgroundMusic:
   - {fileID: 8300000, guid: c029ce11735b2344b87d4b147b067c17, type: 3}
   - {fileID: 8300000, guid: e7d8fd954bab990409e9aa76a0bfb357, type: 3}
