@@ -28,7 +28,7 @@ public class LightningBehaviour : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
             renderer.enabled = true;
-            //TODO play thundersound here!
+            AudioManager.Instance.Play("Thunder", true);
             yield return new WaitForSeconds(Random.Range(0.1f, 0.3f));
             renderer.enabled = false;
         }

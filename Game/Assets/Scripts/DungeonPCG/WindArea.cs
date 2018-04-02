@@ -27,7 +27,10 @@ public class WindArea : MonoBehaviour
         foreach (Rigidbody2D rb in bodies)
         {
             if (rb.gameObject.tag == "Player")
+            {
                 pushforce *= 10;
+                AudioManager.Instance.Play("WindGust", true);
+            }
 
             if (rb != null)
                 rb.AddForce(pushforce * rb.transform.right, ForceMode2D.Impulse);

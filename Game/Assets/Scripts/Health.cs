@@ -49,8 +49,13 @@ public class Health : MonoBehaviour {
     public void DealDamage(int amount)
     {
         currentHealth -= amount;
+
+        if (tag == "Player")
+            AudioManager.Instance.Play("PlayerHurt", true);
+
         if(currentHealth < 0 && tag == "Enemy")
         {
+            AudioManager.Instance.Play("Death", true);
             Destroy(gameObject);
         }
 

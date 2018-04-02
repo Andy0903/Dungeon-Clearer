@@ -103,6 +103,7 @@ public class RoomInfo : MonoBehaviour
         foreach (RoomExit exit in GetComponentsInChildren<RoomExit>())
         {
             GameObject.Instantiate(LockPrefab, exit.transform);
+            AudioManager.Instance.Play("Fire");
         }
     }
 }

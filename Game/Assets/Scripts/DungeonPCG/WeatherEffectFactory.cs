@@ -20,10 +20,7 @@ public class WeatherEffectFactory : MonoBehaviour
 
     public void AddWeather(GameObject room)
     {
-        string description = "extreme rain";//APIManager.Instance.Weather.Data.weather[0].description;
-
-        if (Input.GetKey(KeyCode.K))
-            description = "light rain";
+        string description = "heavy thunderstorm";//APIManager.Instance.Weather.Data.weather[0].description;
 
         AddWind(room);
 
@@ -43,12 +40,15 @@ public class WeatherEffectFactory : MonoBehaviour
                 break;
             case "light thunderstorm":
                 AddThunder(room, 1);
+                AddRain(room, 1);
                 break;
             case "thunderstorm":
                 AddThunder(room, 2);
+                AddRain(room, 2);
                 break;
             case "heavy thunderstorm":
                 AddThunder(room, 3);
+                AddRain(room, 2);
                 break;
             case "ragged thunderstorm":
                 AddThunder(room, 3);

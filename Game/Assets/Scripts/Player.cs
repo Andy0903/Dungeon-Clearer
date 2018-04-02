@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
         //Just to doublecheck hits
         Debug.DrawRay(transform.position, viewDirection * attackRange);
 
+        AudioManager.Instance.Play("Slash", true);
         attackAnimator.SetBool("Attacking", true);
         attackAnimator.GetComponent<SpriteRenderer>().enabled = true;
 

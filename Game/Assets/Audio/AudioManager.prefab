@@ -140,7 +140,7 @@ MonoBehaviour:
     volumeVariance: 0.5
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
   - name: MediumRain
     clips:
     - {fileID: 8300000, guid: 3359e9d10af08ca46ae396298dbd1ed9, type: 3}
@@ -148,11 +148,67 @@ MonoBehaviour:
     volumeVariance: 0.5
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
   - name: HeavyRain
     clips:
     - {fileID: 8300000, guid: db1471092e49b7445bfbd374a17ea61a, type: 3}
     volume: 1
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+  - name: Thunder
+    clips:
+    - {fileID: 8300000, guid: 92a26cc393c92024a91a498d50a7b960, type: 3}
+    volume: 1
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+  - name: WindGust
+    clips:
+    - {fileID: 8300000, guid: 6881cdc441c779e4f9e32aa6ddd5d52c, type: 3}
+    volume: 0.5
+    volumeVariance: 0.5
+    pitch: 3
+    pitchVariance: 0
+    loop: 0
+  - name: Fire
+    clips:
+    - {fileID: 8300000, guid: 754cb31367d7e0e419bde00f6bd05ab9, type: 3}
+    volume: 0.2
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+  - name: Slash
+    clips:
+    - {fileID: 8300000, guid: 436facafa152d8f4987d4415ff8e2dbe, type: 3}
+    volume: 0.5
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+  - name: QuestComplete
+    clips:
+    - {fileID: 8300000, guid: 81e3141bf151071498bb8e021b4c5e4c, type: 3}
+    volume: 0.8
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+  - name: Death
+    clips:
+    - {fileID: 8300000, guid: f16d0b116e99fed41ba761c768de5cee, type: 3}
+    volume: 0.5
+    volumeVariance: 0.5
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+  - name: PlayerHurt
+    clips:
+    - {fileID: 8300000, guid: 4ac3033dc617e484ab2fcc504986281d, type: 3}
+    volume: 0.5
     volumeVariance: 0.5
     pitch: 1
     pitchVariance: 0

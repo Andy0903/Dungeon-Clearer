@@ -9,6 +9,9 @@ public class Quest : MonoBehaviour
 
     public void RemoveQuest()
     {
+        if (type != Type.None)
+            AudioManager.Instance.Play("QuestComplete", true);
+
         Destroy(gameObject);
     }
 
@@ -19,12 +22,12 @@ public class Quest : MonoBehaviour
         HitSwitch,
         MoveObjectToTrigger,
     }
-    
+
     void Start()
     {
         room = transform.parent.parent;
     }
-    
+
     void Update()
     {
         switch (type)
