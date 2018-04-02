@@ -25,6 +25,7 @@ TagManager:
   - CameraPoint
   - PlayButton
   - WindArea
+  - Destroyable
   layers:
   - Default
   - TransparentFX

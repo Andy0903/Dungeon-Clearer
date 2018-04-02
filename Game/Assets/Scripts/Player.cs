@@ -112,16 +112,19 @@ public class Player : MonoBehaviour
 
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider != null && hit.collider.tag == "Enemy")
+            if (hit.collider != null) //&& hit.collider.tag == "Enemy"
             {
-                Debug.Log("We tried to Decrease HP");
-                hit.collider.GetComponent<Health>().DealDamage(attackDamage);
+                Health hp = hit.collider.GetComponent<Health>();
+                if (hp != null)
+                {
+                    hit.collider.GetComponent<Health>().DealDamage(attackDamage);
+                }
 
-                //TODO: Might wanna move this to the Health scripts DealDamage() function?
-                
-                Vector2 knockDirection = -(transform.position - hit.transform.position).normalized;
-                hit.collider.GetComponent<Rigidbody2D>().AddForce(knockDirection * attackKnockback);
-                Debug.Log("We tried to knockback");
+                if (hit.collider.tag == "Enemy") //We only want to knockback enemies
+                {
+                    Vector2 knockDirection = -(transform.position - hit.transform.position).normalized;
+                    hit.collider.GetComponent<Rigidbody2D>().AddForce(knockDirection * attackKnockback);
+                }
             }
         }
     }
