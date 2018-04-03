@@ -11,15 +11,17 @@ public class Bomb : MonoBehaviour {
     [SerializeField]
     private int damage;
 
+    private bool hasExploded;
     private float timer;
 	
 	// Update is called once per frame
 	void Update ()
     {
         timer += Time.deltaTime;
-        if(timer > timeToExplode)
+        if(timer > timeToExplode && !hasExploded)
         {
             Explode();
+            hasExploded = true;
         }
 	}
 
