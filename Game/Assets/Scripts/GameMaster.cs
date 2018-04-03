@@ -57,6 +57,7 @@ public class GameMaster : MonoBehaviour
             //Change menu to "win screen"
             Restart();
             won = true;
+            GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().AddDungeonCleared();
             SceneManager.LoadScene(1);
         }
     }
