@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,15 +12,6 @@ public class GameMaster : MonoBehaviour
     private Enemy boss;
     private bool hasBossSpawned;
     bool won;
-
-    /*
-    private enum GameState
-    {
-        MainMenu,
-        PausMenu,
-        Playing
-    }
-    */
 
 	void Awake ()
     {
@@ -86,4 +79,6 @@ public class GameMaster : MonoBehaviour
             GameObject.FindGameObjectWithTag("InventoryPanel").GetComponent<Inventory>().PutItemToFirstEmptySlot();
         }
     }
+
+
 }
