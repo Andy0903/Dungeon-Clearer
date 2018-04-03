@@ -20,13 +20,14 @@ public class SaveLoadManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 	}
 
-    /// <summary>
-    /// Adds an inventory item and saves it to the savefile
-    /// </summary>
-    /// <param name="item"></param>
-    public void AddInventoryItem(Item item)
+    public void SaveInventoryAndEquipment()
     {
-        LoadedData.InventoryItems.AddLast(item);
+        GameObject go = GameObject.Find("InventoryGrid");
+        Item[] items = go.GetComponentsInChildren<Item>();
+
+        go = GameObject.Find("EquipmentManager");
+        EquipmentManager EM = go.GetComponent<EquipmentManager>();
+        LoadedData.Equipment = EM.EquippedItems;
         SaveFile();
     }
 
@@ -40,12 +41,7 @@ public class SaveLoadManager : MonoBehaviour
         SaveFile();
     }
 
-    
 
-
-    /// <summary>
-    /// Saves the current loaded data into the savefile
-    /// </summary>
     public void SaveFile()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -55,10 +51,6 @@ public class SaveLoadManager : MonoBehaviour
         file.Close();
     }
 
-    /// <summary>
-    /// Loads the savedata from a savedatafile if it exits, 
-    /// otherwise an empty GameData is created and saved into a new savefile
-    /// </summary>
     public void LoadFile()
     {
         if(File.Exists(Application.persistentDataPath + FileName))
@@ -71,18 +63,16 @@ public class SaveLoadManager : MonoBehaviour
         else
         {
             LoadedData = new GameData();
-            SaveFile();
+            SaveFile(); //Creates and saves new file if it doesn't exist
         }
     }
 
-    
-    
 }
 
 [Serializable]
 public class GameData
 {
     public int DungeonsCleared;
-    public LinkedList<Item> InventoryItems = new LinkedList<Item>();
-    public LinkedList<Item> EquippedItems = new LinkedList<Item>();
+    public Item[] Inventory;
+    public Dictionary<string, EquipmentSlot> Equipment = new Dictionary<string, EquipmentSlot>();
 }

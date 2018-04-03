@@ -7,6 +7,14 @@ public class EquipmentManager : MonoBehaviour
 {
     Dictionary<string, EquipmentSlot> slots = new Dictionary<string, EquipmentSlot>();
 
+    public Dictionary<string, EquipmentSlot> EquippedItems
+    {
+        get
+        {
+            return new Dictionary<string, EquipmentSlot>(EquippedItems);
+        }
+    }
+
     public Player Player { get; private set; }
     Text descriptionText;
 
