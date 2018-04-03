@@ -11,9 +11,15 @@ public class Bomb : MonoBehaviour {
     [SerializeField]
     private int damage;
 
+    private Animator animator;
     private bool hasExploded;
     private float timer;
 	
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -21,15 +27,20 @@ public class Bomb : MonoBehaviour {
         if(timer > timeToExplode && !hasExploded)
         {
             Explode();
-            hasExploded = true;
+            hasExploded = true; 
         }
-	}
+
+        //Once animation has reached exit state we delete the object
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Explosion"))
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Explode()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius);
-
-        //TODO: Play a bomb animation, delete bomb after it has finished
+        animator.SetTrigger("Explode");
 
         foreach (Collider2D hit in hits)
         {
