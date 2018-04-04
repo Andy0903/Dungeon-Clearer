@@ -38,8 +38,6 @@ public class RoomInfo : MonoBehaviour
     [SerializeField]
     GameObject LockPrefab;
 
-    //List<Vector3> doorPointPositions = new List<Vector3>();
-
     public List<EDirection> GetDoors()
     {
         if (northDoor && !doors.Contains(EDirection.North))
@@ -62,7 +60,6 @@ public class RoomInfo : MonoBehaviour
         GameObject go = GameObject.Instantiate(doorPoint, transform);
         go.GetComponent<RoomExit>().Direction = direction;
         go.GetComponentInChildren<Quest>().type = questType;
-        //doorPointPositions.Add(go.transform.position);
     }
 
     public void Awake()

@@ -39,17 +39,50 @@ public class Quest : MonoBehaviour
                 UpdateKillAllQuest();
                 break;
             case Type.HitSwitch:
-                //TODO when hit switch exists.. check if hit -> remove
+                UpdateHitSwitchQuest();
                 break;
             case Type.MoveObjectToTrigger:
-                //TODO when moveobj exists. Move into triggervol -> remove
+                UpdateMoveObjectToTriggerQuest();
                 break;
+        }
+    }
+
+    void UpdateMoveObjectToTriggerQuest()
+    {
+        MovableTile[] mObjs = room.GetComponentsInChildren<MovableTile>();
+
+        bool done = true;
+        foreach (MovableTile o in mObjs)
+        {
+            if (!o.isPlaced)
+                done = false;
+        }
+
+        if (done)
+        {
+            RemoveQuest();
+        }
+    }
+
+    void UpdateHitSwitchQuest()
+    {
+        InteractiveObject[] iObjs = room.GetComponentsInChildren<InteractiveObject>();
+
+        bool done = true;
+        foreach (InteractiveObject o in iObjs)
+        {
+            if (!o.isActivated)
+                done = false;
+        }
+
+        if (done)
+        {
+            RemoveQuest();
         }
     }
 
     void UpdateKillAllQuest()
     {
-        //If no enemies in room -> Open
         Enemy[] enemies = room.GetComponentsInChildren<Enemy>();
 
         if (enemies.Length == 0)
