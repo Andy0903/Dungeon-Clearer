@@ -41,7 +41,7 @@ public class WindArea : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        if (rb != null && rb.tag != "MovableTile")
         {
             bodies.Add(rb);
         }

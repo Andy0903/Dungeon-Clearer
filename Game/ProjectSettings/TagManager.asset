@@ -27,6 +27,7 @@ TagManager:
   - WindArea
   - Destroyable
   - Interactive
+  - MovableTile
   layers:
   - Default
   - TransparentFX
