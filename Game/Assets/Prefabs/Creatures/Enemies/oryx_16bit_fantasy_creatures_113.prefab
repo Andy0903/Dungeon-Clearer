@@ -145,7 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99b135fd999ffb44b877177c08cce21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pf: {fileID: 0}
+  pf: {fileID: 11400000, guid: f85c0a0f7cd06b9429563bab0a1cf4db, type: 2}
+  mainTime: 5
 --- !u!212 &212122615623709540
 SpriteRenderer:
   m_ObjectHideFlags: 1

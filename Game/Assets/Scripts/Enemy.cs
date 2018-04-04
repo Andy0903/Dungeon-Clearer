@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     PathFinder pf;
 
+    public TimeEffectFactory.DayPhase mainTime;
+
     Transform target;
 
     Vector3 oldTargetPos;
@@ -22,7 +24,7 @@ public class Enemy : MonoBehaviour
     float attackIntervall = 0.4f;
     float timeSinceLastAttack = 0;
     int attackDamage = 5;
-    
+
 
     private void InitializeNewPathTarget()
     {
@@ -38,7 +40,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        timeSinceLastAttack += Time.deltaTime;
+        timeSinceLastAttack += UnityEngine.Time.deltaTime;
 
         if (target == null)
         {
@@ -54,7 +56,7 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        if(Vector3.Distance(transform.position, target.position) < attackRange)
+        if (Vector3.Distance(transform.position, target.position) < attackRange)
         {
             TryDealDamage();
         }
@@ -68,14 +70,14 @@ public class Enemy : MonoBehaviour
             }
             catch (NullReferenceException)
             {
-                if (transform.parent.tag !=  "BackgroundLayer")
+                if (transform.parent.tag != "BackgroundLayer")
                 {
                     transform.position = spawnPos;
                 }
             }
         }
 
-        float step = movementSpeed * Time.deltaTime;
+        float step = movementSpeed * UnityEngine.Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, pathTarget, step);
 
         if (Vector3.Distance(transform.position, pathTarget) < distanceTreashold)

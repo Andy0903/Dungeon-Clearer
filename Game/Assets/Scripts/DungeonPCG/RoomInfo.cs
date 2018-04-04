@@ -13,6 +13,8 @@ public class RoomInfo : MonoBehaviour
     GameObject cameraPoint;
     GameObject doorPoint;
 
+    public TimeEffectFactory.DayPhase Time { get; set; }
+
     [SerializeField]
     float maxTemp;
     [SerializeField]

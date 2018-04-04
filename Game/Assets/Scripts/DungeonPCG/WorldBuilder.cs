@@ -62,7 +62,7 @@ public class WorldBuilder : MonoBehaviour
         else
         {
             Instance = this;
-          //  DontDestroyOnLoad(gameObject);
+            //  DontDestroyOnLoad(gameObject);
         }
 
         weatherFactory = GetComponent<WeatherEffectFactory>();
@@ -226,9 +226,40 @@ public class WorldBuilder : MonoBehaviour
         {
             if (FoundValidSpawnLocation(room, out position))
             {
-                GameObject.Instantiate(enemyPrefabs[UnityEngine.Random.Range(0, enemyPrefabs.Length)], position + (enemySize / 2), Quaternion.identity, room.transform);
+                GameObject.Instantiate(GetRandomEnemyWithDayFactor(room, enemyPrefabs), position + (enemySize / 2), Quaternion.identity, room.transform);
             }
         }
+    }
+
+    GameObject GetRandomEnemyWithDayFactor(GameObject room, GameObject[] collection)
+    {
+        List<float> p = new List<float>();
+        foreach (GameObject g in collection)
+        {
+            Debug.Log(g);
+            Enemy e = g.GetComponent<Enemy>();
+
+            Debug.Log(e);
+
+            int d = Mathf.Abs(room.GetComponent<RoomInfo>().Time - e.mainTime);
+            float x = .5f + .5f * Mathf.Cos(d * 360 / (Enum.GetValues(typeof(TimeEffectFactory.DayPhase)).Length + 1));
+            p.Add(x);
+        }
+
+        float u = p.Sum();
+        float r = UnityEngine.Random.Range(0, u);
+        float sum = 0;
+
+        for (int i = 0; i < p.Count; i++)
+        {
+            sum += p[i];
+            if (r < sum)
+            {
+                return collection[i];
+            }
+        }
+
+        return collection[0];
     }
 
     private void PopulateWithBoss(GameObject room)
@@ -238,14 +269,14 @@ public class WorldBuilder : MonoBehaviour
 
         if (FoundValidSpawnLocation(room, out position, true))
         {
-            GameObject go = GameObject.Instantiate(bossPrefabs[0], position + (bossSize / 2), Quaternion.identity, room.transform);
+            GameObject go = GameObject.Instantiate(GetRandomEnemyWithDayFactor(room, bossPrefabs), position + (bossSize / 2), Quaternion.identity, room.transform);
             GameObject.Find("GameMaster").GetComponent<GameMaster>().SetBoss(go.GetComponent<Enemy>());
             BoxCollider2D lockTrigger = room.AddComponent<BoxCollider2D>();
             lockTrigger.isTrigger = true;
             lockTrigger.size = new Vector2(lockTrigger.size.x - 3, lockTrigger.size.y - 3);
         }
 
-        
+
     }
 
     private void RemoveDeadEndRoomsIfUnnecessary(Dictionary<EDirection, DoorStatus> doors, List<RoomTemplate> candidates)

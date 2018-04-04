@@ -134,8 +134,11 @@ MonoBehaviour:
   - {fileID: 1599843830198114, guid: 67a235f25a2706b40b8cbbb3546aa99e, type: 2}
   - {fileID: 1599843830198114, guid: 271b1a1063be69c4d8788303f4a1c2b5, type: 2}
   - {fileID: 1599843830198114, guid: 1ed88ebe40abf7a48bffcffb5fa949c4, type: 2}
+  - {fileID: 1599843830198114, guid: 5f1a8b0e6e2643a429811417ee72773b, type: 2}
+  - {fileID: 1599843830198114, guid: e72660b638e95bd459c2bc726a7e4d77, type: 2}
   bossPrefabs:
   - {fileID: 1599843830198114, guid: 4c99e0ed3c02beb44a8ca6492844da64, type: 2}
+  - {fileID: 1599843830198114, guid: aa65493f1c0bfe44d91aee09713c72e7, type: 2}
   bossSpawnCurve:
     serializedVersion: 2
     m_Curve:
