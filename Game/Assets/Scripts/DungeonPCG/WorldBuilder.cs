@@ -236,11 +236,7 @@ public class WorldBuilder : MonoBehaviour
         List<float> p = new List<float>();
         foreach (GameObject g in collection)
         {
-            Debug.Log(g);
             Enemy e = g.GetComponent<Enemy>();
-
-            Debug.Log(e);
-
             int d = Mathf.Abs(room.GetComponent<RoomInfo>().Time - e.mainTime);
             float x = .5f + .5f * Mathf.Cos(d * 360 / (Enum.GetValues(typeof(TimeEffectFactory.DayPhase)).Length + 1));
             p.Add(x);
