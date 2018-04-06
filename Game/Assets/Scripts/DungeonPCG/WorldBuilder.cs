@@ -226,19 +226,19 @@ public class WorldBuilder : MonoBehaviour
         Vector3 enemySize = new Vector3(1, 1, 0);
         Vector3 position;
 
-        //GameData gd = GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().LoadedData;
+        GameData gd = GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().LoadedData;
         int amountToSpawn;
 
-        GameData gd = new GameData();
-        gd.EnemiesKilled = 5;
-        gd.EnemiesSpawned = 10;
+        //GameData gd = new GameData();
+        //gd.EnemiesKilled = 5;
+        //gd.EnemiesSpawned = 10;
 
         if (gd.EnemiesSpawned > 0)
         {
             const int RNGValue = 5;
             int rng = (int)(UnityEngine.Random.value * RNGValue);
             amountToSpawn = (int)(DefaultSpawnAmount * (rng * (float)gd.EnemiesKilled / (float)gd.EnemiesSpawned));
-            Debug.Log("Spawn Amount: " + amountToSpawn + " RNG: " + rng + " Estimate Value: " + (rng * (((float)gd.EnemiesKilled / (float)gd.EnemiesSpawned))));
+            //Debug.Log("Spawn Amount: " + amountToSpawn + " RNG: " + rng + " Estimate Value: " + (rng * (((float)gd.EnemiesKilled / (float)gd.EnemiesSpawned))));
             if(amountToSpawn <= 0)
             {
                 amountToSpawn = DefaultSpawnAmount;
