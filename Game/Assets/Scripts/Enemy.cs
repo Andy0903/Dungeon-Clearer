@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     PathFinder pf;
 
+    [SerializeField]
+    Health.EAttackType attackType;
+
     public TimeEffectFactory.DayPhase mainTime;
 
     Transform target;
@@ -98,7 +101,7 @@ public class Enemy : MonoBehaviour
         //Only attacks when intervall is reached and player isn't invincible
         if (timeSinceLastAttack > attackIntervall && !eHP.isInvincible)
         {
-            eHP.DealDamage(attackDamage);
+            eHP.DealDamage(attackDamage, attackType);
             timeSinceLastAttack = 0;
             eHP.ActivateInvincibility();
         }
