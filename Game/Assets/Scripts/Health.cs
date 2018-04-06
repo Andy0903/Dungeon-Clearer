@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
 
+    public enum EAttackType
+    {
+        Physical,
+        Electric,
+        Fire,
+        Water
+    }
+
     private float timeInvincible;
 
     [SerializeField]
@@ -46,21 +54,36 @@ public class Health : MonoBehaviour {
         }
     }
 
-    public void DealDamage(int amount)
+    public void DealDamage(int amount, EAttackType type = EAttackType.Physical)
     {
-        currentHealth -= amount;
-
         if (tag == "Player")
+        {
             AudioManager.Instance.Play("PlayerHurt", true);
+            amount -= CalculateResistanceDecrease(amount, type);
+        }
 
-        if(currentHealth < 0 && tag == "Enemy" || tag == "Destroyable")
+        if (currentHealth < 0 && tag == "Enemy" || tag == "Destroyable")
         {
             GameObject.Find("Player").GetComponent<Player>().AddKilledEnemy();
             AudioManager.Instance.Play("Death", true);
             Destroy(gameObject);
         }
-
+        currentHealth -= amount;
         //Debug.Log("Damage dealt to " + tag + " hp is now: " + currentHealth);
+    }
+
+    private int CalculateResistanceDecrease(int amount, EAttackType type)
+    {
+        int res = GetComponent<Player>().Stats.GetResistance(type);
+        if(amount/res > 0.8f)
+        {
+            return (int)(amount * 0.2f +1); //Will cap resistance at 80% and at least deal 20% of damage
+        }
+        else
+        {
+            return amount - res;
+        }
+        
     }
 
     public void ActivateInvincibility()
