@@ -31,13 +31,14 @@ public class SaveLoadManager : MonoBehaviour
         SaveFile();
     }
 
+
     /// <summary>
     /// Adds a cleared dungeon count and saves it to the savefile
     /// </summary>
     /// <param name="amount"></param>
-    public void AddDungeonCleared(int amount = 1)
+    public void AddDungeonCleared(int amountEnemiesKilled, int amountEnemiesSpawned, int dungeonsCleared = 1)
     {
-        LoadedData.DungeonsCleared += amount;
+        LoadedData.DungeonsCleared += dungeonsCleared;
         SaveFile();
     }
 
@@ -75,4 +76,6 @@ public class GameData
     public int DungeonsCleared;
     public Item[] Inventory;
     public Dictionary<string, EquipmentSlot> Equipment = new Dictionary<string, EquipmentSlot>();
+    public int EnemiesKilled;
+    public int EnemiesSpawned;
 }

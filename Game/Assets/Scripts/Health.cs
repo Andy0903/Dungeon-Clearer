@@ -55,11 +55,12 @@ public class Health : MonoBehaviour {
 
         if(currentHealth < 0 && tag == "Enemy" || tag == "Destroyable")
         {
+            GameObject.Find("Player").GetComponent<Player>().AddKilledEnemy();
             AudioManager.Instance.Play("Death", true);
             Destroy(gameObject);
         }
 
-        Debug.Log("Damage dealt to " + tag + " hp is now: " + currentHealth);
+        //Debug.Log("Damage dealt to " + tag + " hp is now: " + currentHealth);
     }
 
     public void ActivateInvincibility()

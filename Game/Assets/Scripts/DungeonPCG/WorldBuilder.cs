@@ -53,6 +53,9 @@ public class WorldBuilder : MonoBehaviour
     WeatherEffectFactory weatherFactory;
     TimeEffectFactory timeFactory;
 
+    const int DefaultSpawnAmount = 5;
+    const int MaxSpawnAmount = 10;
+
     void Awake()
     {
         if (Instance != null)
@@ -222,7 +225,37 @@ public class WorldBuilder : MonoBehaviour
     {
         Vector3 enemySize = new Vector3(1, 1, 0);
         Vector3 position;
-        for (int i = 0; i < 5; i++)
+
+        //GameData gd = GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().LoadedData;
+        int amountToSpawn;
+
+        GameData gd = new GameData();
+        gd.EnemiesKilled = 5;
+        gd.EnemiesSpawned = 10;
+
+        if (gd.EnemiesSpawned > 0)
+        {
+            const int RNGValue = 5;
+            int rng = (int)(UnityEngine.Random.value * RNGValue);
+            amountToSpawn = (int)(DefaultSpawnAmount * (rng * (float)gd.EnemiesKilled / (float)gd.EnemiesSpawned));
+            Debug.Log("Spawn Amount: " + amountToSpawn + " RNG: " + rng + " Estimate Value: " + (rng * (((float)gd.EnemiesKilled / (float)gd.EnemiesSpawned))));
+            if(amountToSpawn <= 0)
+            {
+                amountToSpawn = DefaultSpawnAmount;
+            }
+            else if(amountToSpawn > MaxSpawnAmount)
+            {
+                //Tries to decrease the spawn amount as an RNG'd 6 with 50% kills yields 15 enemies
+                amountToSpawn -= DefaultSpawnAmount;
+            }
+
+        }
+        else
+        {
+            amountToSpawn = DefaultSpawnAmount;
+        }
+        GameObject.Find("GameMaster").GetComponent<GameMaster>().AddEnemiesSpawned(amountToSpawn);
+        for (int i = 0; i < amountToSpawn; i++)
         {
             if (FoundValidSpawnLocation(room, out position))
             {

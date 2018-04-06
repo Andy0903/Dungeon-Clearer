@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    private int enemiesKilledInDungeon;
+
     [SerializeField]
     private Animator attackAnimator;
     private float animationTimer;
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
     private const float SpriteIntervall = 0.15f;
 
     public Stats Stats { get; private set; }
+    public int EnemiesKilled { get { return enemiesKilledInDungeon; } }
 
     private Vector2 input;
     //Normalized direction based on input
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(this);
         Stats = new Stats();
         input = Vector2.zero;
+        enemiesKilledInDungeon = 0;
         //The exit time from this runs 1/3 of the clip again?
         //ExitTime = attackAnimator.runtimeAnimatorController.animationClips[0].length;
     }
@@ -43,7 +47,10 @@ public class Player : MonoBehaviour
     public void Reset()
     {
         GetComponent<Health>().Reset();
+        enemiesKilledInDungeon = 0;
     }
+
+    public void AddKilledEnemy() { enemiesKilledInDungeon++; }
 
     void OnDisable()
     {
@@ -122,7 +129,7 @@ public class Player : MonoBehaviour
                     Vector2 knockDirection = -(transform.position - hit.transform.position).normalized;
                     hit.collider.GetComponent<Rigidbody2D>().AddForce(knockDirection * attackKnockback);
                 }
-                else if(hit.collider.tag == "Interactive")
+                else if (hit.collider.tag == "Interactive")
                 {
                     hit.collider.GetComponent<InteractiveObject>().RegisterHit();
                 }
@@ -162,7 +169,7 @@ public class Player : MonoBehaviour
                 timeSinceSpriteChange = 0;
             }
         }
-        else if(!sr.enabled)
+        else if (!sr.enabled)
         {
             //Makes sure SR is enabled if we're no longer invincible
             sr.enabled = true;

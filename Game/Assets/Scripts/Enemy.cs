@@ -25,7 +25,6 @@ public class Enemy : MonoBehaviour
     float timeSinceLastAttack = 0;
     int attackDamage = 5;
 
-
     private void InitializeNewPathTarget()
     {
         oldTargetPos = target.position;

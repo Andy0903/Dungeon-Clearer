@@ -11,6 +11,7 @@ public class GameMaster : MonoBehaviour
 
     private Enemy boss;
     private bool hasBossSpawned;
+    private int enemiesSpawned;
     bool won;
 
 	void Awake ()
@@ -24,6 +25,11 @@ public class GameMaster : MonoBehaviour
     {
         this.boss = boss;
         hasBossSpawned = true;
+    }
+
+    public void AddEnemiesSpawned(int amount)
+    {
+        enemiesSpawned += amount;
     }
 
 	void Update ()
@@ -55,9 +61,11 @@ public class GameMaster : MonoBehaviour
         if(hasBossSpawned && boss == null)   //!boss.GetComponent<Health>().isAlive
         {
             //Change menu to "win screen"
+            int amountOfEnemiesKilled = player.EnemiesKilled;
+
             Restart();
             won = true;
-            GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().AddDungeonCleared();
+            GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().AddDungeonCleared(amountOfEnemiesKilled, enemiesSpawned);
             SceneManager.LoadScene(1);
         }
     }
