@@ -22,7 +22,9 @@ public class MovableTile : MonoBehaviour
     {
         if (collider.gameObject == tile)
         {
-            isPlaced = true;    
+            isPlaced = true;
+            tile.transform.localPosition = Vector2.zero;
+            tile.GetComponent<Rigidbody2D>().isKinematic = true;
         }
     }
 }
