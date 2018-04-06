@@ -18,6 +18,7 @@ public class SaveLoadManager : MonoBehaviour
 	void Start ()
     {
         DontDestroyOnLoad(gameObject);
+        LoadFile();
 	}
 
     public void SaveInventoryAndEquipment()
