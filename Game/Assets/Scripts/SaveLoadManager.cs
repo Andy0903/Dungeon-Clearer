@@ -40,6 +40,8 @@ public class SaveLoadManager : MonoBehaviour
     public void AddDungeonCleared(int amountEnemiesKilled, int amountEnemiesSpawned, int dungeonsCleared = 1)
     {
         LoadedData.DungeonsCleared += dungeonsCleared;
+        LoadedData.EnemiesKilled += amountEnemiesKilled;
+        LoadedData.EnemiesSpawned += amountEnemiesSpawned;
         SaveFile();
     }
 
