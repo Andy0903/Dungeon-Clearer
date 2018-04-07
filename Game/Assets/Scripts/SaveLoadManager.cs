@@ -15,7 +15,18 @@ public class SaveLoadManager : MonoBehaviour
         private set;
     }
     
-	void Start ()
+    public float PercentageKilled
+    {
+        get
+        {
+            if (LoadedData.EnemiesSpawned != 0)
+                return LoadedData.EnemiesKilled / LoadedData.EnemiesSpawned;
+            else
+                return 0.5f;
+        }
+    }
+
+	void Awake ()
     {
         DontDestroyOnLoad(gameObject);
         LoadFile();

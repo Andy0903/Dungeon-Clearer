@@ -33,13 +33,18 @@ public class Player : MonoBehaviour
     //Normalized direction based on input
     private Vector2 viewDirection;
 
+    private SaveLoadManager loadedInformation;
+
     // Use this for initialization
-    void Awake()
+    void Start()
     {
         DontDestroyOnLoad(this);
         Stats = new Stats();
         input = Vector2.zero;
         enemiesKilledInDungeon = 0;
+        loadedInformation = GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>();
+        ChangeTint(loadedInformation.PercentageKilled);
+        
         //The exit time from this runs 1/3 of the clip again?
         //ExitTime = attackAnimator.runtimeAnimatorController.animationClips[0].length;
     }
@@ -48,9 +53,25 @@ public class Player : MonoBehaviour
     {
         GetComponent<Health>().Reset();
         enemiesKilledInDungeon = 0;
+        ChangeTint(loadedInformation.PercentageKilled);
     }
 
     public void AddKilledEnemy() { enemiesKilledInDungeon++; }
+
+    void ChangeTint(float percentage)
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        //Percentage is multiplied by 2 to change the ratios from 0-100% in both cases instead of 0-50%
+        if(percentage > 0.5f)
+        {
+            sr.color = Color.Lerp(Color.white, Color.red, percentage * 2);
+        }
+        else
+        {
+            sr.color = Color.Lerp(Color.blue, Color.white, percentage * 2);
+        }
+        
+    }
 
     void OnDisable()
     {
