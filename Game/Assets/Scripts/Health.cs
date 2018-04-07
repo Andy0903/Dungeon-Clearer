@@ -75,7 +75,7 @@ public class Health : MonoBehaviour {
     private int CalculateResistanceDecrease(int amount, EAttackType type)
     {
         int res = GetComponent<Player>().Stats.GetResistance(type);
-        if(amount/res > 0.8f)
+        if(res != 0 && amount/res > 0.8f)
         {
             return (int)(amount * 0.2f +1); //Will cap resistance at 80% and at least deal 20% of damage
         }
