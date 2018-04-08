@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour {
 
@@ -34,20 +35,29 @@ public class Health : MonoBehaviour {
     private int currentHealth;
 
     [SerializeField]
-    private int MaxHealth = 100;
+    private int baseHealth = 100;
+
+    int maxHealth;
 
     private const float HpIncreaseConstant = 0.85f;
 
 	void Start ()
     {
         GameData ld = GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().LoadedData;
-        MaxHealth += (int)(ld.DungeonsCleared * HpIncreaseConstant + 0.5f);
+        maxHealth = baseHealth;
+        maxHealth += (int)(ld.DungeonsCleared * HpIncreaseConstant + 0.5f);
 
-        currentHealth = MaxHealth;
-	}
+        currentHealth = maxHealth;
+    }
 	
     void Update()
     {
+        if (gameObject.tag == "Player" && SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            maxHealth = baseHealth + GetComponent<Player>().Stats[Stats.EType.Health];
+            currentHealth = maxHealth;
+        }
+
         if(isInvincible)
         {
             timeInvincible += Time.deltaTime;
@@ -74,7 +84,7 @@ public class Health : MonoBehaviour {
             Destroy(gameObject);
         }
         currentHealth -= amount;
-        //Debug.Log("Damage dealt to " + tag + " hp is now: " + currentHealth);
+        Debug.Log(type + " damage " + amount + " dealt to " + tag + " hp is now: " + currentHealth);
     }
 
     private int CalculateResistanceDecrease(int amount, EAttackType type)
@@ -100,12 +110,12 @@ public class Health : MonoBehaviour {
     public void Heal(int amount)
     {
         //Makes sure to not overheal MaxHealth
-        currentHealth += (MaxHealth % currentHealth > amount) ? amount : MaxHealth % currentHealth;
+        currentHealth += (maxHealth % currentHealth > amount) ? amount : maxHealth % currentHealth;
     }
 
     public void Reset()
     {
-        currentHealth = MaxHealth;
+        currentHealth = maxHealth;
         isInvincible = false;
         timeInvincible = 0;
     }

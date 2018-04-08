@@ -82,7 +82,19 @@ public class ItemFactory : MonoBehaviour
         image.sprite = Resources.Load<Sprite>(spritePath);
 
         int maxRange = System.Enum.GetNames(typeof(Stats.EType)).Length;
-        item.AddComponent(new StatComponent((Stats.EType)Random.Range(0, maxRange) , Random.Range(-100, 100)).BindToItem(item));
+        GameData ld = GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().LoadedData;
+
+        int dungeonsCleared = 1;
+        dungeonsCleared += (int)(ld.DungeonsCleared * 0.1f);
+        int valMin = -10;
+        int valMax = 15 + ld.DungeonsCleared;
+
+        for (int i = 0; i < dungeonsCleared; i++)
+        {
+            int statValue = Random.Range(valMin, valMax + 1);
+            item.AddComponent(new StatComponent((Stats.EType)Random.Range(0, maxRange), statValue).BindToItem(item));
+        }
+
         
         return go;
     }

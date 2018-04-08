@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
                 Health hp = hit.collider.GetComponent<Health>();
                 if (hp != null)
                 {
-                    hit.collider.GetComponent<Health>().DealDamage(attackDamage);
+                    hit.collider.GetComponent<Health>().DealDamage(attackDamage + Stats[Stats.EType.Damage]);
                 }
 
                 if (hit.collider.tag == "Enemy") //We only want to knockback enemies
