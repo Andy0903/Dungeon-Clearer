@@ -36,8 +36,13 @@ public class Health : MonoBehaviour {
     [SerializeField]
     private int MaxHealth = 100;
 
+    private const float HpIncreaseConstant = 0.85f;
+
 	void Start ()
     {
+        GameData ld = GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().LoadedData;
+        MaxHealth += (int)(ld.DungeonsCleared * HpIncreaseConstant + 0.5f);
+
         currentHealth = MaxHealth;
 	}
 	

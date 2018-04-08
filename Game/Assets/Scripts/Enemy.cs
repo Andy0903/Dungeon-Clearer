@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
     float timeSinceLastAttack = 0;
     int attackDamage = 5;
 
+    private const float AttackDamageIncreaseConstant = 0.45f;
+
     private void InitializeNewPathTarget()
     {
         oldTargetPos = target.position;
@@ -37,6 +39,10 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        GameData ld = GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().LoadedData;
+
+        attackDamage += (int)(ld.DungeonsCleared * AttackDamageIncreaseConstant);
+
         spawnPos = transform.position;
     }
 
