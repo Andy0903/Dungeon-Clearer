@@ -86,7 +86,7 @@ public class Health : MonoBehaviour {
         }
         else
         {
-            return amount - res;
+            return res;
         }
         
     }
