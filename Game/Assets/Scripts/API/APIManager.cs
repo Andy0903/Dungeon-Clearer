@@ -24,8 +24,16 @@ public class APIManager : MonoBehaviour
         }
 
         Input.location.Start(1, 0.1f); //random values (of accuracy)
-        float lat = 56f;     //Input.location.lastData.latitude;
-        float lng = 13f;    //Input.location.lastData.longitude;
+
+        float lat;
+        float lng;
+#if UNITY_EDITOR
+        lat = 56f;     //Input.location.lastData.latitude;
+        lng = 13f;    //Input.location.lastData.longitude;
+#else
+        lat = Input.location.lastData.latitude;
+        lng = Input.location.lastData.longitude;
+#endif
 
         Weather = new WeatherAPIClient(lat, lng);
         Time = new TimeAPIClient(lat, lng);
