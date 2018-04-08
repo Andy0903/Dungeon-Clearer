@@ -7,8 +7,8 @@ public class Stats
 {
     public enum EType
     {
-        Strength,
-        Vitality,
+        Damage,
+        Health,
         ElectricResistance,
         WaterResistance,
         FireResistance
