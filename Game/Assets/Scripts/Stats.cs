@@ -24,14 +24,14 @@ public class Stats
     public int GetResistance(Health.EAttackType type)
     {
         //This will look really ugly with more resistances, should probably rethink the solution
-        switch(type)
+        switch (type)
         {
             case Health.EAttackType.Electric:
-                return stats[EType.ElectricResistance];
+                return this[EType.ElectricResistance];
             case Health.EAttackType.Water:
-                return stats[EType.WaterResistance];
+                return this[EType.WaterResistance];
             case Health.EAttackType.Fire:
-                return stats[EType.FireResistance];
+                return this[EType.FireResistance];
             default:
                 return 0;
         }
