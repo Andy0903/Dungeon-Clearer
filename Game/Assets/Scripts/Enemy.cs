@@ -11,6 +11,12 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     Health.EAttackType attackType;
 
+    public Health.EAttackType AttackType
+    {
+        get;
+        set;
+    }
+
     public TimeEffectFactory.DayPhase mainTime;
 
     Transform target;

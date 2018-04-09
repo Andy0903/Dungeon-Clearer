@@ -18,6 +18,12 @@ public class WeatherEffectFactory : MonoBehaviour
     [SerializeField]
     GameObject windArea;
 
+    public Health.EAttackType AttackType
+    {
+        get;
+        private set;
+    }
+
     public void AddWeather(GameObject room)
     {
         string description = "heavy thunderstorm";//APIManager.Instance.Weather.Data.weather[0].description;
@@ -29,194 +35,246 @@ public class WeatherEffectFactory : MonoBehaviour
             case "thunderstorm with light rain":
                 AddThunder(room, 2);
                 AddRain(room, 1);
+                AttackType = Health.EAttackType.Electric;
                 break;
             case "thunderstorm with rain":
                 AddThunder(room, 2);
                 AddRain(room, 2);
+                AttackType = Health.EAttackType.Electric;
                 break;
             case "thunderstorm with heavy rain":
                 AddThunder(room, 2);
                 AddRain(room, 4);
+                AttackType = Health.EAttackType.Electric;
                 break;
             case "light thunderstorm":
                 AddThunder(room, 1);
                 AddRain(room, 1);
+                AttackType = Health.EAttackType.Electric;
                 break;
             case "thunderstorm":
                 AddThunder(room, 2);
                 AddRain(room, 2);
+                AttackType = Health.EAttackType.Electric;
                 break;
             case "heavy thunderstorm":
                 AddThunder(room, 3);
                 AddRain(room, 2);
+                AttackType = Health.EAttackType.Electric;
                 break;
             case "ragged thunderstorm":
                 AddThunder(room, 3);
+                AttackType = Health.EAttackType.Electric;
                 break;
             case "thunderstorm with light drizzle":
                 AddThunder(room, 2);
                 AddDrizzle(room, 1);
+                AttackType = Health.EAttackType.Electric;
                 break;
             case "thunderstorm with drizzle":
                 AddThunder(room, 2);
                 AddDrizzle(room, 2);
+                AttackType = Health.EAttackType.Electric;
                 break;
             case "thunderstorm with heavy drizzle":
                 AddThunder(room, 2);
                 AddDrizzle(room, 3);
+                AttackType = Health.EAttackType.Electric;
                 break;
 
             case "light intensity drizzle":
                 AddDrizzle(room, 1);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "drizzle":
                 AddDrizzle(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "heavy intensity drizzle":
                 AddDrizzle(room, 3);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "light intensity drizzle rain":
                 AddDrizzle(room, 1);
                 AddRain(room, 1);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "drizzle rain":
                 AddDrizzle(room, 2);
                 AddRain(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "heavy intensity drizzle rain":
                 AddDrizzle(room, 3);
                 AddRain(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "shower rain and drizzle":
                 AddDrizzle(room, 2);
                 AddRain(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "heavy shower rain and drizzle":
                 AddDrizzle(room, 2);
                 AddRain(room, 3);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "shower drizzle":
                 AddDrizzle(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
 
             case "light rain":
                 AddRain(room, 1);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "moderate rain":
                 AddRain(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "heavy intensity rain":
                 AddRain(room, 3);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "very heavy rain":
                 AddRain(room, 4);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "extreme rain":
                 AddRain(room, 5);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "freezing rain":
                 AddRain(room, 2);
                 AddSnow(room, 1);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "light intensity shower rain":
                 AddRain(room, 1);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "shower rain":
                 AddRain(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "heavy intensity shower rain":
                 AddRain(room, 3);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "ragged shower rain":
                 AddRain(room, 4);
+                AttackType = Health.EAttackType.Water;
                 break;
 
             case "light snow":
                 AddSnow(room, 1);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "snow":
                 AddSnow(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "heavy snow":
                 AddSnow(room, 3);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "sleet":
                 AddRain(room, 1);
                 AddSnow(room, 1);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "shower sleet":
                 AddRain(room, 1);
                 AddSnow(room, 1);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "light rain and snow":
                 AddRain(room, 1);
                 AddSnow(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "rain and snow":
                 AddRain(room, 2);
                 AddSnow(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "light shower snow":
                 AddSnow(room, 1);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "shower snow":
                 AddSnow(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
             case "heavy shower snow":
                 AddSnow(room, 3);
+                AttackType = Health.EAttackType.Water;
                 break;
-
             case "mist":
                 AddClouds(room, 2);
+                AttackType = Health.EAttackType.Water;
                 break;
-            case "smoke": break;
-            case "haze": break;
-            case "sand, dust whirls": break;
             case "fog":
                 AddClouds(room, 3);
+                AttackType = Health.EAttackType.Physical;
                 break;
-            case "sand": break;
-            case "dust": break;
-            case "volcanic ash": break;
-            case "squalls": break;
-            case "tornado": break;
 
+            case "smoke":
+            case "haze":
+            case "sand, dust whirls":
+            case "sand": 
+            case "dust":
+            case "volcanic ash":
+            case "squalls": 
+            case "tornado":
             case "clear sky":
+                AttackType = Health.EAttackType.Physical;
                 AddClear(room);
                 break;
 
             case "few clouds":
                 AddClouds(room, 1);
+                AttackType = Health.EAttackType.Physical;
                 break;
             case "scattered clouds":
                 AddClouds(room, 2);
+                AttackType = Health.EAttackType.Physical;
                 break;
             case "broken clouds":
                 AddClouds(room, 3);
+                AttackType = Health.EAttackType.Physical;
                 break;
             case "overcast clouds":
                 AddClouds(room, 4);
+                AttackType = Health.EAttackType.Physical;
                 break;
 
             //case "tornado":
-            case "tropical storm": break;
-            case "hurricane": break;
-            case "cold": break;
-            case "hot": break;
-            case "windy": break;
-            case "hail": break;
+            case "tropical storm":
+            case "hurricane":
+            case "hot":
+                AttackType = Health.EAttackType.Fire;
+                break;
 
-            case "calm": break;
-            case "light breeze": break;
-            case "gentle breeze": break;
-            case "moderate breeze": break;
-            case "fresh breeze": break;
-            case "strong breeze": break;
-            case "high wind, near gale": break;
-            case "gale": break;
-            case "severe gale": break;
-            case "storm": break;
-            case "violent storm": break;
+            case "windy":
+            case "calm":
+            case "light breeze":
+            case "gentle breeze":
+            case "moderate breeze":
+            case "fresh breeze":
+            case "strong breeze":
+            case "high wind, near gale":
+                AttackType = Health.EAttackType.Physical;
+                break;
+
+            case "gale":
+            case "severe gale":
+            case "storm":
+            case "violent storm":
+            case "hail":
+            case "cold":
+                AttackType = Health.EAttackType.Water;
+                break;
                 //case "hurricane":
 
         }
