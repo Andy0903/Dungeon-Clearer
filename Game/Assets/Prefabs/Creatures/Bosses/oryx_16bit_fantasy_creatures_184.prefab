@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxInvincibilityTime: 0
-  MaxHealth: 100
+  baseHealth: 300
 --- !u!114 &114221271594888320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxInvincibilityTime: 0
-  MaxHealth: 100
+  baseHealth: 100
 --- !u!114 &114670417872350866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pf: {fileID: 11400000, guid: f85c0a0f7cd06b9429563bab0a1cf4db, type: 2}
+  attackType: 0
   mainTime: 5
 --- !u!212 &212122615623709540
 SpriteRenderer:
