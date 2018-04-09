@@ -149,13 +149,13 @@ MonoBehaviour:
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 100
+      time: 60
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 600
+      time: 300
       value: 100
       inSlope: 0
       outSlope: 0
