@@ -71,20 +71,22 @@ public class Health : MonoBehaviour {
 
     public void DealDamage(int amount, EAttackType type = EAttackType.Physical)
     {
+        currentHealth -= amount;
+        Debug.Log(type + " damage " + amount + " dealt to " + tag + " hp is now: " + currentHealth);
+
         if (tag == "Player")
         {
             AudioManager.Instance.Play("PlayerHurt", true);
             amount -= CalculateResistanceDecrease(amount, type);
         }
 
-        if (currentHealth < 0 && tag == "Enemy" || tag == "Destroyable")
+        if (currentHealth <= 0 && tag == "Enemy" || tag == "Destroyable")
         {
             GameObject.Find("Player").GetComponent<Player>().AddKilledEnemy();
             AudioManager.Instance.Play("Death", true);
             Destroy(gameObject);
         }
-        currentHealth -= amount;
-        Debug.Log(type + " damage " + amount + " dealt to " + tag + " hp is now: " + currentHealth);
+    
     }
 
     private int CalculateResistanceDecrease(int amount, EAttackType type)
