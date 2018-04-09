@@ -308,7 +308,7 @@ public class WorldBuilder : MonoBehaviour
             GameObject.Find("GameMaster").GetComponent<GameMaster>().SetBoss(go.GetComponent<Enemy>());
             BoxCollider2D lockTrigger = room.AddComponent<BoxCollider2D>();
             lockTrigger.isTrigger = true;
-            lockTrigger.size = new Vector2(lockTrigger.size.x - 3, lockTrigger.size.y - 3);
+            lockTrigger.size = new Vector2(lockTrigger.size.x - 5, lockTrigger.size.y - 5);
         }
 
 
