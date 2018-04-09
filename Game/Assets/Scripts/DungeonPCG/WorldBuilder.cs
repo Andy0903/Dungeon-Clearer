@@ -53,6 +53,8 @@ public class WorldBuilder : MonoBehaviour
     WeatherEffectFactory weatherFactory;
     TimeEffectFactory timeFactory;
 
+    Health.EAttackType attackType;
+
     const int DefaultSpawnAmount = 5;
     const int MaxSpawnAmount = 10;
 
@@ -89,6 +91,7 @@ public class WorldBuilder : MonoBehaviour
         dungeon.Add(new Vector2Int(x, y), go);
         go.GetComponentInChildren<RoomInfo>().DungeonPosition = new Vector2Int(x, y);
         weatherFactory.AddWeather(go);
+        attackType = weatherFactory.AttackType;
         timeFactory.AddTimeFilter(go);
 
         return go;
@@ -233,6 +236,7 @@ public class WorldBuilder : MonoBehaviour
         //gd.EnemiesKilled = 5;
         //gd.EnemiesSpawned = 10;
 
+
         if (gd.EnemiesSpawned > 0)
         {
             const int RNGValue = 5;
@@ -259,7 +263,9 @@ public class WorldBuilder : MonoBehaviour
         {
             if (FoundValidSpawnLocation(room, out position))
             {
-                GameObject.Instantiate(GetRandomEnemyWithDayFactor(room, enemyPrefabs), position + (enemySize / 2), Quaternion.identity, room.transform);
+                GameObject GO =
+                    GameObject.Instantiate(GetRandomEnemyWithDayFactor(room, enemyPrefabs), position + (enemySize / 2), Quaternion.identity, room.transform);
+                GO.GetComponent<Enemy>().AttackType = attackType;
             }
         }
     }
