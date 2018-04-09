@@ -19,9 +19,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int speed;
 
-    private int attackRange = 3;
+    private float attackRange = 1.5f;
     private int attackDamage = 10;
-    private int attackKnockback = 50;
+    private int attackKnockback = 500;
 
     private float timeSinceSpriteChange = 0;
     private const float SpriteIntervall = 0.15f;

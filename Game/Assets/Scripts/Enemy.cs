@@ -29,10 +29,10 @@ public class Enemy : MonoBehaviour
     Vector3 spawnPos;
 
     const float movementSpeed = 3;
-    float attackRange = 2.0f;
-    float attackIntervall = 0.4f;
+    float attackRange = 1.1f;
+    float attackIntervall = 1.5f;
     float timeSinceLastAttack = 0;
-    int attackDamage = 5;
+    int attackDamage = 3;
 
     private const float AttackDamageIncreaseConstant = 0.45f;
 
@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
         GameData ld = GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().LoadedData;
 
         attackDamage += (int)(ld.DungeonsCleared * AttackDamageIncreaseConstant);
+
 
         spawnPos = transform.position;
     }
