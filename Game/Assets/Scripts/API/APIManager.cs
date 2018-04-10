@@ -22,32 +22,56 @@ public class APIManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
 
-        Input.location.Start(1, 0.1f); //random values (of accuracy)
+    private IEnumerator Start()
+    {
+        if (!Input.location.isEnabledByUser)
+            yield break;
+        Input.location.Start(); //(1, 0.1f); //random values (of accuracy)
 
-        float lat;
-        float lng;
-#if UNITY_EDITOR
-        lat = 56f;     //Input.location.lastData.latitude;
-        lng = 13f;    //Input.location.lastData.longitude;
-#else
-        lat = Input.location.lastData.latitude;
-        lng = Input.location.lastData.longitude;
-#endif
+        int maxWait = 20;
+        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
+        {
+            yield return new WaitForSeconds(1);
+            maxWait--;
+        }
 
-        Weather = new WeatherAPIClient(lat, lng);
-        Time = new TimeAPIClient(lat, lng);
+        if (maxWait < 1)
+        {
+            Debug.Log("Timed out");
+            yield break;
+        }
 
-        Weather.AutoRefresh(this, 10);
-        Time.Refresh(this);
+        if (Input.location.status == LocationServiceStatus.Failed)
+        {
+            Debug.Log("No GPS");
+            yield break;
+        }
+        else
+        {
+            float lat;
+            float lng;
+            lat = Input.location.lastData.latitude;
+            lng = Input.location.lastData.longitude;
+
+            Weather = new WeatherAPIClient(lat, lng);
+            Time = new TimeAPIClient(lat, lng);
+
+            Weather.AutoRefresh(this, 10);
+            Time.Refresh(this);
+        }
     }
 
     private void Update()
     {
-        if (Weather.Data != null && Time.Data != null)
+        if (Weather != null && Time != null)
         {
-            Ready = true;
-            enabled = false;
+            if (Weather.Data != null && Time.Data != null)
+            {
+                Ready = true;
+                enabled = false;
+            }
         }
     }
 }
