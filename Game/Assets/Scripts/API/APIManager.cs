@@ -9,7 +9,9 @@ public class APIManager : MonoBehaviour
     public WeatherAPIClient Weather { get; private set; }
     public TimeAPIClient Time { get; private set; }
     public bool Ready { get; private set; }
-
+    public float Lat { get; private set; }
+    public float Lng { get; private set; }
+    
     void Awake()
     {
         Ready = false;
@@ -50,13 +52,11 @@ public class APIManager : MonoBehaviour
         }
         else
         {
-            float lat;
-            float lng;
-            lat = Input.location.lastData.latitude;
-            lng = Input.location.lastData.longitude;
+            Lat = Input.location.lastData.latitude;
+            Lng = Input.location.lastData.longitude;
 
-            Weather = new WeatherAPIClient(lat, lng);
-            Time = new TimeAPIClient(lat, lng);
+            Weather = new WeatherAPIClient(Lat, Lng);
+            Time = new TimeAPIClient(Lat, Lng);
 
             Weather.AutoRefresh(this, 10);
             Time.Refresh(this);
