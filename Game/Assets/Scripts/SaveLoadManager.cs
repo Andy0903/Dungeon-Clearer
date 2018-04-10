@@ -35,7 +35,7 @@ public class SaveLoadManager : MonoBehaviour
     public void SaveInventoryAndEquipment()
     {
         Debug.Log("Saved items");
-        Item[] items = GameObject.FindGameObjectWithTag("InventoryPanel").transform.Find("InventoryGrid").transform.GetComponentsInChildren<Item>();
+        Item[] items = GameObject.FindGameObjectWithTag("InventoryPanel").transform.GetComponentsInChildren<Item>();
         //EquipmentManager EM = GameObject.Find("EquipmentManager").GetComponent<EquipmentManager>();
 
         LoadedData.Inventory = new ItemComponentHolder[items.Length];
@@ -46,11 +46,6 @@ public class SaveLoadManager : MonoBehaviour
             LoadedData.Inventory[i].type = items[i].Type;
             LoadedData.Inventory[i].components = items[i].GetItemComponents();
         }
-
-
-
-        //LoadedData.Equipment = EM.EquippedItems;
-
         SaveFile();
     }
 
@@ -110,7 +105,6 @@ public class GameData
 {
     public int DungeonsCleared;
     public ItemComponentHolder[] Inventory;
-    public Dictionary<string, EquipmentSlot> Equipment = new Dictionary<string, EquipmentSlot>();
     public int EnemiesKilled;
     public int EnemiesSpawned;
 }

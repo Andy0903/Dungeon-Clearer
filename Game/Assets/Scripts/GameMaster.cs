@@ -13,7 +13,6 @@ public class GameMaster : MonoBehaviour
     private bool hasBossSpawned;
     private int enemiesSpawned;
     bool won;
-    bool first = true;
 
 	void Awake ()
     {
@@ -84,15 +83,14 @@ public class GameMaster : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if(scene.buildIndex == 1 && first)
+        if(scene.buildIndex == 1 && !won)
         {
             GameObject.FindObjectOfType<SaveLoadManager>().LoadFile(true);
-            first = false;
         }
-
-        if (scene.buildIndex == 1 && won)
+        else if (scene.buildIndex == 1 && won)
         {
             won = false;
+            GameObject.FindObjectOfType<SaveLoadManager>().LoadFile(true);
             GameObject.FindGameObjectWithTag("InventoryPanel").GetComponent<Inventory>().PutItemToFirstEmptySlot();
             GameObject.FindObjectOfType<SaveLoadManager>().SaveInventoryAndEquipment();
         }
