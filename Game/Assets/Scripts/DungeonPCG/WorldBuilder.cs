@@ -309,6 +309,7 @@ public class WorldBuilder : MonoBehaviour
             BoxCollider2D lockTrigger = room.AddComponent<BoxCollider2D>();
             lockTrigger.isTrigger = true;
             lockTrigger.size = new Vector2(lockTrigger.size.x - 5, lockTrigger.size.y - 5);
+            lockTrigger.gameObject.layer = 2;
         }
 
 

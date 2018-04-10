@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
         GameData ld = GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().LoadedData;
 
         attackDamage += (int)(ld.DungeonsCleared * AttackDamageIncreaseConstant);
-
+        attackRange *= transform.localScale.x;
 
         spawnPos = transform.position;
     }
