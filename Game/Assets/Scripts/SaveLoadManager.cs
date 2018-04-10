@@ -14,7 +14,7 @@ public class SaveLoadManager : MonoBehaviour
         get;
         private set;
     }
-    
+
     public float PercentageKilled
     {
         get
@@ -26,20 +26,31 @@ public class SaveLoadManager : MonoBehaviour
         }
     }
 
-	void Awake ()
+    void Awake()
     {
         DontDestroyOnLoad(gameObject);
         LoadFile();
-	}
+    }
 
     public void SaveInventoryAndEquipment()
     {
-        GameObject go = GameObject.Find("InventoryGrid");
-        Item[] items = go.GetComponentsInChildren<Item>();
+        Debug.Log("Saved items");
+        Item[] items = GameObject.FindGameObjectWithTag("InventoryPanel").transform.Find("InventoryGrid").transform.GetComponentsInChildren<Item>();
+        //EquipmentManager EM = GameObject.Find("EquipmentManager").GetComponent<EquipmentManager>();
 
-        go = GameObject.Find("EquipmentManager");
-        EquipmentManager EM = go.GetComponent<EquipmentManager>();
-        LoadedData.Equipment = EM.EquippedItems;
+        LoadedData.Inventory = new ItemComponentHolder[items.Length];
+
+        for (int i = 0; i < LoadedData.Inventory.Length; i++)
+        {
+            LoadedData.Inventory[i] = new ItemComponentHolder();
+            LoadedData.Inventory[i].type = items[i].Type;
+            LoadedData.Inventory[i].components = items[i].GetItemComponents();
+        }
+
+
+
+        //LoadedData.Equipment = EM.EquippedItems;
+
         SaveFile();
     }
 
@@ -66,13 +77,23 @@ public class SaveLoadManager : MonoBehaviour
         file.Close();
     }
 
-    public void LoadFile()
+    public void LoadFile(bool loadInventory = false)
     {
-        if(File.Exists(Application.persistentDataPath + FileName))
+        if (File.Exists(Application.persistentDataPath + FileName))
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + FileName, FileMode.Open);
             LoadedData = bf.Deserialize(file) as GameData;
+
+            if (loadInventory)
+            {
+                foreach (ItemComponentHolder ih in LoadedData.Inventory)
+                {
+                    GameObject.FindGameObjectWithTag("InventoryPanel").GetComponent<Inventory>().PutSpecificItemIntoFirstEmptySlot(ih.type, ih.components);
+                }
+
+            }
+
             file.Close();
         }
         else
@@ -88,8 +109,15 @@ public class SaveLoadManager : MonoBehaviour
 public class GameData
 {
     public int DungeonsCleared;
-    public Item[] Inventory;
+    public ItemComponentHolder[] Inventory;
     public Dictionary<string, EquipmentSlot> Equipment = new Dictionary<string, EquipmentSlot>();
     public int EnemiesKilled;
     public int EnemiesSpawned;
+}
+
+[Serializable]
+public class ItemComponentHolder
+{
+    public Item.EType type;
+    public List<IItemComponent> components;
 }

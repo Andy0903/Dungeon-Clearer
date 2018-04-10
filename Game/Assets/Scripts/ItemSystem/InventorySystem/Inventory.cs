@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
@@ -7,6 +8,27 @@ public class Inventory : MonoBehaviour
     Transform equipment;
     [SerializeField]
     Transform inventory;
+
+    public void OnDisable()
+    {
+        GameObject.FindObjectOfType<SaveLoadManager>().SaveInventoryAndEquipment();
+    }
+
+    public void PutSpecificItemIntoFirstEmptySlot(Item.EType type, List<IItemComponent> components)
+    {
+        bool slotFound = false;
+
+        for (int i = 0; i < inventory.transform.childCount && !slotFound; i++)
+        {
+            InventorySlot slot = inventory.GetChild(i).GetComponent<InventorySlot>();
+
+            if (slot.ContainedItem == null)
+            {
+                slotFound = true;
+                slot.AddItem(ItemFactory.Instance.CreateSpecific(type, components));
+            }
+        }
+    }
 
     public void PutItemToFirstEmptySlot()
     {

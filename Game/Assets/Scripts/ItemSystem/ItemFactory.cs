@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemFactory : MonoBehaviour
@@ -21,6 +22,21 @@ public class ItemFactory : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    public GameObject CreateSpecific(Item.EType type, List<IItemComponent> components)
+    {
+        GameObject go = Create(type);
+        Item item = go.GetComponent<Item>();
+
+        item.GetItemComponents().Clear();
+
+        foreach (IItemComponent cmp in components)
+        {
+            item.AddComponent(cmp);
+        }
+
+        return go;
     }
 
     public GameObject Create(Item.EType type)
@@ -97,10 +113,5 @@ public class ItemFactory : MonoBehaviour
 
         
         return go;
-    }
-
-    private void SetSprite()
-    {
-
     }
 }

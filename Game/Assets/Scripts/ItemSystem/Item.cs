@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -9,7 +10,7 @@ using UnityEngine;
     Die
     takedmg 
  */
-
+ 
 public class Item : MonoBehaviour
 {
     public enum EType
@@ -41,6 +42,11 @@ public class Item : MonoBehaviour
     public void Awake()
     {
         components = new List<IItemComponent>();
+    }
+
+    public List<IItemComponent> GetItemComponents()
+    {
+        return components;
     }
 
     public void AddComponent(IItemComponent component)

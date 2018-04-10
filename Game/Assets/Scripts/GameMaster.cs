@@ -13,6 +13,7 @@ public class GameMaster : MonoBehaviour
     private bool hasBossSpawned;
     private int enemiesSpawned;
     bool won;
+    bool first = true;
 
 	void Awake ()
     {
@@ -65,7 +66,8 @@ public class GameMaster : MonoBehaviour
 
             Restart();
             won = true;
-            GameObject.Find("SaveLoadManager").GetComponent<SaveLoadManager>().AddDungeonCleared(amountOfEnemiesKilled, enemiesSpawned);
+
+            GameObject.FindObjectOfType<SaveLoadManager>().AddDungeonCleared(amountOfEnemiesKilled, enemiesSpawned);
             SceneManager.LoadScene(1);
         }
     }
@@ -82,12 +84,17 @@ public class GameMaster : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        if(scene.buildIndex == 1 && first)
+        {
+            GameObject.FindObjectOfType<SaveLoadManager>().LoadFile(true);
+            first = false;
+        }
+
         if (scene.buildIndex == 1 && won)
         {
             won = false;
             GameObject.FindGameObjectWithTag("InventoryPanel").GetComponent<Inventory>().PutItemToFirstEmptySlot();
+            GameObject.FindObjectOfType<SaveLoadManager>().SaveInventoryAndEquipment();
         }
     }
-
-
 }
