@@ -26,7 +26,7 @@ public class WeatherEffectFactory : MonoBehaviour
 
     public void AddWeather(GameObject room)
     {
-        string description = "heavy thunderstorm";//APIManager.Instance.Weather.Data.weather[0].description;
+        string description = APIManager.Instance.Weather.Data.weather[0].description;
 
         AddWind(room);
 
