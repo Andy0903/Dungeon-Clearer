@@ -83,14 +83,14 @@ public class GameMaster : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if(scene.buildIndex == 1 && !won)
+        if(scene.buildIndex == 1)
         {
             GameObject.FindObjectOfType<SaveLoadManager>().LoadFile(true);
         }
-        else if (scene.buildIndex == 1 && won)
+
+        if (won)
         {
             won = false;
-            GameObject.FindObjectOfType<SaveLoadManager>().LoadFile(true);
             GameObject.FindGameObjectWithTag("InventoryPanel").GetComponent<Inventory>().PutItemToFirstEmptySlot();
             GameObject.FindObjectOfType<SaveLoadManager>().SaveInventoryAndEquipment();
         }

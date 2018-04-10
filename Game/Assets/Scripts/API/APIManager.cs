@@ -11,7 +11,7 @@ public class APIManager : MonoBehaviour
     public bool Ready { get; private set; }
     public float Lat { get; private set; }
     public float Lng { get; private set; }
-    
+
     void Awake()
     {
         Ready = false;
@@ -28,6 +28,10 @@ public class APIManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+#if UNITY_EDITOR
+        Lat = 56f;     //Input.location.lastData.latitude;
+        Lng = 13f;    //Input.location.lastData.longitude;
+#else
         if (!Input.location.isEnabledByUser)
             yield break;
         Input.location.Start(); //(1, 0.1f); //random values (of accuracy)
@@ -54,14 +58,18 @@ public class APIManager : MonoBehaviour
         {
             Lat = Input.location.lastData.latitude;
             Lng = Input.location.lastData.longitude;
-
-            Weather = new WeatherAPIClient(Lat, Lng);
-            Time = new TimeAPIClient(Lat, Lng);
-
-            Weather.AutoRefresh(this, 10);
-            Time.Refresh(this);
         }
+        
+#endif
+        Weather = new WeatherAPIClient(Lat, Lng);
+        Time = new TimeAPIClient(Lat, Lng);
+
+        Weather.AutoRefresh(this, 10);
+        Time.Refresh(this);
+
+        yield break;
     }
+
 
     private void Update()
     {
