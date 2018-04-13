@@ -286,7 +286,7 @@ public class WeatherEffectFactory : MonoBehaviour
         WindArea wa = go.GetComponent<WindArea>();
 
         float windSpeed = APIManager.Instance.Weather.Data.wind.speed;
-        wa.Initialize(windSpeed * 15f, 4, 10);
+        wa.Initialize(windSpeed * 5f, 4, 10);
         return go;
     }
 
