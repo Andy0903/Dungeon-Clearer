@@ -83,6 +83,8 @@ public class GameMaster : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
+        AudioManager.Instance.Stop("Fire");
+
         if(scene.buildIndex == 1)
         {
             GameObject.FindObjectOfType<SaveLoadManager>().LoadFile(true);
