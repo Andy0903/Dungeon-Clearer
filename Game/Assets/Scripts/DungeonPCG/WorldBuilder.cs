@@ -162,7 +162,7 @@ public class WorldBuilder : MonoBehaviour
 
         DestoryUnnecessaryExits(room, direction);
 
-        if (bossSpawnCurve.Evaluate(Time.timeSinceLevelLoad) >= UnityEngine.Random.value * 100)
+        if (bossSpawnCurve.Evaluate(Time.timeSinceLevelLoad) >= UnityEngine.Random.value * 100 && GameObject.FindObjectOfType<GameMaster>().boss == null)
         {
             PopulateWithBoss(room);
         }
@@ -243,11 +243,11 @@ public class WorldBuilder : MonoBehaviour
             int rng = (int)(UnityEngine.Random.value * RNGValue);
             amountToSpawn = (int)(DefaultSpawnAmount * (rng * (float)gd.EnemiesKilled / (float)gd.EnemiesSpawned));
             //Debug.Log("Spawn Amount: " + amountToSpawn + " RNG: " + rng + " Estimate Value: " + (rng * (((float)gd.EnemiesKilled / (float)gd.EnemiesSpawned))));
-            if(amountToSpawn <= 0)
+            if (amountToSpawn <= 0)
             {
                 amountToSpawn = DefaultSpawnAmount;
             }
-            else if(amountToSpawn > MaxSpawnAmount)
+            else if (amountToSpawn > MaxSpawnAmount)
             {
                 //Tries to decrease the spawn amount as an RNG'd 6 with 50% kills yields 15 enemies
                 amountToSpawn -= DefaultSpawnAmount;

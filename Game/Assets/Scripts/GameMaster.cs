@@ -9,7 +9,7 @@ public class GameMaster : MonoBehaviour
 {
     private Player player;
 
-    private Enemy boss;
+    public Enemy boss;
     private bool hasBossSpawned;
     private int enemiesSpawned;
     bool won;
