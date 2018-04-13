@@ -86,6 +86,9 @@ public class GameMaster : MonoBehaviour
         if(scene.buildIndex == 1)
         {
             AudioManager.Instance.Stop("Fire");
+            AudioManager.Instance.Stop("LightRain");
+            AudioManager.Instance.Stop("MediumRain");
+            AudioManager.Instance.Stop("HeavyRain");
             GameObject.FindObjectOfType<SaveLoadManager>().LoadFile(true);
         }
 
