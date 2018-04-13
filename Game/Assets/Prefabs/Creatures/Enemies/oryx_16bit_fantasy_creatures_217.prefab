@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 50034768156239178}
   - component: {fileID: 61541035808348358}
   - component: {fileID: 114221271594888320}
-  m_Layer: 12
+  m_Layer: 11
   m_Name: oryx_16bit_fantasy_creatures_217
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxInvincibilityTime: 0
-  MaxHealth: 100
+  baseHealth: 100
 --- !u!114 &114221271594888320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxInvincibilityTime: 0
-  MaxHealth: 100
+  baseHealth: 100
 --- !u!114 &114670417872350866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pf: {fileID: 11400000, guid: 9d233777d9fdee94eafcd128325f7006, type: 2}
+  attackType: 0
   mainTime: 5
 --- !u!212 &212122615623709540
 SpriteRenderer:
