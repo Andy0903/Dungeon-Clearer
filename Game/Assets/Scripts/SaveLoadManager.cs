@@ -20,7 +20,7 @@ public class SaveLoadManager : MonoBehaviour
         get
         {
             if (LoadedData.EnemiesSpawned != 0)
-                return LoadedData.EnemiesKilled / LoadedData.EnemiesSpawned;
+                return (float)LoadedData.EnemiesKilled / (float)LoadedData.EnemiesSpawned;
             else
                 return 0.5f;
         }

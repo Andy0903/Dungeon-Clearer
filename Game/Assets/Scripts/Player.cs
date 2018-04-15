@@ -62,6 +62,8 @@ public class Player : MonoBehaviour
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         //Percentage is multiplied by 2 to change the ratios from 0-100% in both cases instead of 0-50%
+        Debug.Log(percentage);
+
         if(percentage > 0.5f)
         {
             sr.color = Color.Lerp(Color.white, Color.red, percentage * 2);
