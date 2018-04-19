@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f44f3e27cbc5a42bc8eec36b79e610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTemp: 18
+  maxTemp: 25
   minTemp: -5
   northDoor: 1
   northQuest: 3
@@ -627,6 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ce166270dcc8248aa57d686217945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 0}
 --- !u!114 &114160474564047974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -638,6 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ce166270dcc8248aa57d686217945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 0}
 --- !u!114 &114261276768474356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -660,6 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ce166270dcc8248aa57d686217945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 0}
 --- !u!114 &114682252516313740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -671,6 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ce166270dcc8248aa57d686217945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 0}
 --- !u!114 &114775436882437956
 MonoBehaviour:
   m_ObjectHideFlags: 1

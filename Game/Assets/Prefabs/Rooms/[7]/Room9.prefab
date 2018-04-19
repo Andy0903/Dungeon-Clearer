@@ -751,7 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f44f3e27cbc5a42bc8eec36b79e610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTemp: 18
+  maxTemp: 25
   minTemp: -5
   northDoor: 1
   northQuest: 2

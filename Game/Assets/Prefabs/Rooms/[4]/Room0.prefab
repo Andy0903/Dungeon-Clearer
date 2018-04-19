@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ce166270dcc8248aa57d686217945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 0}
 --- !u!114 &114213801835082782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f44f3e27cbc5a42bc8eec36b79e610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTemp: 15
+  maxTemp: 23
   minTemp: 10
   northDoor: 1
   northQuest: 3
@@ -368,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ce166270dcc8248aa57d686217945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 0}
 --- !u!114 &114919634807275498
 MonoBehaviour:
   m_ObjectHideFlags: 1
